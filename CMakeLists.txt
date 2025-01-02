@@ -11,6 +11,19 @@ find_package(rclcpp REQUIRED)
 find_package(sensor_msgs REQUIRED)
 find_package(nav_msgs REQUIRED)
 find_package(tf2_ros REQUIRED)
+find_package(visualization_msgs REQUIRED)
+
+# Add your C++ executable
+add_executable(robot_distance_checker src/robotDistanceChecker.cpp)
+
+# Link the executable to the required dependencies
+ament_target_dependencies(robot_distance_checker rclcpp sensor_msgs nav_msgs tf2_ros visualization_msgs)
+
+# Install the node executable
+install(TARGETS
+  robot_distance_checker
+  DESTINATION lib/${PROJECT_NAME}
+)
 
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
