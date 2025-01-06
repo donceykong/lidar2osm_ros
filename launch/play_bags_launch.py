@@ -6,9 +6,13 @@ from launch.substitutions import LaunchConfiguration
 from ament_index_python.packages import get_package_share_directory
 
 def generate_launch_description():
-    rviz_config_path = "/home/donceykong/Desktop/ros2_ws/src/lidar2osm_ros/rviz/rviz2_layout.rviz"
-    bag1_path = "/home/donceykong/Desktop/lidar2osm_data/orig_kittredge_loop_robot1/kittredge_loop_robot1_0.db3"
-    bag2_path = "/home/donceykong/Desktop/lidar2osm_data/orig_kittredge_loop_robot2/kittredge_loop_robot2_0.db3"
+    rviz_config_path = "/home/donceykong/Desktop/ARPG/projects/fall_2024/Lidar2OSM_FULL/lidar2osm_testing_ws/src/lidar2osm_ros/rviz/rviz2_layout.rviz"
+    bag1_path = "/media/donceykong/doncey_ssd_02/orig_kittredge_loop_robot1/kittredge_loop_robot1_0.db3"
+    bag2_path = "/media/donceykong/doncey_ssd_02/orig_kittredge_loop_robot2/kittredge_loop_robot2_0.db3"
+
+    # rviz_config_path = "/home/donceykong/Desktop/ros2_ws/src/lidar2osm_ros/rviz/rviz2_layout.rviz"
+    # bag1_path = "/home/donceykong/Desktop/lidar2osm_data/orig_kittredge_loop_robot1/kittredge_loop_robot1_0.db3"
+    # bag2_path = "/home/donceykong/Desktop/lidar2osm_data/orig_kittredge_loop_robot2/kittredge_loop_robot2_0.db3"
 
     # Paths
     # bag_file_path = LaunchConfiguration(bag_path)
