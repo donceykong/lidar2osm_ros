@@ -48,1090 +48,1618 @@ Visualization Manager:
       Value: true
     - Class: rviz_common/Group
       Displays:
-        - Alpha: 1
-          Autocompute Intensity Bounds: true
-          Autocompute Value Bounds:
-            Max Value: 14.3859224319458
-            Min Value: -1.9618926048278809
-            Value: true
-          Axis: Z
-          Channel Name: x
-          Class: rviz_default_plugins/PointCloud2
-          Color: 255; 255; 255
-          Color Transformer: RGB8
-          Decay Time: 0
+        - Class: rviz_common/Group
+          Displays:
+            - Alpha: 1
+              Autocompute Intensity Bounds: true
+              Autocompute Value Bounds:
+                Max Value: 14.3859224319458
+                Min Value: -1.9618926048278809
+                Value: true
+              Axis: Z
+              Channel Name: x
+              Class: rviz_default_plugins/PointCloud2
+              Color: 255; 255; 255
+              Color Transformer: RGB8
+              Decay Time: 0
+              Enabled: true
+              Invert Rainbow: false
+              Max Color: 255; 255; 255
+              Max Intensity: 85.5508041381836
+              Min Color: 0; 0; 0
+              Min Intensity: -75.3507308959961
+              Name: ouster/semantic_points
+              Position Transformer: XYZ
+              Selectable: true
+              Size (Pixels): 6
+              Size (m): 0.009999999776482582
+              Style: Points
+              Topic:
+                Depth: 5
+                Durability Policy: Volatile
+                Filter size: 10
+                History Policy: Keep Last
+                Reliability Policy: Reliable
+                Value: /robot1/ouster/semantic_points
+              Use Fixed Frame: true
+              Use rainbow: true
+              Value: true
+            - Alpha: 1
+              Autocompute Intensity Bounds: true
+              Autocompute Value Bounds:
+                Max Value: 10.166093826293945
+                Min Value: -5.770259380340576
+                Value: true
+              Axis: Z
+              Channel Name: intensity
+              Class: rviz_default_plugins/PointCloud2
+              Color: 87; 227; 137
+              Color Transformer: FlatColor
+              Decay Time: 0
+              Enabled: false
+              Invert Rainbow: false
+              Max Color: 255; 255; 255
+              Max Intensity: 795
+              Min Color: 0; 0; 0
+              Min Intensity: 1
+              Name: ouster/points
+              Position Transformer: XYZ
+              Selectable: true
+              Size (Pixels): 3
+              Size (m): 0.009999999776482582
+              Style: Points
+              Topic:
+                Depth: 5
+                Durability Policy: Volatile
+                Filter size: 10
+                History Policy: Keep Last
+                Reliability Policy: Reliable
+                Value: /robot1/ouster/points
+              Use Fixed Frame: true
+              Use rainbow: true
+              Value: false
+            - Class: rviz_default_plugins/MarkerArray
+              Enabled: true
+              Name: MarkerArray
+              Namespaces:
+                {}
+              Topic:
+                Depth: 5
+                Durability Policy: Volatile
+                History Policy: Keep Last
+                Reliability Policy: Reliable
+                Value: /occupied_cells_vis_array
+              Value: true
+            - Class: rviz_default_plugins/Axes
+              Enabled: true
+              Length: 1
+              Name: base_link
+              Radius: 0.10000000149011612
+              Reference Frame: robot1_base_link
+              Value: true
+            - Alpha: 1
+              Class: rviz_default_plugins/RobotModel
+              Collision Enabled: false
+              Description File: ""
+              Description Source: Topic
+              Description Topic:
+                Depth: 5
+                Durability Policy: Volatile
+                History Policy: Keep Last
+                Reliability Policy: Reliable
+                Value: /robot1/robot_description
+              Enabled: true
+              Links:
+                All Links Enabled: true
+                Expand Joint Details: false
+                Expand Link Details: false
+                Expand Tree: false
+                Link Tree Style: Links in Alphabetic Order
+                robot1_base_link:
+                  Alpha: 1
+                  Show Axes: false
+                  Show Trail: false
+                  Value: true
+                robot1_camera_link:
+                  Alpha: 1
+                  Show Axes: false
+                  Show Trail: false
+                  Value: true
+                robot1_chassis:
+                  Alpha: 1
+                  Show Axes: false
+                  Show Trail: false
+                  Value: true
+                robot1_gnss_1_antenna_link:
+                  Alpha: 1
+                  Show Axes: false
+                  Show Trail: false
+                  Value: true
+                robot1_gnss_2_antenna_link:
+                  Alpha: 1
+                  Show Axes: false
+                  Show Trail: false
+                  Value: true
+                robot1_imu_link:
+                  Alpha: 1
+                  Show Axes: false
+                  Show Trail: false
+                  Value: true
+                robot1_left_front_axle_carrier:
+                  Alpha: 1
+                  Show Axes: false
+                  Show Trail: false
+                robot1_left_front_wheel:
+                  Alpha: 1
+                  Show Axes: false
+                  Show Trail: false
+                  Value: true
+                robot1_left_rear_axle_carrier:
+                  Alpha: 1
+                  Show Axes: false
+                  Show Trail: false
+                robot1_left_rear_wheel:
+                  Alpha: 1
+                  Show Axes: false
+                  Show Trail: false
+                  Value: true
+                robot1_left_steering_link:
+                  Alpha: 1
+                  Show Axes: false
+                  Show Trail: false
+                robot1_mounting_plate:
+                  Alpha: 1
+                  Show Axes: false
+                  Show Trail: false
+                  Value: true
+                robot1_os_sensor:
+                  Alpha: 1
+                  Show Axes: false
+                  Show Trail: false
+                  Value: true
+                robot1_ouster_riser_plate:
+                  Alpha: 1
+                  Show Axes: false
+                  Show Trail: false
+                  Value: true
+                robot1_right_front_axle_carrier:
+                  Alpha: 1
+                  Show Axes: false
+                  Show Trail: false
+                robot1_right_front_wheel:
+                  Alpha: 1
+                  Show Axes: false
+                  Show Trail: false
+                  Value: true
+                robot1_right_rear_axle_carrier:
+                  Alpha: 1
+                  Show Axes: false
+                  Show Trail: false
+                robot1_right_rear_wheel:
+                  Alpha: 1
+                  Show Axes: false
+                  Show Trail: false
+                  Value: true
+                robot1_right_steering_link:
+                  Alpha: 1
+                  Show Axes: false
+                  Show Trail: false
+              Mass Properties:
+                Inertia: false
+                Mass: false
+              Name: RobotModel
+              TF Prefix: ""
+              Update Interval: 0
+              Value: true
+              Visual Enabled: true
           Enabled: true
-          Invert Rainbow: false
-          Max Color: 255; 255; 255
-          Max Intensity: 85.5508041381836
-          Min Color: 0; 0; 0
-          Min Intensity: -75.3507308959961
-          Name: ouster/semantic_points
-          Position Transformer: XYZ
-          Selectable: true
-          Size (Pixels): 6
-          Size (m): 0.009999999776482582
-          Style: Points
-          Topic:
-            Depth: 5
-            Durability Policy: Volatile
-            Filter size: 10
-            History Policy: Keep Last
-            Reliability Policy: Reliable
-            Value: /robot1/ouster/semantic_points
-          Use Fixed Frame: true
-          Use rainbow: true
-          Value: true
-        - Alpha: 1
-          Autocompute Intensity Bounds: true
-          Autocompute Value Bounds:
-            Max Value: 10.166093826293945
-            Min Value: -5.770259380340576
-            Value: true
-          Axis: Z
-          Channel Name: intensity
-          Class: rviz_default_plugins/PointCloud2
-          Color: 87; 227; 137
-          Color Transformer: FlatColor
-          Decay Time: 0
-          Enabled: false
-          Invert Rainbow: false
-          Max Color: 255; 255; 255
-          Max Intensity: 795
-          Min Color: 0; 0; 0
-          Min Intensity: 1
-          Name: ouster/points
-          Position Transformer: XYZ
-          Selectable: true
-          Size (Pixels): 3
-          Size (m): 0.009999999776482582
-          Style: Points
-          Topic:
-            Depth: 5
-            Durability Policy: Volatile
-            Filter size: 10
-            History Policy: Keep Last
-            Reliability Policy: Reliable
-            Value: /robot1/ouster/points
-          Use Fixed Frame: true
-          Use rainbow: true
-          Value: false
-        - Class: rviz_default_plugins/MarkerArray
+          Name: robot1
+        - Class: rviz_common/Group
+          Displays:
+            - Alpha: 1
+              Autocompute Intensity Bounds: true
+              Autocompute Value Bounds:
+                Max Value: 14.3859224319458
+                Min Value: -1.9618926048278809
+                Value: true
+              Axis: Z
+              Channel Name: x
+              Class: rviz_default_plugins/PointCloud2
+              Color: 255; 255; 255
+              Color Transformer: RGB8
+              Decay Time: 0
+              Enabled: true
+              Invert Rainbow: false
+              Max Color: 255; 255; 255
+              Max Intensity: 85.5508041381836
+              Min Color: 0; 0; 0
+              Min Intensity: -75.3507308959961
+              Name: ouster/semantic_points
+              Position Transformer: XYZ
+              Selectable: true
+              Size (Pixels): 6
+              Size (m): 0.009999999776482582
+              Style: Points
+              Topic:
+                Depth: 5
+                Durability Policy: Volatile
+                Filter size: 10
+                History Policy: Keep Last
+                Reliability Policy: Reliable
+                Value: /robot2/ouster/semantic_points
+              Use Fixed Frame: true
+              Use rainbow: true
+              Value: true
+            - Alpha: 1
+              Autocompute Intensity Bounds: true
+              Autocompute Value Bounds:
+                Max Value: 10.166093826293945
+                Min Value: -5.770259380340576
+                Value: true
+              Axis: Z
+              Channel Name: intensity
+              Class: rviz_default_plugins/PointCloud2
+              Color: 192; 97; 203
+              Color Transformer: FlatColor
+              Decay Time: 0
+              Enabled: false
+              Invert Rainbow: false
+              Max Color: 255; 255; 255
+              Max Intensity: 848
+              Min Color: 0; 0; 0
+              Min Intensity: 1
+              Name: ouster/points
+              Position Transformer: XYZ
+              Selectable: true
+              Size (Pixels): 3
+              Size (m): 0.009999999776482582
+              Style: Points
+              Topic:
+                Depth: 5
+                Durability Policy: Volatile
+                Filter size: 10
+                History Policy: Keep Last
+                Reliability Policy: Reliable
+                Value: /robot2/ouster/points
+              Use Fixed Frame: true
+              Use rainbow: true
+              Value: false
+            - Class: rviz_default_plugins/Axes
+              Enabled: true
+              Length: 1
+              Name: base_link
+              Radius: 0.10000000149011612
+              Reference Frame: robot2_base_link
+              Value: true
+            - Alpha: 1
+              Class: rviz_default_plugins/RobotModel
+              Collision Enabled: false
+              Description File: ""
+              Description Source: Topic
+              Description Topic:
+                Depth: 5
+                Durability Policy: Volatile
+                History Policy: Keep Last
+                Reliability Policy: Reliable
+                Value: /robot2/robot_description
+              Enabled: true
+              Links:
+                All Links Enabled: true
+                Expand Joint Details: false
+                Expand Link Details: false
+                Expand Tree: false
+                Link Tree Style: Links in Alphabetic Order
+                robot2_base_link:
+                  Alpha: 1
+                  Show Axes: false
+                  Show Trail: false
+                  Value: true
+                robot2_camera_link:
+                  Alpha: 1
+                  Show Axes: false
+                  Show Trail: false
+                  Value: true
+                robot2_chassis:
+                  Alpha: 1
+                  Show Axes: false
+                  Show Trail: false
+                  Value: true
+                robot2_gnss_1_antenna_link:
+                  Alpha: 1
+                  Show Axes: false
+                  Show Trail: false
+                  Value: true
+                robot2_gnss_2_antenna_link:
+                  Alpha: 1
+                  Show Axes: false
+                  Show Trail: false
+                  Value: true
+                robot2_imu_link:
+                  Alpha: 1
+                  Show Axes: false
+                  Show Trail: false
+                  Value: true
+                robot2_left_front_axle_carrier:
+                  Alpha: 1
+                  Show Axes: false
+                  Show Trail: false
+                robot2_left_front_wheel:
+                  Alpha: 1
+                  Show Axes: false
+                  Show Trail: false
+                  Value: true
+                robot2_left_rear_axle_carrier:
+                  Alpha: 1
+                  Show Axes: false
+                  Show Trail: false
+                robot2_left_rear_wheel:
+                  Alpha: 1
+                  Show Axes: false
+                  Show Trail: false
+                  Value: true
+                robot2_left_steering_link:
+                  Alpha: 1
+                  Show Axes: false
+                  Show Trail: false
+                robot2_mounting_plate:
+                  Alpha: 1
+                  Show Axes: false
+                  Show Trail: false
+                  Value: true
+                robot2_os_sensor:
+                  Alpha: 1
+                  Show Axes: false
+                  Show Trail: false
+                  Value: true
+                robot2_ouster_riser_plate:
+                  Alpha: 1
+                  Show Axes: false
+                  Show Trail: false
+                  Value: true
+                robot2_right_front_axle_carrier:
+                  Alpha: 1
+                  Show Axes: false
+                  Show Trail: false
+                robot2_right_front_wheel:
+                  Alpha: 1
+                  Show Axes: false
+                  Show Trail: false
+                  Value: true
+                robot2_right_rear_axle_carrier:
+                  Alpha: 1
+                  Show Axes: false
+                  Show Trail: false
+                robot2_right_rear_wheel:
+                  Alpha: 1
+                  Show Axes: false
+                  Show Trail: false
+                  Value: true
+                robot2_right_steering_link:
+                  Alpha: 1
+                  Show Axes: false
+                  Show Trail: false
+              Mass Properties:
+                Inertia: false
+                Mass: false
+              Name: RobotModel
+              TF Prefix: ""
+              Update Interval: 0
+              Value: true
+              Visual Enabled: true
           Enabled: true
-          Name: MarkerArray
-          Namespaces:
-            {}
-          Topic:
-            Depth: 5
-            Durability Policy: Volatile
-            History Policy: Keep Last
-            Reliability Policy: Reliable
-            Value: /occupied_cells_vis_array
-          Value: true
-        - Class: rviz_default_plugins/Axes
+          Name: robot2
+        - Class: rviz_common/Group
+          Displays:
+            - Alpha: 1
+              Autocompute Intensity Bounds: true
+              Autocompute Value Bounds:
+                Max Value: 14.3859224319458
+                Min Value: -1.9618926048278809
+                Value: true
+              Axis: Z
+              Channel Name: x
+              Class: rviz_default_plugins/PointCloud2
+              Color: 255; 255; 255
+              Color Transformer: RGB8
+              Decay Time: 0
+              Enabled: true
+              Invert Rainbow: false
+              Max Color: 255; 255; 255
+              Max Intensity: 85.5508041381836
+              Min Color: 0; 0; 0
+              Min Intensity: -75.3507308959961
+              Name: ouster/semantic_points
+              Position Transformer: XYZ
+              Selectable: true
+              Size (Pixels): 6
+              Size (m): 0.009999999776482582
+              Style: Points
+              Topic:
+                Depth: 5
+                Durability Policy: Volatile
+                Filter size: 10
+                History Policy: Keep Last
+                Reliability Policy: Reliable
+                Value: /robot3/ouster/semantic_points
+              Use Fixed Frame: true
+              Use rainbow: true
+              Value: true
+            - Alpha: 1
+              Autocompute Intensity Bounds: true
+              Autocompute Value Bounds:
+                Max Value: 10.166093826293945
+                Min Value: -5.770259380340576
+                Value: true
+              Axis: Z
+              Channel Name: intensity
+              Class: rviz_default_plugins/PointCloud2
+              Color: 98; 160; 234
+              Color Transformer: FlatColor
+              Decay Time: 0
+              Enabled: false
+              Invert Rainbow: false
+              Max Color: 255; 255; 255
+              Max Intensity: 848
+              Min Color: 0; 0; 0
+              Min Intensity: 1
+              Name: ouster/points
+              Position Transformer: XYZ
+              Selectable: true
+              Size (Pixels): 3
+              Size (m): 0.009999999776482582
+              Style: Points
+              Topic:
+                Depth: 5
+                Durability Policy: Volatile
+                Filter size: 10
+                History Policy: Keep Last
+                Reliability Policy: Reliable
+                Value: /robot3/ouster/points
+              Use Fixed Frame: true
+              Use rainbow: true
+              Value: false
+            - Class: rviz_default_plugins/Axes
+              Enabled: true
+              Length: 1
+              Name: base_link
+              Radius: 0.10000000149011612
+              Reference Frame: robot3_base_link
+              Value: true
+            - Alpha: 1
+              Class: rviz_default_plugins/RobotModel
+              Collision Enabled: false
+              Description File: ""
+              Description Source: Topic
+              Description Topic:
+                Depth: 5
+                Durability Policy: Volatile
+                History Policy: Keep Last
+                Reliability Policy: Reliable
+                Value: /robot3/robot_description
+              Enabled: true
+              Links:
+                All Links Enabled: true
+                Expand Joint Details: false
+                Expand Link Details: false
+                Expand Tree: false
+                Link Tree Style: Links in Alphabetic Order
+                robot3_base_link:
+                  Alpha: 1
+                  Show Axes: false
+                  Show Trail: false
+                  Value: true
+                robot3_camera_link:
+                  Alpha: 1
+                  Show Axes: false
+                  Show Trail: false
+                  Value: true
+                robot3_chassis:
+                  Alpha: 1
+                  Show Axes: false
+                  Show Trail: false
+                  Value: true
+                robot3_gnss_1_antenna_link:
+                  Alpha: 1
+                  Show Axes: false
+                  Show Trail: false
+                  Value: true
+                robot3_gnss_2_antenna_link:
+                  Alpha: 1
+                  Show Axes: false
+                  Show Trail: false
+                  Value: true
+                robot3_imu_link:
+                  Alpha: 1
+                  Show Axes: false
+                  Show Trail: false
+                  Value: true
+                robot3_left_front_axle_carrier:
+                  Alpha: 1
+                  Show Axes: false
+                  Show Trail: false
+                robot3_left_front_wheel:
+                  Alpha: 1
+                  Show Axes: false
+                  Show Trail: false
+                  Value: true
+                robot3_left_rear_axle_carrier:
+                  Alpha: 1
+                  Show Axes: false
+                  Show Trail: false
+                robot3_left_rear_wheel:
+                  Alpha: 1
+                  Show Axes: false
+                  Show Trail: false
+                  Value: true
+                robot3_left_steering_link:
+                  Alpha: 1
+                  Show Axes: false
+                  Show Trail: false
+                robot3_mounting_plate:
+                  Alpha: 1
+                  Show Axes: false
+                  Show Trail: false
+                  Value: true
+                robot3_os_sensor:
+                  Alpha: 1
+                  Show Axes: false
+                  Show Trail: false
+                  Value: true
+                robot3_ouster_riser_plate:
+                  Alpha: 1
+                  Show Axes: false
+                  Show Trail: false
+                  Value: true
+                robot3_right_front_axle_carrier:
+                  Alpha: 1
+                  Show Axes: false
+                  Show Trail: false
+                robot3_right_front_wheel:
+                  Alpha: 1
+                  Show Axes: false
+                  Show Trail: false
+                  Value: true
+                robot3_right_rear_axle_carrier:
+                  Alpha: 1
+                  Show Axes: false
+                  Show Trail: false
+                robot3_right_rear_wheel:
+                  Alpha: 1
+                  Show Axes: false
+                  Show Trail: false
+                  Value: true
+                robot3_right_steering_link:
+                  Alpha: 1
+                  Show Axes: false
+                  Show Trail: false
+              Mass Properties:
+                Inertia: false
+                Mass: false
+              Name: RobotModel
+              TF Prefix: ""
+              Update Interval: 0
+              Value: true
+              Visual Enabled: true
           Enabled: true
-          Length: 1
-          Name: base_link
-          Radius: 0.10000000149011612
-          Reference Frame: robot1_base_link
-          Value: true
+          Name: robot3
+        - Class: rviz_common/Group
+          Displays:
+            - Alpha: 1
+              Autocompute Intensity Bounds: true
+              Autocompute Value Bounds:
+                Max Value: 14.3859224319458
+                Min Value: -1.9618926048278809
+                Value: true
+              Axis: Z
+              Channel Name: x
+              Class: rviz_default_plugins/PointCloud2
+              Color: 255; 255; 255
+              Color Transformer: RGB8
+              Decay Time: 0
+              Enabled: true
+              Invert Rainbow: false
+              Max Color: 255; 255; 255
+              Max Intensity: 85.5508041381836
+              Min Color: 0; 0; 0
+              Min Intensity: -75.3507308959961
+              Name: ouster/semantic_points
+              Position Transformer: XYZ
+              Selectable: true
+              Size (Pixels): 6
+              Size (m): 0.009999999776482582
+              Style: Points
+              Topic:
+                Depth: 5
+                Durability Policy: Volatile
+                Filter size: 10
+                History Policy: Keep Last
+                Reliability Policy: Reliable
+                Value: /robot4/ouster/semantic_points
+              Use Fixed Frame: true
+              Use rainbow: true
+              Value: true
+            - Alpha: 1
+              Autocompute Intensity Bounds: true
+              Autocompute Value Bounds:
+                Max Value: 10.166093826293945
+                Min Value: -5.770259380340576
+                Value: true
+              Axis: Z
+              Channel Name: intensity
+              Class: rviz_default_plugins/PointCloud2
+              Color: 98; 160; 234
+              Color Transformer: FlatColor
+              Decay Time: 0
+              Enabled: false
+              Invert Rainbow: false
+              Max Color: 255; 255; 255
+              Max Intensity: 848
+              Min Color: 0; 0; 0
+              Min Intensity: 1
+              Name: ouster/points
+              Position Transformer: XYZ
+              Selectable: true
+              Size (Pixels): 3
+              Size (m): 0.009999999776482582
+              Style: Points
+              Topic:
+                Depth: 5
+                Durability Policy: Volatile
+                Filter size: 10
+                History Policy: Keep Last
+                Reliability Policy: Reliable
+                Value: /robot4/ouster/points
+              Use Fixed Frame: true
+              Use rainbow: true
+              Value: false
+            - Class: rviz_default_plugins/Axes
+              Enabled: true
+              Length: 1
+              Name: base_link
+              Radius: 0.10000000149011612
+              Reference Frame: robot4_base_link
+              Value: true
+            - Alpha: 1
+              Class: rviz_default_plugins/RobotModel
+              Collision Enabled: false
+              Description File: ""
+              Description Source: Topic
+              Description Topic:
+                Depth: 5
+                Durability Policy: Volatile
+                History Policy: Keep Last
+                Reliability Policy: Reliable
+                Value: /robot4/robot_description
+              Enabled: true
+              Links:
+                All Links Enabled: true
+                Expand Joint Details: false
+                Expand Link Details: false
+                Expand Tree: false
+                Link Tree Style: Links in Alphabetic Order
+                robot4_base_link:
+                  Alpha: 1
+                  Show Axes: false
+                  Show Trail: false
+                  Value: true
+                robot4_camera_link:
+                  Alpha: 1
+                  Show Axes: false
+                  Show Trail: false
+                  Value: true
+                robot4_chassis:
+                  Alpha: 1
+                  Show Axes: false
+                  Show Trail: false
+                  Value: true
+                robot4_gnss_1_antenna_link:
+                  Alpha: 1
+                  Show Axes: false
+                  Show Trail: false
+                  Value: true
+                robot4_gnss_2_antenna_link:
+                  Alpha: 1
+                  Show Axes: false
+                  Show Trail: false
+                  Value: true
+                robot4_imu_link:
+                  Alpha: 1
+                  Show Axes: false
+                  Show Trail: false
+                  Value: true
+                robot4_left_front_axle_carrier:
+                  Alpha: 1
+                  Show Axes: false
+                  Show Trail: false
+                robot4_left_front_wheel:
+                  Alpha: 1
+                  Show Axes: false
+                  Show Trail: false
+                  Value: true
+                robot4_left_rear_axle_carrier:
+                  Alpha: 1
+                  Show Axes: false
+                  Show Trail: false
+                robot4_left_rear_wheel:
+                  Alpha: 1
+                  Show Axes: false
+                  Show Trail: false
+                  Value: true
+                robot4_left_steering_link:
+                  Alpha: 1
+                  Show Axes: false
+                  Show Trail: false
+                robot4_mounting_plate:
+                  Alpha: 1
+                  Show Axes: false
+                  Show Trail: false
+                  Value: true
+                robot4_os_sensor:
+                  Alpha: 1
+                  Show Axes: false
+                  Show Trail: false
+                  Value: true
+                robot4_ouster_riser_plate:
+                  Alpha: 1
+                  Show Axes: false
+                  Show Trail: false
+                  Value: true
+                robot4_right_front_axle_carrier:
+                  Alpha: 1
+                  Show Axes: false
+                  Show Trail: false
+                robot4_right_front_wheel:
+                  Alpha: 1
+                  Show Axes: false
+                  Show Trail: false
+                  Value: true
+                robot4_right_rear_axle_carrier:
+                  Alpha: 1
+                  Show Axes: false
+                  Show Trail: false
+                robot4_right_rear_wheel:
+                  Alpha: 1
+                  Show Axes: false
+                  Show Trail: false
+                  Value: true
+                robot4_right_steering_link:
+                  Alpha: 1
+                  Show Axes: false
+                  Show Trail: false
+              Mass Properties:
+                Inertia: false
+                Mass: false
+              Name: RobotModel
+              TF Prefix: ""
+              Update Interval: 0
+              Value: true
+              Visual Enabled: true
+          Enabled: true
+          Name: robot4
       Enabled: true
-      Name: robot1
-    - Class: rviz_common/Group
-      Displays:
-        - Alpha: 1
-          Autocompute Intensity Bounds: true
-          Autocompute Value Bounds:
-            Max Value: 14.3859224319458
-            Min Value: -1.9618926048278809
-            Value: true
-          Axis: Z
-          Channel Name: x
-          Class: rviz_default_plugins/PointCloud2
-          Color: 255; 255; 255
-          Color Transformer: RGB8
-          Decay Time: 0
-          Enabled: true
-          Invert Rainbow: false
-          Max Color: 255; 255; 255
-          Max Intensity: 85.5508041381836
-          Min Color: 0; 0; 0
-          Min Intensity: -75.3507308959961
-          Name: ouster/semantic_points
-          Position Transformer: XYZ
-          Selectable: true
-          Size (Pixels): 6
-          Size (m): 0.009999999776482582
-          Style: Points
-          Topic:
-            Depth: 5
-            Durability Policy: Volatile
-            Filter size: 10
-            History Policy: Keep Last
-            Reliability Policy: Reliable
-            Value: /robot2/ouster/semantic_points
-          Use Fixed Frame: true
-          Use rainbow: true
-          Value: true
-        - Alpha: 1
-          Autocompute Intensity Bounds: true
-          Autocompute Value Bounds:
-            Max Value: 10.166093826293945
-            Min Value: -5.770259380340576
-            Value: true
-          Axis: Z
-          Channel Name: intensity
-          Class: rviz_default_plugins/PointCloud2
-          Color: 192; 97; 203
-          Color Transformer: FlatColor
-          Decay Time: 0
-          Enabled: false
-          Invert Rainbow: false
-          Max Color: 255; 255; 255
-          Max Intensity: 848
-          Min Color: 0; 0; 0
-          Min Intensity: 1
-          Name: ouster/points
-          Position Transformer: XYZ
-          Selectable: true
-          Size (Pixels): 3
-          Size (m): 0.009999999776482582
-          Style: Points
-          Topic:
-            Depth: 5
-            Durability Policy: Volatile
-            Filter size: 10
-            History Policy: Keep Last
-            Reliability Policy: Reliable
-            Value: /robot2/ouster/points
-          Use Fixed Frame: true
-          Use rainbow: true
-          Value: false
-        - Class: rviz_default_plugins/Axes
-          Enabled: true
-          Length: 1
-          Name: base_link
-          Radius: 0.10000000149011612
-          Reference Frame: robot2_base_link
-          Value: true
-      Enabled: true
-      Name: robot2
-    - Class: rviz_common/Group
-      Displays:
-        - Alpha: 1
-          Autocompute Intensity Bounds: true
-          Autocompute Value Bounds:
-            Max Value: 14.3859224319458
-            Min Value: -1.9618926048278809
-            Value: true
-          Axis: Z
-          Channel Name: x
-          Class: rviz_default_plugins/PointCloud2
-          Color: 255; 255; 255
-          Color Transformer: RGB8
-          Decay Time: 0
-          Enabled: true
-          Invert Rainbow: false
-          Max Color: 255; 255; 255
-          Max Intensity: 85.5508041381836
-          Min Color: 0; 0; 0
-          Min Intensity: -75.3507308959961
-          Name: ouster/semantic_points
-          Position Transformer: XYZ
-          Selectable: true
-          Size (Pixels): 6
-          Size (m): 0.009999999776482582
-          Style: Points
-          Topic:
-            Depth: 5
-            Durability Policy: Volatile
-            Filter size: 10
-            History Policy: Keep Last
-            Reliability Policy: Reliable
-            Value: /robot3/ouster/semantic_points
-          Use Fixed Frame: true
-          Use rainbow: true
-          Value: true
-        - Alpha: 1
-          Autocompute Intensity Bounds: true
-          Autocompute Value Bounds:
-            Max Value: 10.166093826293945
-            Min Value: -5.770259380340576
-            Value: true
-          Axis: Z
-          Channel Name: intensity
-          Class: rviz_default_plugins/PointCloud2
-          Color: 98; 160; 234
-          Color Transformer: FlatColor
-          Decay Time: 0
-          Enabled: false
-          Invert Rainbow: false
-          Max Color: 255; 255; 255
-          Max Intensity: 848
-          Min Color: 0; 0; 0
-          Min Intensity: 1
-          Name: ouster/points
-          Position Transformer: XYZ
-          Selectable: true
-          Size (Pixels): 3
-          Size (m): 0.009999999776482582
-          Style: Points
-          Topic:
-            Depth: 5
-            Durability Policy: Volatile
-            Filter size: 10
-            History Policy: Keep Last
-            Reliability Policy: Reliable
-            Value: /robot3/ouster/points
-          Use Fixed Frame: true
-          Use rainbow: true
-          Value: false
-        - Class: rviz_default_plugins/Axes
-          Enabled: true
-          Length: 1
-          Name: base_link
-          Radius: 0.10000000149011612
-          Reference Frame: robot3_base_link
-          Value: true
-      Enabled: true
-      Name: robot3
+      Name: robots
     - Class: rviz_default_plugins/Marker
       Enabled: true
       Name: Marker
       Namespaces:
         "": true
+        "\x01��|u": true
+        "\x01���t": true
+        "\x02���\x04l": true
+        "\x02���DZ": true
+        "\x02���u": true
+        "\x04\x02���u": true
+        "\x04y": true
+        "\x04�": true
+        "\x05��\x04w": true
+        "\x05���v": true
+        "\x05���|�\x01": true
+        "\bJ��p�": true
+        "\b^": true
+        "\b`": true
+        "\ba": true
+        "\be": true
+        "\bf": true
+        "\bg": true
+        "\bu����": true
+        "\b�": true
+        "\b��Dx": true
+        "\b��dx": true
+        "\b���H[": true
+        "\b���x": true
+        "\t���x": true
+        "\n": true
+        "\nF��\x14�": true
+        "\n���\x10c": true
+        "\fY��\x10�": true
+        "\fz": true
+        "\f�": true
+        "\x0e\x1b���": true
+        "\x0e��\fz": true
+        "\x0e���8�": true
+        "\x0f��\\z": true
+        "\x10L����": true
+        "\x10_": true
+        "\x10j": true
+        "\x10s": true
+        "\x10�": true
+        "\x10��\b{": true
+        "\x10��({": true
+        "\x10���z": true
+        "\x11��L{": true
+        "\x12\n��$y": true
+        "\x12��4|": true
+        "\x12����n": true
+        "\x13P����": true
+        "\x13q����": true
+        "\x14�": true
+        "\x14��\\}": true
+        "\x14��|}": true
+        "\x14���<�": true
+        "\x14���H`": true
+        "\x15���h�": true
+        "\x15���}": true
+        "\x16S����": true
+        "\x16~��\x04�": true
+        "\x16��,~": true
+        "\x18\x18\x18\x18\x18\x18�?XXXXXX�?yyyyyy�?�������?||||||�?111111�?": true
+        "\x18\x18\x18\x18�?XXXXXX�?yyyyyy�?�������?||||||�?111111�?": true
         "\x18\x18\x18�?XXXXXX�?yyyyyy�?�������?||||||�?111111�?": true
-        "\x18\x18�?XXXXXX�?yyyyyy�?�������?||||||�?111111�?": true
-        "\x18�?XXXXXX�?yyyyyy�?�������?||||||�?111111�?": true
-        " ": true
-        " a zero qos history depth value": true
-        " after destruction of intra process manager": true
-        " and subscription use different allocator types, which is not supported": true
-        " be null": true
-        " callback failed: ": true
-        " callback occurred": true
-        " called rclcpp::shutdown()": true
-        " cannot be null": true
-        " depth value": true
-        " durability": true
-        " dynamic cast SubscriptionIntraProcessBase to SubscriptionIntraProcessBuffer<MessageT, Alloc, Deleter>, or to SubscriptionROSMsgIntraProcessBuffer<ROSMessageType,ROSMessageTypeAllocator,ROSMessageTypeDeleter> which can happen when the publisher and subscription use different allocator types, which is not supported": true
-        " gone out of scope": true
-        " happen when the publisher and subscription use different allocator types, which is not supported": true
-        " id {": true
-        " initialize event": true
-        " is not allowed with a zero qos history depth value": true
-        " logging: ": true
-        " no longer existing publisher id": true
-        " not allowed with a zero qos history depth value": true
-        " of intra process manager": true
-        " only with volatile durability": true
-        " or to SubscriptionROSMsgIntraProcessBuffer<ROSMessageType,ROSMessageTypeAllocator,ROSMessageTypeDeleter> which can happen when the publisher and subscription use different allocator types, which is not supported": true
-        " period cannot be negative": true
-        " publish message": true
-        " subscription use different allocator types, which is not supported": true
-        " that callback occurred": true
-        " timer period to nanoseconds resulted in integer overflow.": true
-        " timer that callback occurred": true
-        " to SubscriptionIntraProcessBuffer<MessageT, Alloc, Deleter>, or to SubscriptionROSMsgIntraProcessBuffer<ROSMessageType,ROSMessageTypeAllocator,ROSMessageTypeDeleter> which can happen when the publisher and subscription use different allocator types, which is not supported": true
-        " unexpectedly nullptr": true
-        " value": true
-        " which is a null pointer": true
-        " with a zero qos history depth value": true
-        " {": true
-        "'data' is empty": true
-        (): true
-        ): true
-        ", or to SubscriptionROSMsgIntraProcessBuffer<ROSMessageType,ROSMessageTypeAllocator,ROSMessageTypeDeleter> which can happen when the publisher and subscription use different allocator types, which is not supported": true
-        .hpp: true
-        ".hpp:197] error initializing logging: ": true
-        ".hpp:260] error initializing logging: ": true
-        "/humble/include/rclcpp/rclcpp/experimental/intra_process_manager.hpp:260] error initializing logging: ": true
-        "/intra_process_manager.hpp:260] error initializing logging: ": true
-        "/rclcpp/experimental/intra_process_manager.hpp:197] error initializing logging: ": true
-        "/rclcpp/experimental/intra_process_manager.hpp:260] error initializing logging: ": true
-        "/rclcpp/rclcpp/experimental/intra_process_manager.hpp:197] error initializing logging: ": true
-        /ros/humble/include/rclcpp/rclcpp/experimental/intra_process_manager.hpp: true
-        "/ros/humble/include/rclcpp/rclcpp/experimental/intra_process_manager.hpp:197] error initializing logging: ": true
-        /������C: true
-        "0] error initializing logging: ": true
-        0_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        0shared_ptrI15rcl_publisher_sEEESaISA_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        10shared_ptrI15rcl_publisher_sEEE: true
-        11111�?: true
+        "\x18k": true
+        "\x18�": true
+        "\x18����W": true
+        "\x19���~": true
+        "\x1bZ����": true
+        "\x1b��8�": true
+        "\x1cr": true
+        "\x1cv": true
+        "\x1c�": true
+        "\x1d���4�": true
+        "\x1eR����": true
+        "\x1e����h": true
+        "\x1f��@�": true
+        " i": true
+        " �": true
+        " ����": true
+        "!��": true
+        "!��`�": true
+        "\"�� �": true
+        "\"����": true
+        "\"����r": true
+        $x: true
+        $�: true
+        $����: true
+        "%v��$�": true
+        "&\"����": true
+        "&q��ġ": true
+        "'*����": true
+        (g: true
+        ({: true
+        (�: true
+        (����a: true
+        "*����": true
+        +��L�: true
+        ",\x11��L{": true
+        ",l": true
+        ",o": true
+        ",�": true
+        ",��ԅ": true
+        ",���0c": true
+        -���Ī: true
+        ".\x02���u": true
+        .R��В: true
+        .n��|�: true
+        .��<�: true
+        .��\�: true
+        0���y: true
+        0c: true
+        0o��<�: true
+        0�: true
+        0���(n: true
+        0���,l: true
         1111�?: true
-        1112basic_stringIcSt11char_traitsIcESaIcEEERKNS0_3QoSERKNS0_29PublisherOptionsWithAllocatorIS6_EEEUlR35rmw_qos_incompatible_event_status_sE_St10shared_ptrI15rcl_publisher_sEEESaISX_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        1112basic_stringIcSt11char_traitsIcESaIcEEERKNS_3QoSERKNS_29PublisherOptionsWithAllocatorIS5_EEEUlR35rmw_qos_incompatible_event_status_sE_St10shared_ptrI15rcl_publisher_sEEE: true
-        111�?: true
-        12_Lock_policyE2EE: true
-        12basic_stringIcSt11char_traitsIcESaIcEEERKNS0_3QoSERKNS0_29PublisherOptionsWithAllocatorIS6_EEEUlR35rmw_qos_incompatible_event_status_sE_St10shared_ptrI15rcl_publisher_sEEESaISX_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        15rcl_publisher_sEEE: true
-        15rcl_publisher_sEEESaISA_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        18visualization_msgs3msg7Marker_ISaIvEEESaIS6_ESt14default_deleteIS6_ES6_EE: true
-        23_Sp_counted_ptr_inplaceISaIcESaIS0_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        "254] error initializing logging: ": true
-        2EE: true
-        2_Lock_policyE2EE: true
-        35rmw_qos_incompatible_event_status_sE_St10shared_ptrI15rcl_publisher_sEEE: true
-        3QoSERKNS0_29PublisherOptionsWithAllocatorIS6_EEEUlR35rmw_qos_incompatible_event_status_sE_St10shared_ptrI15rcl_publisher_sEEESaISX_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        3_Sp_counted_ptr_inplaceIN6rclcpp15QOSEventHandlerIZNS0_9PublisherIN18visualization_msgs3msg7Marker_ISaIvEEES6_EC4EPNS0_15node_interfaces17NodeBaseInterfaceERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERKNS0_3QoSERKNS0_29PublisherOptionsWithAllocatorIS6_EEEUlR35rmw_qos_incompatible_event_status_sE_St10shared_ptrI15rcl_publisher_sEEESaISX_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        4EPNS0_15node_interfaces17NodeBaseInterfaceERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERKNS0_3QoSERKNS0_29PublisherOptionsWithAllocatorIS6_EEEUlR35rmw_qos_incompatible_event_status_sE_St10shared_ptrI15rcl_publisher_sEEESaISX_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        5QOSEventHandlerISt8functionIFvR35rmw_qos_incompatible_event_status_sEESt10shared_ptrI15rcl_publisher_sEEE: true
-        5QOSEventHandlerISt8functionIFvR36rmw_offered_deadline_missed_status_sEESt10shared_ptrI15rcl_publisher_sEEESaISA_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        5_EC4EPNS_15node_interfaces17NodeBaseInterfaceERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERKNS_3QoSERKNS_29PublisherOptionsWithAllocatorIS5_EEEUlR35rmw_qos_incompatible_event_status_sE_St10shared_ptrI15rcl_publisher_sEEE: true
-        5rmw_qos_incompatible_event_status_sE_St10shared_ptrI15rcl_publisher_sEEESaISX_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        6_EEE: true
-        7NodeBaseInterfaceERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERKNS0_3QoSERKNS0_29PublisherOptionsWithAllocatorIS6_EEEUlR35rmw_qos_incompatible_event_status_sE_St10shared_ptrI15rcl_publisher_sEEESaISX_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        9IntraProcessManagerEZNS0_7Context15get_sub_contextIS2_JEEESt10shared_ptrIT_EDpOT0_EUlS3_E_SaIvELN9__gnu_cxx12_Lock_policyE2EE: true
-        9_Sp_counted_deleterIPN18visualization_msgs3msg7Marker_ISaIvEEESt14default_deleteIS4_ES3_LN9__gnu_cxx12_Lock_policyE2EE: true
-        9__gnu_cxx12_Lock_policyE2EE: true
-        ": ": true
-        ::_M_construct null not valid: true
-        :shutdown(): true
-        A/������C: true
-        A_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        Allocator,ROSMessageTypeDeleter> which can happen when the publisher and subscription use different allocator types, which is not supported: true
-        Base to SubscriptionIntraProcessBuffer<MessageT, Alloc, Deleter>, or to SubscriptionROSMsgIntraProcessBuffer<ROSMessageType,ROSMessageTypeAllocator,ROSMessageTypeDeleter> which can happen when the publisher and subscription use different allocator types, which is not supported: true
-        Buffer<ROSMessageType,ROSMessageTypeAllocator,ROSMessageTypeDeleter> which can happen when the publisher and subscription use different allocator types, which is not supported: true
-        C: true
-        Deleter> which can happen when the publisher and subscription use different allocator types, which is not supported: true
-        DpOT0_EUlS3_E_SaIvELN9__gnu_cxx12_Lock_policyE2EE: true
-        E: true
-        E2EE: true
-        EE: true
-        EES5_EESaIS7_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        EESaIS4_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        EESaIS7_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        EESt10shared_ptrI15rcl_publisher_sEEE: true
-        EEUlR35rmw_qos_incompatible_event_status_sE_St10shared_ptrI15rcl_publisher_sEEESaISX_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        ELN9__gnu_cxx12_Lock_policyE2EE: true
-        ES4_EE: true
-        ES5_EC4EPNS_15node_interfaces17NodeBaseInterfaceERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERKNS_3QoSERKNS_29PublisherOptionsWithAllocatorIS5_EEEUlR35rmw_qos_incompatible_event_status_sE_St10shared_ptrI15rcl_publisher_sEEE: true
-        EUlR35rmw_qos_incompatible_event_status_sE_St10shared_ptrI15rcl_publisher_sEEE: true
-        EventHandlerISt8functionIFvR35rmw_qos_incompatible_event_status_sEESt10shared_ptrI15rcl_publisher_sEEESaISA_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        FvR35rmw_qos_incompatible_event_status_sEESt10shared_ptrI15rcl_publisher_sEEESaISA_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        I15rcl_publisher_sEEE: true
-        I15rcl_publisher_sEEESaISA_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        IFvR35rmw_qos_incompatible_event_status_sEESt10shared_ptrI15rcl_publisher_sEEESaISA_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        IN18visualization_msgs3msg7Marker_ISaIvEEES5_EC4EPNS_15node_interfaces17NodeBaseInterfaceERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERKNS_3QoSERKNS_29PublisherOptionsWithAllocatorIS5_EEEUlR35rmw_qos_incompatible_event_status_sE_St10shared_ptrI15rcl_publisher_sEEE: true
-        IN18visualization_msgs3msg7Marker_ISaIvEEESaIS4_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        IN6rclcpp15QOSEventHandlerISt8functionIFvR35rmw_qos_incompatible_event_status_sEESt10shared_ptrI15rcl_publisher_sEEESaISA_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        IN6rclcpp15QOSEventHandlerISt8functionIFvR36rmw_offered_deadline_missed_status_sEESt10shared_ptrI15rcl_publisher_sEEESaISA_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        IN6rclcpp15QOSEventHandlerIZNS0_9PublisherIN18visualization_msgs3msg7Marker_ISaIvEEES6_EC4EPNS0_15node_interfaces17NodeBaseInterfaceERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERKNS0_3QoSERKNS0_29PublisherOptionsWithAllocatorIS6_EEEUlR35rmw_qos_incompatible_event_status_sE_St10shared_ptrI15rcl_publisher_sEEESaISX_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        IS0_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        IS6_EEE: true
-        ISA_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        ISX_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        ISt8functionIFvR35rmw_qos_incompatible_event_status_sEESt10shared_ptrI15rcl_publisher_sEEE: true
-        IcEEERKNS0_3QoSERKNS0_29PublisherOptionsWithAllocatorIS6_EEEUlR35rmw_qos_incompatible_event_status_sE_St10shared_ptrI15rcl_publisher_sEEESaISX_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        IcESaIcEEERKNS_3QoSERKNS_29PublisherOptionsWithAllocatorIS5_EEEUlR35rmw_qos_incompatible_event_status_sE_St10shared_ptrI15rcl_publisher_sEEE: true
-        IntraProcessBase to SubscriptionIntraProcessBuffer<MessageT, Alloc, Deleter>, or to SubscriptionROSMsgIntraProcessBuffer<ROSMessageType,ROSMessageTypeAllocator,ROSMessageTypeDeleter> which can happen when the publisher and subscription use different allocator types, which is not supported: true
-        LN9__gnu_cxx12_Lock_policyE2EE: true
-        Lock_policyE2EE: true
-        MsgIntraProcessBuffer<ROSMessageType,ROSMessageTypeAllocator,ROSMessageTypeDeleter> which can happen when the publisher and subscription use different allocator types, which is not supported: true
-        N9__gnu_cxx12_Lock_policyE2EE: true
-        NSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERKNS_3QoSEE_: true
-        OSMessageType,ROSMessageTypeAllocator,ROSMessageTypeDeleter> which can happen when the publisher and subscription use different allocator types, which is not supported: true
-        PNS_15node_interfaces17NodeBaseInterfaceERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERKNS_3QoSERKNS_29PublisherOptionsWithAllocatorIS5_EEEUlR35rmw_qos_incompatible_event_status_sE_St10shared_ptrI15rcl_publisher_sEEE: true
-        ProcessBuffer<ROSMessageType,ROSMessageTypeAllocator,ROSMessageTypeDeleter> which can happen when the publisher and subscription use different allocator types, which is not supported: true
-        PublisherOptionsWithAllocatorIS5_EEEUlR35rmw_qos_incompatible_event_status_sE_St10shared_ptrI15rcl_publisher_sEEE: true
-        QoSERKNS_29PublisherOptionsWithAllocatorIS5_EEEUlR35rmw_qos_incompatible_event_status_sE_St10shared_ptrI15rcl_publisher_sEEE: true
-        RKNS_29PublisherOptionsWithAllocatorIS5_EEEUlR35rmw_qos_incompatible_event_status_sE_St10shared_ptrI15rcl_publisher_sEEE: true
-        ROSMessageTypeDeleter> which can happen when the publisher and subscription use different allocator types, which is not supported: true
-        ROSMsgIntraProcessBuffer<ROSMessageType,ROSMessageTypeAllocator,ROSMessageTypeDeleter> which can happen when the publisher and subscription use different allocator types, which is not supported: true
-        S0_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        SA_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        SEventHandlerIZNS0_9PublisherIN18visualization_msgs3msg7Marker_ISaIvEEES6_EC4EPNS0_15node_interfaces17NodeBaseInterfaceERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERKNS0_3QoSERKNS0_29PublisherOptionsWithAllocatorIS6_EEEUlR35rmw_qos_incompatible_event_status_sE_St10shared_ptrI15rcl_publisher_sEEESaISX_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        SX_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        SaIcESaIS0_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        SaIvEEES5_EC4EPNS_15node_interfaces17NodeBaseInterfaceERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERKNS_3QoSERKNS_29PublisherOptionsWithAllocatorIS5_EEEUlR35rmw_qos_incompatible_event_status_sE_St10shared_ptrI15rcl_publisher_sEEE: true
-        SaIvESaIS0_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        Setting value: true
-        Sp_counted_ptr_inplaceIN18visualization_msgs3msg7Marker_ISaIvEEESaIS4_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        Sp_counted_ptr_inplaceIN6rclcpp9WallTimerISt5_BindIFM24robotDistanceCheckerNodeFvvEPS3_EELPv0EEESaISA_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        St10shared_ptrI15rcl_publisher_sEEESaISA_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        St11char_traitsIcESaIcEEERKNS0_3QoSERKNS0_29PublisherOptionsWithAllocatorIS6_EEEUlR35rmw_qos_incompatible_event_status_sE_St10shared_ptrI15rcl_publisher_sEEESaISX_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        St23_Sp_counted_ptr_inplaceIN6rclcpp5ClockESaIS1_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        SubscriptionIntraProcessBase to SubscriptionIntraProcessBuffer<MessageT, Alloc, Deleter>, or to SubscriptionROSMsgIntraProcessBuffer<ROSMessageType,ROSMessageTypeAllocator,ROSMessageTypeDeleter> which can happen when the publisher and subscription use different allocator types, which is not supported: true
-        SubscriptionIntraProcessBuffer<MessageT, Alloc, Deleter>, or to SubscriptionROSMsgIntraProcessBuffer<ROSMessageType,ROSMessageTypeAllocator,ROSMessageTypeDeleter> which can happen when the publisher and subscription use different allocator types, which is not supported: true
-        SubscriptionROSMsgIntraProcessBuffer<ROSMessageType,ROSMessageTypeAllocator,ROSMessageTypeDeleter> which can happen when the publisher and subscription use different allocator types, which is not supported: true
-        T0_EEEUlPNS_15node_interfaces17NodeBaseInterfaceERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERKNS_3QoSEE_: true
-        T_EDpOT0_EUlS3_E_SaIvELN9__gnu_cxx12_Lock_policyE2EE: true
-        Type,ROSMessageTypeAllocator,ROSMessageTypeDeleter> which can happen when the publisher and subscription use different allocator types, which is not supported: true
-        TypeDeleter> which can happen when the publisher and subscription use different allocator types, which is not supported: true
+        11�?: true
+        1����: true
+        2T��p�: true
+        2����n: true
+        4����l: true
+        7��4�: true
+        "7���\b�": true
+        8A��ԉ: true
+        8p: true
+        8t: true
+        8�: true
+        :��\�: true
+        ":���\x18�": true
+        ;����: true
+        <U��P�: true
+        <W: true
+        =����[: true
+        ">���\bf": true
+        ">���Dr": true
+        ">���ȴ": true
+        ">����": true
+        "?": true
+        ?XXXXXX�?yyyyyy�?�������?||||||�?111111�?: true
+        ?yyyyyy�?�������?||||||�?111111�?: true
+        "@Y": true
+        "@�": true
+        "@����": true
+        "@����m": true
+        "A��\x14�": true
+        "B\x04��Dv": true
+        B��`�: true
+        B����: true
+        B����Y: true
+        "C��\b�": true
+        DX: true
+        D�: true
+        D��(�: true
+        D��H�: true
+        D��ȋ: true
+        "F��\x14�": true
+        F��8�: true
+        H[: true
+        H\: true
+        H^: true
+        Hf: true
+        "Hf��\b�": true
+        Hg: true
+        H�: true
+        H���Pb: true
+        IZ��ؗ: true
+        "I��\x10�": true
+        I��0�: true
+        I��p�: true
+        I����: true
+        JK��x�: true
+        "J��\x10�": true
+        J��P�: true
+        J��p�: true
+        J��Ў: true
+        K����: true
+        L_��(�: true
+        Lo: true
+        L|����: true
+        L�: true
+        L��8�: true
+        L���Pc: true
+        L�����: true
+        M����: true
+        "N\x1b���": true
+        NJ��Ў: true
+        N����: true
+        O��H�: true
+        O��h�: true
+        O����: true
+        "P\\��\b�": true
+        Pm��8�: true
+        P�: true
+        P��ȑ: true
+        P���(�: true
+        P���Xj: true
+        P����: true
+        P����j: true
+        Q��0�: true
+        R���,�: true
+        R����: true
+        S����: true
+        Tb����: true
+        T�: true
+        T��p�: true
+        T���\�: true
+        U��� Y: true
+        U����: true
+        W: true
+        "W��\b�": true
+        W��(�: true
+        W���Xp: true
+        X: true
         XXXXXX�?yyyyyy�?�������?||||||�?111111�?: true
-        XXXXX�?yyyyyy�?�������?||||||�?111111�?: true
-        "] error initializing logging: ": true
-        _29PublisherOptionsWithAllocatorIS6_EEEUlR35rmw_qos_incompatible_event_status_sE_St10shared_ptrI15rcl_publisher_sEEESaISX_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        _BindIFM24robotDistanceCheckerNodeFvvEPS2_EELPv0EEE: true
-        _EC4EPNS0_15node_interfaces17NodeBaseInterfaceERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERKNS0_3QoSERKNS0_29PublisherOptionsWithAllocatorIS6_EEEUlR35rmw_qos_incompatible_event_status_sE_St10shared_ptrI15rcl_publisher_sEEESaISX_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        _EEEUlR35rmw_qos_incompatible_event_status_sE_St10shared_ptrI15rcl_publisher_sEEE: true
-        _ELN9__gnu_cxx12_Lock_policyE2EE: true
-        _ISaIvEEES4_EE: true
-        _Lock_policyE2EE: true
-        _M_construct null not valid: true
-        _M_range_insert: true
-        _Sp_counted_ptr_inplaceIN6rclcpp15QOSEventHandlerISt8functionIFvR28rmw_liveliness_lost_status_sEESt10shared_ptrI15rcl_publisher_sEEESaISA_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        _St10shared_ptrI15rcl_publisher_sEEESaISX_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        __gnu_cxx12_Lock_policyE2EE: true
-        _counted_deleterIPN18visualization_msgs3msg7Marker_ISaIvEEESt14default_deleteIS4_ES3_LN9__gnu_cxx12_Lock_policyE2EE: true
-        _counted_ptr_inplaceISaIcESaIS0_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        _counted_ptr_inplaceISaIvESaIS0_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        _cxx12_Lock_policyE2EE: true
-        _distance_line: true
-        _event_status_sEESt10shared_ptrI15rcl_publisher_sEEE: true
-        _gnu_cxx12_Lock_policyE2EE: true
-        _inplaceIN6rclcpp15QOSEventHandlerISt8functionIFvR36rmw_offered_deadline_missed_status_sEESt10shared_ptrI15rcl_publisher_sEEESaISA_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        _intra_process_publish_and_return_shared: true
-        _manager.hpp: true
-        _msgs3msg7Marker_ISaIvEEESaIS6_ESt14default_deleteIS6_EEE: true
-        _policyE2EE: true
-        _process_manager.hpp: true
-        "_process_manager.hpp:197] error initializing logging: ": true
-        _process_publish: true
-        _ptrI15rcl_publisher_sEEESaISA_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        _ptr_inplaceIN6rclcpp15QOSEventHandlerISt8functionIFvR36rmw_offered_deadline_missed_status_sEESt10shared_ptrI15rcl_publisher_sEEESaISA_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        _ptr_inplaceIN6rclcpp9PublisherIN18visualization_msgs3msg7Marker_ISaIvEEES5_EESaIS7_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        _ptr_inplaceISaIvESaIS0_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        _publish for invalid or no longer existing publisher id: true
-        _publisher_sEEESaISA_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        _publisher_sEEESaISX_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        _qos_incompatible_event_status_sE_St10shared_ptrI15rcl_publisher_sEEESaISX_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        _sEEESaISA_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        _sEESt10shared_ptrI15rcl_publisher_sEEESaISA_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        _shared: true
-        _string::_M_construct null not valid: true
+        XXXX�?yyyyyy�?�������?||||||�?111111�?: true
+        XX�?yyyyyy�?�������?||||||�?111111�?: true
+        Xs: true
+        X~: true
+        X�: true
+        X�?yyyyyy�?�������?||||||�?111111�?: true
+        "X���\b]": true
+        X���d�: true
+        Y: true
+        Z: true
+        Z����i: true
+        "[": true
+        "[��@�": true
+        "[���̷\x01": true
+        "[����": true
+        \: true
+        \�: true
+        \����Z: true
+        "]": true
+        ^: true
+        "^\x13���|": true
+        "^\x14��\x1c}": true
+        ^I����: true
+        ^^����: true
+        ^q����: true
+        ^��Ț: true
+        _: true
+        _M_realloc_insert: true
+        _��(�: true
+        "`": true
+        "`\x12��\x14|": true
+        "`x��P�": true
+        "`�": true
+        "`����": true
         a: true
-        aIS0_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        aIcEEERKNS_3QoSEE_: true
-        aIcEEERKNS_3QoSERKNS_29PublisherOptionsWithAllocatorIS5_EEEUlR35rmw_qos_incompatible_event_status_sE_St10shared_ptrI15rcl_publisher_sEEE: true
-        aIcESaIS0_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        aIvEEES4_EE: true
-        aIvEEES4_NS_9PublisherIS5_S4_EEEENS_16PublisherFactoryERKNS_29PublisherOptionsWithAllocatorIT0_EEEUlPNS_15node_interfaces17NodeBaseInterfaceERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERKNS_3QoSEE_: true
-        a_process_publish_and_return_shared: true
-        ability: true
-        ack occurred: true
-        ackESt8functionIFvmiEEEUlmE_: true
-        adline_missed_status_sEESt10shared_ptrI15rcl_publisher_sEEE: true
-        adline_missed_status_sEESt10shared_ptrI15rcl_publisher_sEEESaISA_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        ageType,ROSMessageTypeAllocator,ROSMessageTypeDeleter> which can happen when the publisher and subscription use different allocator types, which is not supported: true
-        ageTypeAllocator,ROSMessageTypeDeleter> which can happen when the publisher and subscription use different allocator types, which is not supported: true
-        ailed to dynamic cast SubscriptionIntraProcessBase to SubscriptionIntraProcessBuffer<MessageT, Alloc, Deleter>, or to SubscriptionROSMsgIntraProcessBuffer<ROSMessageType,ROSMessageTypeAllocator,ROSMessageTypeDeleter> which can happen when the publisher and subscription use different allocator types, which is not supported: true
-        "ake event info: %s": true
-        al30SubscriptionIntraProcessBufferIN18visualization_msgs3msg7Marker_ISaIvEEESaIS6_ESt14default_deleteIS6_ES6_EE: true
-        "alidation callback failed: ": true
-        alize event: true
-        "allback failed: ": true
-        allback occurred: true
-        alled rclcpp::shutdown(): true
-        allocator types, which is not supported: true
-        allowed only with keep last history qos policy: true
-        allowed only with volatile durability: true
-        alue: true
-        "anager.hpp:197] error initializing logging: ": true
+        alloc_insert: true
         ance_line: true
-        and_return_shared: true
-        andlerISt8functionIFvR28rmw_liveliness_lost_status_sEESt10shared_ptrI15rcl_publisher_sEEESaISA_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        andlerISt8functionIFvR36rmw_offered_deadline_missed_status_sEESt10shared_ptrI15rcl_publisher_sEEESaISA_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        annot be nullptr: true
-        aprocess communication is not allowed with a zero qos history depth value: true
-        arker_ISaIvEEES5_EC4EPNS_15node_interfaces17NodeBaseInterfaceERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERKNS_3QoSERKNS_29PublisherOptionsWithAllocatorIS5_EEEUlR35rmw_qos_incompatible_event_status_sE_St10shared_ptrI15rcl_publisher_sEEE: true
-        ast SubscriptionIntraProcessBase to SubscriptionIntraProcessBuffer<MessageT, Alloc, Deleter>, or to SubscriptionROSMsgIntraProcessBuffer<ROSMessageType,ROSMessageTypeAllocator,ROSMessageTypeDeleter> which can happen when the publisher and subscription use different allocator types, which is not supported: true
-        at callback occurred: true
-        atible_event_status_sE_St10shared_ptrI15rcl_publisher_sEEE: true
-        ation allowed only with keep last history qos policy: true
-        ation allowed only with volatile durability: true
-        ation is not allowed with a zero qos history depth value: true
-        ative: true
-        ator,ROSMessageTypeDeleter> which can happen when the publisher and subscription use different allocator types, which is not supported: true
-        atus_sEESt10shared_ptrI15rcl_publisher_sEEESaISA_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        base cannot be null: true
-        basic_string::_M_construct null not valid: true
-        be less than std::chrono::nanoseconds::max(): true
-        be null: true
-        "ble/include/rclcpp/rclcpp/experimental/intra_process_manager.hpp:260] error initializing logging: ": true
-        ble_event_status_sE_St10shared_ptrI15rcl_publisher_sEEE: true
-        blish called after destruction of intra process manager: true
-        blish_and_return_shared: true
-        blisher id: true
-        blisherOptionsWithAllocatorIS6_EEEUlR35rmw_qos_incompatible_event_status_sE_St10shared_ptrI15rcl_publisher_sEEESaISX_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        bscription has unexpectedly gone out of scope: true
-        bscription use different allocator types, which is not supported: true
-        bscriptionIntraProcessBase to SubscriptionIntraProcessBuffer<MessageT, Alloc, Deleter>, or to SubscriptionROSMsgIntraProcessBuffer<ROSMessageType,ROSMessageTypeAllocator,ROSMessageTypeDeleter> which can happen when the publisher and subscription use different allocator types, which is not supported: true
-        cannot publish msg which is a null pointer: true
-        cator,ROSMessageTypeDeleter> which can happen when the publisher and subscription use different allocator types, which is not supported: true
-        ces17NodeBaseInterfaceERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERKNS0_3QoSERKNS0_29PublisherOptionsWithAllocatorIS6_EEEUlR35rmw_qos_incompatible_event_status_sE_St10shared_ptrI15rcl_publisher_sEEESaISX_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        ces17NodeBaseInterfaceERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERKNS_3QoSERKNS_29PublisherOptionsWithAllocatorIS5_EEEUlR35rmw_qos_incompatible_event_status_sE_St10shared_ptrI15rcl_publisher_sEEE: true
-        cess communication allowed only with volatile durability: true
-        cessBase to SubscriptionIntraProcessBuffer<MessageT, Alloc, Deleter>, or to SubscriptionROSMsgIntraProcessBuffer<ROSMessageType,ROSMessageTypeAllocator,ROSMessageTypeDeleter> which can happen when the publisher and subscription use different allocator types, which is not supported: true
-        cessSetting value: true
-        "cess_manager.hpp:197] error initializing logging: ": true
-        ch can happen when the publisher and subscription use different allocator types, which is not supported: true
-        char_traitsIcESaIcEEERKNS_3QoSERKNS_29PublisherOptionsWithAllocatorIS5_EEEUlR35rmw_qos_incompatible_event_status_sE_St10shared_ptrI15rcl_publisher_sEEE: true
-        ckESaIS1_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        ck_policyE2EE: true
-        ckerNodeFvvEPS0_EE: true
-        cl_publisher_sEEESaISA_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        clcpp/experimental/intra_process_manager.hpp: true
-        "clcpp/experimental/intra_process_manager.hpp:197] error initializing logging: ": true
-        "clcpp/qos_event.hpp:254] error initializing logging: ": true
-        "clcpp/rclcpp/experimental/intra_process_manager.hpp:260] error initializing logging: ": true
-        clcpp15QOSEventHandlerISt8functionIFvR35rmw_qos_incompatible_event_status_sEESt10shared_ptrI15rcl_publisher_sEEESaISA_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        clcpp15QOSEventHandlerIZNS0_9PublisherIN18visualization_msgs3msg7Marker_ISaIvEEES6_EC4EPNS0_15node_interfaces17NodeBaseInterfaceERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERKNS0_3QoSERKNS0_29PublisherOptionsWithAllocatorIS6_EEEUlR35rmw_qos_incompatible_event_status_sE_St10shared_ptrI15rcl_publisher_sEEESaISX_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        clcpp5ClockESaIS1_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        clude/rclcpp/rclcpp/experimental/intra_process_manager.hpp: true
-        cognized IntraProcessSetting value: true
-        conds resulted in integer overflow.: true
-        conds::max(): true
-        correct allocator type: true
-        counted_ptr_inplaceIN6rclcpp15QOSEventHandlerIZNS0_9PublisherIN18visualization_msgs3msg7Marker_ISaIvEEES6_EC4EPNS0_15node_interfaces17NodeBaseInterfaceERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERKNS0_3QoSERKNS0_29PublisherOptionsWithAllocatorIS6_EEEUlR35rmw_qos_incompatible_event_status_sE_St10shared_ptrI15rcl_publisher_sEEESaISX_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        cpp/experimental/intra_process_manager.hpp: true
-        "cpp/experimental/intra_process_manager.hpp:197] error initializing logging: ": true
-        "cpp/experimental/intra_process_manager.hpp:260] error initializing logging: ": true
-        "cpp/rclcpp/experimental/intra_process_manager.hpp:197] error initializing logging: ": true
-        "cpp/rclcpp/experimental/intra_process_manager.hpp:260] error initializing logging: ": true
-        cpp12experimental36SubscriptionROSMsgIntraProcessBufferIN18visualization_msgs3msg7Marker_ISaIvEEESaIS6_ESt14default_deleteIS6_EEE: true
-        cpp15QOSEventHandlerIZNS_9PublisherIN18visualization_msgs3msg7Marker_ISaIvEEES5_EC4EPNS_15node_interfaces17NodeBaseInterfaceERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERKNS_3QoSERKNS_29PublisherOptionsWithAllocatorIS5_EEEUlR35rmw_qos_incompatible_event_status_sE_St10shared_ptrI15rcl_publisher_sEEE: true
-        cription has unexpectedly gone out of scope: true
-        criptionIntraProcessBase to SubscriptionIntraProcessBuffer<MessageT, Alloc, Deleter>, or to SubscriptionROSMsgIntraProcessBuffer<ROSMessageType,ROSMessageTypeAllocator,ROSMessageTypeDeleter> which can happen when the publisher and subscription use different allocator types, which is not supported: true
-        ctedly gone out of scope: true
-        ctionIFvR36rmw_offered_deadline_missed_status_sEESt10shared_ptrI15rcl_publisher_sEEE: true
-        ctoryERKNS_29PublisherOptionsWithAllocatorIT0_EEEUlPNS_15node_interfaces17NodeBaseInterfaceERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERKNS_3QoSEE_: true
-        cxx12_Lock_policyE2EE: true
-        cy: true
-        cyE2EE: true
+        "a��\x18�": true
+        a��8�: true
+        b: true
+        b��: true
+        b����: true
+        c: true
+        c_insert: true
+        c����Y: true
         d: true
-        d only with keep last history qos policy: true
-        d or no longer existing publisher id: true
-        d subscription use different allocator types, which is not supported: true
-        d {: true
-        dIFM24robotDistanceCheckerNodeFvvEPS0_EE: true
-        d_ptrI15rcl_publisher_sEEE: true
-        d_ptrI15rcl_publisher_sEEESaISX_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        d_ptr_inplaceIN6rclcpp15QOSEventHandlerISt8functionIFvR28rmw_liveliness_lost_status_sEESt10shared_ptrI15rcl_publisher_sEEESaISA_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        data' is empty: true
-        deFvvEPS3_EELPv0EEESaISA_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        de_timers cannot be null: true
-        distance_line: true
-        dlerISt8functionIFvR35rmw_qos_incompatible_event_status_sEESt10shared_ptrI15rcl_publisher_sEEE: true
-        dlerISt8functionIFvR36rmw_offered_deadline_missed_status_sEESt10shared_ptrI15rcl_publisher_sEEESaISA_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        dlerIZNS0_9PublisherIN18visualization_msgs3msg7Marker_ISaIvEEES6_EC4EPNS0_15node_interfaces17NodeBaseInterfaceERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERKNS0_3QoSERKNS0_29PublisherOptionsWithAllocatorIS6_EEEUlR35rmw_qos_incompatible_event_status_sE_St10shared_ptrI15rcl_publisher_sEEESaISX_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        dly gone out of scope: true
-        "dn't take event info: %s": true
-        do_intra_process_publish for invalid or no longer existing publisher id: true
-        do_intra_process_publish_and_return_shared: true
+        "d\x06��dw": true
+        d>��Ĉ: true
+        dr: true
+        dv: true
+        dw: true
+        d�: true
+        d����: true
         e: true
-        e durability: true
-        e null: true
-        e nullptr: true
-        e to SubscriptionIntraProcessBuffer<MessageT, Alloc, Deleter>, or to SubscriptionROSMsgIntraProcessBuffer<ROSMessageType,ROSMessageTypeAllocator,ROSMessageTypeDeleter> which can happen when the publisher and subscription use different allocator types, which is not supported: true
-        e,ROSMessageTypeAllocator,ROSMessageTypeDeleter> which can happen when the publisher and subscription use different allocator types, which is not supported: true
-        eIS4_ES3_LN9__gnu_cxx12_Lock_policyE2EE: true
-        e_event_status_sE_St10shared_ptrI15rcl_publisher_sEEESaISX_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        e_insert: true
-        e_publisher_factoryIN18visualization_msgs3msg7Marker_ISaIvEEES4_NS_9PublisherIS5_S4_EEEENS_16PublisherFactoryERKNS_29PublisherOptionsWithAllocatorIT0_EEEUlPNS_15node_interfaces17NodeBaseInterfaceERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERKNS_3QoSEE_: true
-        ecognized IntraProcessSetting value: true
-        econds resulted in integer overflow.: true
-        "ed: ": true
-        ed_ptr_inplaceIN6rclcpp15QOSEventHandlerIZNS0_9PublisherIN18visualization_msgs3msg7Marker_ISaIvEEES6_EC4EPNS0_15node_interfaces17NodeBaseInterfaceERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERKNS0_3QoSERKNS0_29PublisherOptionsWithAllocatorIS6_EEEUlR35rmw_qos_incompatible_event_status_sE_St10shared_ptrI15rcl_publisher_sEEESaISX_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        edly gone out of scope: true
-        egative: true
-        eleter>, or to SubscriptionROSMsgIntraProcessBuffer<ROSMessageType,ROSMessageTypeAllocator,ROSMessageTypeDeleter> which can happen when the publisher and subscription use different allocator types, which is not supported: true
-        en the publisher and subscription use different allocator types, which is not supported: true
-        "ent info: %s": true
-        entHandlerISt8functionIFvR35rmw_qos_incompatible_event_status_sEESt10shared_ptrI15rcl_publisher_sEEESaISA_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        entHandlerIZNS0_9PublisherIN18visualization_msgs3msg7Marker_ISaIvEEES6_EC4EPNS0_15node_interfaces17NodeBaseInterfaceERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERKNS0_3QoSERKNS0_29PublisherOptionsWithAllocatorIS6_EEEUlR35rmw_qos_incompatible_event_status_sE_St10shared_ptrI15rcl_publisher_sEEESaISX_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        "ental/intra_process_manager.hpp:197] error initializing logging: ": true
-        "ental/intra_process_manager.hpp:260] error initializing logging: ": true
-        ep last history qos policy: true
-        epth value: true
-        er and subscription use different allocator types, which is not supported: true
-        er destruction of intra process manager: true
-        "er.hpp:260] error initializing logging: ": true
-        er<MessageT, Alloc, Deleter>, or to SubscriptionROSMsgIntraProcessBuffer<ROSMessageType,ROSMessageTypeAllocator,ROSMessageTypeDeleter> which can happen when the publisher and subscription use different allocator types, which is not supported: true
-        er> which can happen when the publisher and subscription use different allocator types, which is not supported: true
-        erIS5_S4_EEEENS_16PublisherFactoryERKNS_29PublisherOptionsWithAllocatorIT0_EEEUlPNS_15node_interfaces17NodeBaseInterfaceERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERKNS_3QoSEE_: true
-        erISt8functionIFvR28rmw_liveliness_lost_status_sEESt10shared_ptrI15rcl_publisher_sEEESaISA_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        er_sEEE: true
-        erfaces17NodeBaseInterfaceERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERKNS0_3QoSERKNS0_29PublisherOptionsWithAllocatorIS6_EEEUlR35rmw_qos_incompatible_event_status_sE_St10shared_ptrI15rcl_publisher_sEEESaISX_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        "error initializing logging: ": true
-        ert: true
-        es.: true
-        ess communication allowed only with volatile durability: true
-        ess manager: true
-        ess_manager.hpp: true
-        ess_publish: true
-        essageT, Alloc, Deleter>, or to SubscriptionROSMsgIntraProcessBuffer<ROSMessageType,ROSMessageTypeAllocator,ROSMessageTypeDeleter> which can happen when the publisher and subscription use different allocator types, which is not supported: true
-        essageTypeAllocator,ROSMessageTypeDeleter> which can happen when the publisher and subscription use different allocator types, which is not supported: true
-        expectedly gone out of scope: true
-        experimental/intra_process_manager.hpp: true
-        extIS2_JEEESt10shared_ptrIT_EDpOT0_EUlS3_E_SaIvELN9__gnu_cxx12_Lock_policyE2EE: true
-        factoryIN18visualization_msgs3msg7Marker_ISaIvEEES4_NS_9PublisherIS5_S4_EEEENS_16PublisherFactoryERKNS_29PublisherOptionsWithAllocatorIT0_EEEUlPNS_15node_interfaces17NodeBaseInterfaceERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERKNS_3QoSEE_: true
-        "failed: ": true
-        ffer<ROSMessageType,ROSMessageTypeAllocator,ROSMessageTypeDeleter> which can happen when the publisher and subscription use different allocator types, which is not supported: true
-        ffered_deadline_missed_status_sEESt10shared_ptrI15rcl_publisher_sEEESaISA_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        functionIFvR28rmw_liveliness_lost_status_sEESt10shared_ptrI15rcl_publisher_sEEESaISA_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        "g logging: ": true
-        g7Marker_ISaIvEEES6_EC4EPNS0_15node_interfaces17NodeBaseInterfaceERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERKNS0_3QoSERKNS0_29PublisherOptionsWithAllocatorIS6_EEEUlR35rmw_qos_incompatible_event_status_sE_St10shared_ptrI15rcl_publisher_sEEESaISX_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        "g: ": true
-        geTypeDeleter> which can happen when the publisher and subscription use different allocator types, which is not supported: true
-        ge_insert: true
-        ger existing publisher id: true
-        "ging: ": true
-        gnu_cxx12_Lock_policyE2EE: true
-        h for invalid or no longer existing publisher id: true
-        h message: true
-        h volatile durability: true
-        hAllocatorIT0_EEEUlPNS_15node_interfaces17NodeBaseInterfaceERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERKNS_3QoSEE_: true
-        happen when the publisher and subscription use different allocator types, which is not supported: true
-        hared_ptrI15rcl_publisher_sEEE: true
-        hared_ptrI15rcl_publisher_sEEESaISA_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        has unexpectedly gone out of scope: true
-        hen the publisher and subscription use different allocator types, which is not supported: true
-        her_sEEE: true
-        her_sEEESaISA_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        hich can happen when the publisher and subscription use different allocator types, which is not supported: true
-        history depth value: true
-        hpp: true
-        "hpp:197] error initializing logging: ": true
-        "humble/include/rclcpp/rclcpp/experimental/intra_process_manager.hpp:260] error initializing logging: ": true
-        "ializing logging: ": true
-        ible_event_status_sEESt10shared_ptrI15rcl_publisher_sEEE: true
-        ic_stringIcSt11char_traitsIcESaIcEEERKNS_3QoSERKNS_29PublisherOptionsWithAllocatorIS5_EEEUlR35rmw_qos_incompatible_event_status_sE_St10shared_ptrI15rcl_publisher_sEEE: true
-        ication allowed only with keep last history qos policy: true
-        ication is not allowed with a zero qos history depth value: true
-        ich can happen when the publisher and subscription use different allocator types, which is not supported: true
-        ich is a null pointer: true
-        id: true
-        ifferent allocator types, which is not supported: true
-        ify timer that callback occurred: true
-        iled to dynamic cast SubscriptionIntraProcessBase to SubscriptionIntraProcessBuffer<MessageT, Alloc, Deleter>, or to SubscriptionROSMsgIntraProcessBuffer<ROSMessageType,ROSMessageTypeAllocator,ROSMessageTypeDeleter> which can happen when the publisher and subscription use different allocator types, which is not supported: true
-        ility: true
-        "ils|/opt/ros/humble/include/rclcpp/rclcpp/experimental/intra_process_manager.hpp:260] error initializing logging: ": true
-        iness_lost_status_sEESt10shared_ptrI15rcl_publisher_sEEESaISA_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        "initializing logging: ": true
-        integer overflow.: true
-        interfaces17NodeBaseInterfaceERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERKNS0_3QoSERKNS0_29PublisherOptionsWithAllocatorIS6_EEEUlR35rmw_qos_incompatible_event_status_sE_St10shared_ptrI15rcl_publisher_sEEESaISX_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        "intra_process_manager.hpp:260] error initializing logging: ": true
-        ion use different allocator types, which is not supported: true
-        ionIntraProcessBufferIN18visualization_msgs3msg7Marker_ISaIvEEESaIS6_ESt14default_deleteIS6_ES6_EE: true
-        ionROSMsgIntraProcessBuffer<ROSMessageType,ROSMessageTypeAllocator,ROSMessageTypeDeleter> which can happen when the publisher and subscription use different allocator types, which is not supported: true
-        ion_msgs3msg7Marker_ISaIvEEES6_EC4EPNS0_15node_interfaces17NodeBaseInterfaceERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERKNS0_3QoSERKNS0_29PublisherOptionsWithAllocatorIS6_EEEUlR35rmw_qos_incompatible_event_status_sE_St10shared_ptrI15rcl_publisher_sEEESaISX_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        ionsWithAllocatorIS6_EEEUlR35rmw_qos_incompatible_event_status_sE_St10shared_ptrI15rcl_publisher_sEEESaISX_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        iptionIntraProcessBase to SubscriptionIntraProcessBuffer<MessageT, Alloc, Deleter>, or to SubscriptionROSMsgIntraProcessBuffer<ROSMessageType,ROSMessageTypeAllocator,ROSMessageTypeDeleter> which can happen when the publisher and subscription use different allocator types, which is not supported: true
-        iptionIntraProcessBuffer<MessageT, Alloc, Deleter>, or to SubscriptionROSMsgIntraProcessBuffer<ROSMessageType,ROSMessageTypeAllocator,ROSMessageTypeDeleter> which can happen when the publisher and subscription use different allocator types, which is not supported: true
-        iptionROSMsgIntraProcessBuffer<ROSMessageType,ROSMessageTypeAllocator,ROSMessageTypeDeleter> which can happen when the publisher and subscription use different allocator types, which is not supported: true
-        is empty: true
-        is not allowed with a zero qos history depth value: true
-        ish: true
-        ish message: true
-        ish_and_return_shared: true
-        isherIN18visualization_msgs3msg7Marker_ISaIvEEES6_EC4EPNS0_15node_interfaces17NodeBaseInterfaceERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERKNS0_3QoSERKNS0_29PublisherOptionsWithAllocatorIS6_EEEUlR35rmw_qos_incompatible_event_status_sE_St10shared_ptrI15rcl_publisher_sEEESaISX_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        istory depth value: true
-        isualization_msgs3msg7Marker_ISaIvEEES5_EC4EPNS_15node_interfaces17NodeBaseInterfaceERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERKNS_3QoSERKNS_29PublisherOptionsWithAllocatorIS5_EEEUlR35rmw_qos_incompatible_event_status_sE_St10shared_ptrI15rcl_publisher_sEEE: true
-        ith a zero qos history depth value: true
-        ithAllocatorIS6_EEEUlR35rmw_qos_incompatible_event_status_sE_St10shared_ptrI15rcl_publisher_sEEESaISX_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        "itializing logging: ": true
-        "izing logging: ": true
-        k occurred: true
-        l not valid: true
-        l pointer: true
-        l_publisher_sEEESaISA_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        latile durability: true
-        lback occurred: true
-        lcpp/experimental/intra_process_manager.hpp: true
-        "lcpp/qos_event.hpp:254] error initializing logging: ": true
-        "lcpp/rclcpp/qos_event.hpp:254] error initializing logging: ": true
-        lcpp15QOSEventHandlerISt8functionIFvR28rmw_liveliness_lost_status_sEESt10shared_ptrI15rcl_publisher_sEEESaISA_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        le durability: true
-        le_event_status_sE_St10shared_ptrI15rcl_publisher_sEEE: true
-        led to dynamic cast SubscriptionIntraProcessBase to SubscriptionIntraProcessBuffer<MessageT, Alloc, Deleter>, or to SubscriptionROSMsgIntraProcessBuffer<ROSMessageType,ROSMessageTypeAllocator,ROSMessageTypeDeleter> which can happen when the publisher and subscription use different allocator types, which is not supported: true
-        led to initialize event: true
-        led to notify timer that callback occurred: true
-        lerISt8functionIFvR36rmw_offered_deadline_missed_status_sEESt10shared_ptrI15rcl_publisher_sEEESaISA_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        leteIS4_ES3_LN9__gnu_cxx12_Lock_policyE2EE: true
-        leter>, or to SubscriptionROSMsgIntraProcessBuffer<ROSMessageType,ROSMessageTypeAllocator,ROSMessageTypeDeleter> which can happen when the publisher and subscription use different allocator types, which is not supported: true
-        licy {: true
-        licyE2EE: true
-        lid or no longer existing publisher id: true
-        liness_lost_status_sEESt10shared_ptrI15rcl_publisher_sEEESaISA_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        lish msg which is a null pointer: true
-        lisher and subscription use different allocator types, which is not supported: true
-        lisher_sEEESaISA_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        "lizing logging: ": true
-        "llback failed: ": true
-        llbackESt8functionIFvmiEEEUlmE_: true
-        lling do_intra_process_publish for invalid or no longer existing publisher id: true
-        llocatorIS5_EEEUlR35rmw_qos_incompatible_event_status_sE_St10shared_ptrI15rcl_publisher_sEEE: true
-        loc_insert: true
-        locator type: true
-        locator types, which is not supported: true
-        "logging: ": true
-        longer existing publisher id: true
-        lowed only with volatile durability: true
-        manager.hpp: true
-        mble/include/rclcpp/rclcpp/experimental/intra_process_manager.hpp: true
-        "mental/intra_process_manager.hpp:260] error initializing logging: ": true
-        mer period cannot be negative: true
-        mer that callback occurred: true
-        mic cast SubscriptionIntraProcessBase to SubscriptionIntraProcessBuffer<MessageT, Alloc, Deleter>, or to SubscriptionROSMsgIntraProcessBuffer<ROSMessageType,ROSMessageTypeAllocator,ROSMessageTypeDeleter> which can happen when the publisher and subscription use different allocator types, which is not supported: true
-        mmunication allowed only with keep last history qos policy: true
-        mmunication allowed only with volatile durability: true
-        msg7Marker_ISaIvEEES5_EC4EPNS_15node_interfaces17NodeBaseInterfaceERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERKNS_3QoSERKNS_29PublisherOptionsWithAllocatorIS5_EEEUlR35rmw_qos_incompatible_event_status_sE_St10shared_ptrI15rcl_publisher_sEEE: true
-        munication allowed only with keep last history qos policy: true
-        mw_qos_incompatible_event_status_sE_St10shared_ptrI15rcl_publisher_sEEESaISX_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        n use different allocator types, which is not supported: true
-        n when the publisher and subscription use different allocator types, which is not supported: true
-        nIntraProcessBase to SubscriptionIntraProcessBuffer<MessageT, Alloc, Deleter>, or to SubscriptionROSMsgIntraProcessBuffer<ROSMessageType,ROSMessageTypeAllocator,ROSMessageTypeDeleter> which can happen when the publisher and subscription use different allocator types, which is not supported: true
-        n_msgs3msg7Marker_ISaIvEEESt14default_deleteIS4_ES3_LN9__gnu_cxx12_Lock_policyE2EE: true
-        nager.hpp: true
-        "nager.hpp:197] error initializing logging: ": true
-        namic cast SubscriptionIntraProcessBase to SubscriptionIntraProcessBuffer<MessageT, Alloc, Deleter>, or to SubscriptionROSMsgIntraProcessBuffer<ROSMessageType,ROSMessageTypeAllocator,ROSMessageTypeDeleter> which can happen when the publisher and subscription use different allocator types, which is not supported: true
-        nclude/rclcpp/rclcpp/experimental/intra_process_manager.hpp: true
-        ncompatible_event_status_sEESt10shared_ptrI15rcl_publisher_sEEESaISA_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        nctionIFvR28rmw_liveliness_lost_status_sEESt10shared_ptrI15rcl_publisher_sEEESaISA_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        nctionIFvR36rmw_offered_deadline_missed_status_sEESt10shared_ptrI15rcl_publisher_sEEESaISA_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        nexpectedly nullptr: true
-        "ng logging: ": true
-        ng publisher id: true
-        "ng: ": true
-        nge_insert: true
-        "nitializing logging: ": true
-        nnot be negative: true
-        nnot be nullptr: true
-        nnot publish msg which is a null pointer: true
-        no longer existing publisher id: true
-        not be null: true
-        not be nullptr: true
-        not supported: true
-        nplaceIN6rclcpp15QOSEventHandlerISt8functionIFvR36rmw_offered_deadline_missed_status_sEESt10shared_ptrI15rcl_publisher_sEEESaISA_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        nplaceIN6rclcpp15QOSEventHandlerIZNS0_9PublisherIN18visualization_msgs3msg7Marker_ISaIvEEES6_EC4EPNS0_15node_interfaces17NodeBaseInterfaceERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERKNS0_3QoSERKNS0_29PublisherOptionsWithAllocatorIS6_EEEUlR35rmw_qos_incompatible_event_status_sE_St10shared_ptrI15rcl_publisher_sEEESaISX_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        nput node_base cannot be null: true
-        nrecognized IntraProcessSetting value: true
-        nsWithAllocatorIS6_EEEUlR35rmw_qos_incompatible_event_status_sE_St10shared_ptrI15rcl_publisher_sEEESaISX_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        nt allocator types, which is not supported: true
-        ntal/intra_process_manager.hpp: true
-        "ntal/intra_process_manager.hpp:197] error initializing logging: ": true
-        nted_deleterIPN6rclcpp12experimental19IntraProcessManagerEZNS0_7Context15get_sub_contextIS2_JEEESt10shared_ptrIT_EDpOT0_EUlS3_E_SaIvELN9__gnu_cxx12_Lock_policyE2EE: true
-        nted_ptr_inplaceIN6rclcpp15QOSEventHandlerISt8functionIFvR35rmw_qos_incompatible_event_status_sEESt10shared_ptrI15rcl_publisher_sEEESaISA_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        nted_ptr_inplaceIN6rclcpp15QOSEventHandlerIZNS0_9PublisherIN18visualization_msgs3msg7Marker_ISaIvEEES6_EC4EPNS0_15node_interfaces17NodeBaseInterfaceERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERKNS0_3QoSERKNS0_29PublisherOptionsWithAllocatorIS6_EEEUlR35rmw_qos_incompatible_event_status_sE_St10shared_ptrI15rcl_publisher_sEEESaISX_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        nted_ptr_inplaceISaIcESaIS0_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        ntraProcessBuffer<ROSMessageType,ROSMessageTypeAllocator,ROSMessageTypeDeleter> which can happen when the publisher and subscription use different allocator types, which is not supported: true
-        ntraprocess communication allowed only with keep last history qos policy: true
-        nu_cxx12_Lock_policyE2EE: true
-        "null": true
-        nullptr: true
-        nvalid or no longer existing publisher id: true
-        o_intra_process_publish: true
-        oc, Deleter>, or to SubscriptionROSMsgIntraProcessBuffer<ROSMessageType,ROSMessageTypeAllocator,ROSMessageTypeDeleter> which can happen when the publisher and subscription use different allocator types, which is not supported: true
-        ocatorIS5_EEEUlR35rmw_qos_incompatible_event_status_sE_St10shared_ptrI15rcl_publisher_sEEE: true
-        ocessBuffer<MessageT, Alloc, Deleter>, or to SubscriptionROSMsgIntraProcessBuffer<ROSMessageType,ROSMessageTypeAllocator,ROSMessageTypeDeleter> which can happen when the publisher and subscription use different allocator types, which is not supported: true
-        ocessSetting value: true
-        "ocess_manager.hpp:197] error initializing logging: ": true
-        ock_policyE2EE: true
-        od must be less than std::chrono::nanoseconds::max(): true
-        of scope: true
-        ognized IntraProcessSetting value: true
-        olicyE2EE: true
-        on use different allocator types, which is not supported: true
-        onIFvR28rmw_liveliness_lost_status_sEESt10shared_ptrI15rcl_publisher_sEEESaISA_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        onIFvR36rmw_offered_deadline_missed_status_sEESt10shared_ptrI15rcl_publisher_sEEESaISA_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        onIntraProcessBuffer<MessageT, Alloc, Deleter>, or to SubscriptionROSMsgIntraProcessBuffer<ROSMessageType,ROSMessageTypeAllocator,ROSMessageTypeDeleter> which can happen when the publisher and subscription use different allocator types, which is not supported: true
-        on_msgs3msg7Marker_ISaIvEEES6_EC4EPNS0_15node_interfaces17NodeBaseInterfaceERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERKNS0_3QoSERKNS0_29PublisherOptionsWithAllocatorIS6_EEEUlR35rmw_qos_incompatible_event_status_sE_St10shared_ptrI15rcl_publisher_sEEESaISX_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        only with keep last history qos policy: true
-        only with volatile durability: true
-        orIS6_EEEUlR35rmw_qos_incompatible_event_status_sE_St10shared_ptrI15rcl_publisher_sEEESaISX_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        ory qos policy: true
-        "os/humble/include/rclcpp/rclcpp/qos_event.hpp:254] error initializing logging: ": true
-        os_incompatible_event_status_sEESt10shared_ptrI15rcl_publisher_sEEE: true
-        ot allowed with a zero qos history depth value: true
-        otDistanceCheckerNodeFvvEPS3_EELPv0EEESaISA_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        ounted_ptr_inplaceIN6rclcpp15QOSEventHandlerISt8functionIFvR35rmw_qos_incompatible_event_status_sEESt10shared_ptrI15rcl_publisher_sEEESaISA_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        ounted_ptr_inplaceISaIcESaIS0_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        out of scope: true
-        overrides.: true
-        owed only with volatile durability: true
-        owed with a zero qos history depth value: true
-        "p/experimental/intra_process_manager.hpp:197] error initializing logging: ": true
-        "p/qos_event.hpp:254] error initializing logging: ": true
-        "p/rclcpp/experimental/intra_process_manager.hpp:197] error initializing logging: ": true
-        p15QOSEventHandlerISt8functionIFvR35rmw_qos_incompatible_event_status_sEESt10shared_ptrI15rcl_publisher_sEEESaISA_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        p15QOSEventHandlerISt8functionIFvR36rmw_offered_deadline_missed_status_sEESt10shared_ptrI15rcl_publisher_sEEESaISA_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        "p:197] error initializing logging: ": true
-        p::shutdown(): true
-        p_counted_ptr_inplaceIN6rclcpp15QOSEventHandlerISt8functionIFvR36rmw_offered_deadline_missed_status_sEESt10shared_ptrI15rcl_publisher_sEEESaISA_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        p_counted_ptr_inplaceIN6rclcpp15QOSEventHandlerIZNS0_9PublisherIN18visualization_msgs3msg7Marker_ISaIvEEES6_EC4EPNS0_15node_interfaces17NodeBaseInterfaceERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERKNS0_3QoSERKNS0_29PublisherOptionsWithAllocatorIS6_EEEUlR35rmw_qos_incompatible_event_status_sE_St10shared_ptrI15rcl_publisher_sEEESaISX_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        pe: true
-        pe,ROSMessageTypeAllocator,ROSMessageTypeDeleter> which can happen when the publisher and subscription use different allocator types, which is not supported: true
-        peDeleter> which can happen when the publisher and subscription use different allocator types, which is not supported: true
-        perimental/intra_process_manager.hpp: true
-        period must be less than std::chrono::nanoseconds::max(): true
-        placeI24robotDistanceCheckerNodeSaIS0_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        placeIN18visualization_msgs3msg7Marker_ISaIvEEESaIS4_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        placeIN6rclcpp15QOSEventHandlerISt8functionIFvR36rmw_offered_deadline_missed_status_sEESt10shared_ptrI15rcl_publisher_sEEESaISA_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        placeISaIvESaIS0_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        pp: true
-        pp/experimental/intra_process_manager.hpp: true
-        "pp/experimental/intra_process_manager.hpp:197] error initializing logging: ": true
-        "pp/qos_event.hpp:254] error initializing logging: ": true
-        pp12experimental36SubscriptionROSMsgIntraProcessBufferIN18visualization_msgs3msg7Marker_ISaIvEEESaIS6_ESt14default_deleteIS6_EEE: true
-        pp9PublisherIN18visualization_msgs3msg7Marker_ISaIvEEES5_EESaIS7_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        pported: true
-        process communication is not allowed with a zero qos history depth value: true
-        process_publish: true
-        "pt/ros/humble/include/rclcpp/rclcpp/experimental/intra_process_manager.hpp:197] error initializing logging: ": true
-        "pt/ros/humble/include/rclcpp/rclcpp/experimental/intra_process_manager.hpp:260] error initializing logging: ": true
-        ption has unexpectedly gone out of scope: true
-        ption use different allocator types, which is not supported: true
-        ptr: true
-        ptrI15rcl_publisher_sEEE: true
-        ptrI15rcl_publisher_sEEESaISA_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        ptr_inplaceISaIcESaIS0_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        publish for invalid or no longer existing publisher id: true
-        publisher_sEEESaISA_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        publisher_sEEESaISX_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        put node_timers cannot be null: true
-        "r initializing logging: ": true
-        r invalid or no longer existing publisher id: true
-        r no longer existing publisher id: true
-        r to SubscriptionROSMsgIntraProcessBuffer<ROSMessageType,ROSMessageTypeAllocator,ROSMessageTypeDeleter> which can happen when the publisher and subscription use different allocator types, which is not supported: true
-        r<ROSMessageType,ROSMessageTypeAllocator,ROSMessageTypeDeleter> which can happen when the publisher and subscription use different allocator types, which is not supported: true
-        rI15rcl_publisher_sEEE: true
-        rI15rcl_publisher_sEEESaISA_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        rIN18visualization_msgs3msg7Marker_ISaIvEEES5_EESaIS7_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        rIT_EDpOT0_EUlS3_E_SaIvELN9__gnu_cxx12_Lock_policyE2EE: true
-        rOptionsWithAllocatorIS6_EEEUlR35rmw_qos_incompatible_event_status_sE_St10shared_ptrI15rcl_publisher_sEEESaISX_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        r_inplaceISaIvESaIS0_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        r_sEEESaISA_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        raProcessBuffer<ROSMessageType,ROSMessageTypeAllocator,ROSMessageTypeDeleter> which can happen when the publisher and subscription use different allocator types, which is not supported: true
-        "ra_process_manager.hpp:197] error initializing logging: ": true
-        "ra_process_manager.hpp:260] error initializing logging: ": true
-        ra_process_publish_and_return_shared: true
-        rability: true
-        rclcpp/rclcpp/experimental/intra_process_manager.hpp: true
-        rclcpp15QOSEventHandlerISt8functionIFvR35rmw_qos_incompatible_event_status_sEESt10shared_ptrI15rcl_publisher_sEEE: true
-        rclcpp15QOSEventHandlerISt8functionIFvR36rmw_offered_deadline_missed_status_sEESt10shared_ptrI15rcl_publisher_sEEESaISA_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        "rcutils|/opt/ros/humble/include/rclcpp/rclcpp/experimental/intra_process_manager.hpp:260] error initializing logging: ": true
-        red_deadline_missed_status_sEESt10shared_ptrI15rcl_publisher_sEEESaISA_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        red_ptrI15rcl_publisher_sEEESaISX_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        rfaceE: true
-        rflow.: true
-        rides.: true
-        ring::_M_construct null not valid: true
-        riod to nanoseconds resulted in integer overflow.: true
-        ription has unexpectedly gone out of scope: true
-        rker_ISaIvEEES5_EESaIS7_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        robotDistanceCheckerNodeFvvEPS2_EELPv0EEE: true
-        rocess communication allowed only with keep last history qos policy: true
-        rocessBuffer<MessageT, Alloc, Deleter>, or to SubscriptionROSMsgIntraProcessBuffer<ROSMessageType,ROSMessageTypeAllocator,ROSMessageTypeDeleter> which can happen when the publisher and subscription use different allocator types, which is not supported: true
-        "rocess_manager.hpp:260] error initializing logging: ": true
-        rocess_publish_and_return_shared: true
-        "ros/humble/include/rclcpp/rclcpp/qos_event.hpp:254] error initializing logging: ": true
-        "rror initializing logging: ": true
-        rt: true
-        ry depth value: true
-        s communication allowed only with keep last history qos policy: true
-        s communication is not allowed with a zero qos history depth value: true
-        s empty: true
-        "s/humble/include/rclcpp/rclcpp/experimental/intra_process_manager.hpp:197] error initializing logging: ": true
-        s17NodeBaseInterfaceERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERKNS0_3QoSERKNS0_29PublisherOptionsWithAllocatorIS6_EEEUlR35rmw_qos_incompatible_event_status_sE_St10shared_ptrI15rcl_publisher_sEEESaISX_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        sBase to SubscriptionIntraProcessBuffer<MessageT, Alloc, Deleter>, or to SubscriptionROSMsgIntraProcessBuffer<ROSMessageType,ROSMessageTypeAllocator,ROSMessageTypeDeleter> which can happen when the publisher and subscription use different allocator types, which is not supported: true
-        sEEESaISA_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        sE_St10shared_ptrI15rcl_publisher_sEEESaISX_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        s_lost_status_sEESt10shared_ptrI15rcl_publisher_sEEE: true
-        s_publish for invalid or no longer existing publisher id: true
-        sageT, Alloc, Deleter>, or to SubscriptionROSMsgIntraProcessBuffer<ROSMessageType,ROSMessageTypeAllocator,ROSMessageTypeDeleter> which can happen when the publisher and subscription use different allocator types, which is not supported: true
-        sageTypeAllocator,ROSMessageTypeDeleter> which can happen when the publisher and subscription use different allocator types, which is not supported: true
-        sageTypeDeleter> which can happen when the publisher and subscription use different allocator types, which is not supported: true
-        scription has unexpectedly gone out of scope: true
-        scriptionIntraProcessBase to SubscriptionIntraProcessBuffer<MessageT, Alloc, Deleter>, or to SubscriptionROSMsgIntraProcessBuffer<ROSMessageType,ROSMessageTypeAllocator,ROSMessageTypeDeleter> which can happen when the publisher and subscription use different allocator types, which is not supported: true
-        se cannot be null: true
-        sed_status_sEESt10shared_ptrI15rcl_publisher_sEEESaISA_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        sg7Marker_ISaIvEEES5_EESaIS7_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        sh for invalid or no longer existing publisher id: true
-        shared_ptrIT_EDpOT0_EUlS3_E_SaIvELN9__gnu_cxx12_Lock_policyE2EE: true
-        sher_sEEESaISX_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        ssSetting value: true
-        ss_lost_status_sEESt10shared_ptrI15rcl_publisher_sEEESaISA_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        "ss_manager.hpp:260] error initializing logging: ": true
-        ssed_status_sEESt10shared_ptrI15rcl_publisher_sEEESaISA_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        st history qos policy: true
-        std::chrono::nanoseconds::max(): true
-        struct null not valid: true
-        sualization_msgs3msg7Marker_ISaIvEEES6_EC4EPNS0_15node_interfaces17NodeBaseInterfaceERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERKNS0_3QoSERKNS0_29PublisherOptionsWithAllocatorIS6_EEEUlR35rmw_qos_incompatible_event_status_sE_St10shared_ptrI15rcl_publisher_sEEESaISX_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        sualization_msgs3msg7Marker_ISaIvEEESaIS6_ESt14default_deleteIS6_EEE: true
-        "s|/opt/ros/humble/include/rclcpp/rclcpp/qos_event.hpp:254] error initializing logging: ": true
+        ector::_M_realloc_insert: true
+        e����: true
+        f: true
+        "f��\b�": true
+        f��H�: true
+        f���@Y: true
+        g: true
+        g��h�: true
+        h: true
+        h[: true
+        h]: true
+        h`: true
+        hg: true
+        h�: true
+        i: true
+        ine: true
+        j: true
+        "j\x1f����": true
+        j���xp: true
+        k: true
+        k����: true
+        l: true
+        l�: true
+        m: true
+        n: true
+        nsert: true
+        n����Z: true
+        o: true
+        oc_insert: true
+        ot_distance_line: true
+        p: true
+        "p\x15���}": true
+        p�: true
+        p���ܯ: true
+        p�����: true
+        q: true
+        q��ġ: true
+        q����: true
+        r: true
+        r::_M_realloc_insert: true
+        "r��\f�": true
+        r���,o: true
+        r����Y: true
+        s: true
+        sb��: true
+        "s���\b�": true
+        s����: true
         t: true
-        t allocator type: true
-        t be negative: true
-        t be nullptr: true
-        t handle unexpectedly nullptr: true
-        t history qos policy: true
-        t node_timers cannot be null: true
-        t of scope: true
-        t10shared_ptrI15rcl_publisher_sEEESaISA_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        t23_Sp_counted_ptr_inplaceIN6rclcpp15QOSEventHandlerIZNS0_9PublisherIN18visualization_msgs3msg7Marker_ISaIvEEES6_EC4EPNS0_15node_interfaces17NodeBaseInterfaceERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERKNS0_3QoSERKNS0_29PublisherOptionsWithAllocatorIS6_EEEUlR35rmw_qos_incompatible_event_status_sE_St10shared_ptrI15rcl_publisher_sEEESaISX_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        t23_Sp_counted_ptr_inplaceISaIcESaIS0_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        t8functionIFvR36rmw_offered_deadline_missed_status_sEESt10shared_ptrI15rcl_publisher_sEEE: true
-        tHandlerISt8functionIFvR28rmw_liveliness_lost_status_sEESt10shared_ptrI15rcl_publisher_sEEESaISA_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        tHandlerIZNS_9PublisherIN18visualization_msgs3msg7Marker_ISaIvEEES5_EC4EPNS_15node_interfaces17NodeBaseInterfaceERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERKNS_3QoSERKNS_29PublisherOptionsWithAllocatorIS5_EEEUlR35rmw_qos_incompatible_event_status_sE_St10shared_ptrI15rcl_publisher_sEEE: true
-        t_distance_line: true
-        t_status_sEESt10shared_ptrI15rcl_publisher_sEEESaISA_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        t_status_sE_St10shared_ptrI15rcl_publisher_sEEESaISX_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        "take event info: %s": true
-        tal/intra_process_manager.hpp: true
-        tdown(): true
-        ted_ptr_inplaceIN18visualization_msgs3msg7Marker_ISaIvEEESaIS4_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        ted_ptr_inplaceIN6rclcpp15QOSEventHandlerISt8functionIFvR35rmw_qos_incompatible_event_status_sEESt10shared_ptrI15rcl_publisher_sEEESaISA_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        tedly nullptr: true
-        terfaceERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERKNS0_3QoSERKNS0_29PublisherOptionsWithAllocatorIS6_EEEUlR35rmw_qos_incompatible_event_status_sE_St10shared_ptrI15rcl_publisher_sEEESaISX_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        terfaces17NodeBaseInterfaceERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERKNS0_3QoSERKNS0_29PublisherOptionsWithAllocatorIS6_EEEUlR35rmw_qos_incompatible_event_status_sE_St10shared_ptrI15rcl_publisher_sEEESaISX_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        terfaces17NodeBaseInterfaceERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERKNS_3QoSERKNS_29PublisherOptionsWithAllocatorIS5_EEEUlR35rmw_qos_incompatible_event_status_sE_St10shared_ptrI15rcl_publisher_sEEE: true
-        textIS2_JEEESt10shared_ptrIT_EDpOT0_EUlS3_E_SaIvELN9__gnu_cxx12_Lock_policyE2EE: true
-        th keep last history qos policy: true
-        th value: true
-        thAllocatorIS6_EEEUlR35rmw_qos_incompatible_event_status_sE_St10shared_ptrI15rcl_publisher_sEEESaISX_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        the publisher and subscription use different allocator types, which is not supported: true
-        tialize event: true
-        "tializing logging: ": true
-        tion use different allocator types, which is not supported: true
-        tionIntraProcessBufferIN18visualization_msgs3msg7Marker_ISaIvEEESaIS6_ESt14default_deleteIS6_ES6_EE: true
-        tionROSMsgIntraProcessBuffer<ROSMessageType,ROSMessageTypeAllocator,ROSMessageTypeDeleter> which can happen when the publisher and subscription use different allocator types, which is not supported: true
-        to SubscriptionIntraProcessBuffer<MessageT, Alloc, Deleter>, or to SubscriptionROSMsgIntraProcessBuffer<ROSMessageType,ROSMessageTypeAllocator,ROSMessageTypeDeleter> which can happen when the publisher and subscription use different allocator types, which is not supported: true
-        tor types, which is not supported: true
-        tor::_M_realloc_insert: true
-        torIT0_EEEUlPNS_15node_interfaces17NodeBaseInterfaceERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERKNS_3QoSEE_: true
-        tr: true
-        trI15rcl_publisher_sEEE: true
-        tr_inplaceIN6rclcpp15QOSEventHandlerISt8functionIFvR28rmw_liveliness_lost_status_sEESt10shared_ptrI15rcl_publisher_sEEESaISA_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        tr_inplaceIN6rclcpp15QOSEventHandlerISt8functionIFvR35rmw_qos_incompatible_event_status_sEESt10shared_ptrI15rcl_publisher_sEEESaISA_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        tr_inplaceIN6rclcpp15QOSEventHandlerIZNS0_9PublisherIN18visualization_msgs3msg7Marker_ISaIvEEES6_EC4EPNS0_15node_interfaces17NodeBaseInterfaceERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERKNS0_3QoSERKNS0_29PublisherOptionsWithAllocatorIS6_EEEUlR35rmw_qos_incompatible_event_status_sE_St10shared_ptrI15rcl_publisher_sEEESaISX_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        tr_inplaceISaIcESaIS0_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        tra process manager: true
-        traProcessBuffer<ROSMessageType,ROSMessageTypeAllocator,ROSMessageTypeDeleter> which can happen when the publisher and subscription use different allocator types, which is not supported: true
-        tra_process_publish_and_return_shared: true
-        traitsIcESaIcEEERKNS_3QoSERKNS_29PublisherOptionsWithAllocatorIS5_EEEUlR35rmw_qos_incompatible_event_status_sE_St10shared_ptrI15rcl_publisher_sEEE: true
-        traprocess communication allowed only with keep last history qos policy: true
-        tring::_M_construct null not valid: true
-        tting value: true
-        u_cxx12_Lock_policyE2EE: true
-        ublish_and_return_shared: true
-        ublisher and subscription use different allocator types, which is not supported: true
-        ublisher id: true
-        ublisherIN18visualization_msgs3msg7Marker_ISaIvEEES5_EESaIS7_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        ublisherOptionsWithAllocatorIS5_EEEUlR35rmw_qos_incompatible_event_status_sE_St10shared_ptrI15rcl_publisher_sEEE: true
-        ubscription use different allocator types, which is not supported: true
-        "ude/rclcpp/rclcpp/qos_event.hpp:254] error initializing logging: ": true
-        ue: true
-        uffer<ROSMessageType,ROSMessageTypeAllocator,ROSMessageTypeDeleter> which can happen when the publisher and subscription use different allocator types, which is not supported: true
-        ull: true
-        ullptr: true
-        umble/include/rclcpp/rclcpp/experimental/intra_process_manager.hpp: true
-        "umble/include/rclcpp/rclcpp/experimental/intra_process_manager.hpp:197] error initializing logging: ": true
-        unctionIFvR36rmw_offered_deadline_missed_status_sEESt10shared_ptrI15rcl_publisher_sEEE: true
-        unication is not allowed with a zero qos history depth value: true
-        unted_ptr_inplaceIN6rclcpp15QOSEventHandlerIZNS0_9PublisherIN18visualization_msgs3msg7Marker_ISaIvEEES6_EC4EPNS0_15node_interfaces17NodeBaseInterfaceERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERKNS0_3QoSERKNS0_29PublisherOptionsWithAllocatorIS6_EEEUlR35rmw_qos_incompatible_event_status_sE_St10shared_ptrI15rcl_publisher_sEEESaISX_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        urred: true
-        us_sE_St10shared_ptrI15rcl_publisher_sEEESaISX_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        ut of scope: true
-        "utils|/opt/ros/humble/include/rclcpp/rclcpp/experimental/intra_process_manager.hpp:260] error initializing logging: ": true
-        "utils|/opt/ros/humble/include/rclcpp/rclcpp/qos_event.hpp:254] error initializing logging: ": true
-        vEEES6_EC4EPNS0_15node_interfaces17NodeBaseInterfaceERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERKNS0_3QoSERKNS0_29PublisherOptionsWithAllocatorIS6_EEEUlR35rmw_qos_incompatible_event_status_sE_St10shared_ptrI15rcl_publisher_sEEESaISX_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        vELN9__gnu_cxx12_Lock_policyE2EE: true
-        vR35rmw_qos_incompatible_event_status_sEESt10shared_ptrI15rcl_publisher_sEEESaISA_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        vR36rmw_offered_deadline_missed_status_sEESt10shared_ptrI15rcl_publisher_sEEESaISA_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        valid or no longer existing publisher id: true
-        "validation callback failed: ": true
-        value: true
-        ved incorrect allocator type: true
-        "vent info: %s": true
-        visualization_msgs3msg7Marker_ISaIvEEES5_EESaIS7_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        w_liveliness_lost_status_sEESt10shared_ptrI15rcl_publisher_sEEESaISA_ELN9__gnu_cxx12_Lock_policyE2EE: true
-        when the publisher and subscription use different allocator types, which is not supported: true
-        with volatile durability: true
-        x1112basic_stringIcSt11char_traitsIcESaIcEEERKNS_3QoSERKNS_29PublisherOptionsWithAllocatorIS5_EEEUlR35rmw_qos_incompatible_event_status_sE_St10shared_ptrI15rcl_publisher_sEEE: true
-        x12_Lock_policyE2EE: true
-        xperimental/intra_process_manager.hpp: true
-        "xperimental/intra_process_manager.hpp:197] error initializing logging: ": true
-        xx12_Lock_policyE2EE: true
-        y qos policy: true
-        yE2EE: true
-        ype,ROSMessageTypeAllocator,ROSMessageTypeDeleter> which can happen when the publisher and subscription use different allocator types, which is not supported: true
-        ypeAllocator,ROSMessageTypeDeleter> which can happen when the publisher and subscription use different allocator types, which is not supported: true
-        ypeDeleter> which can happen when the publisher and subscription use different allocator types, which is not supported: true
+        tance_line: true
+        t��T�: true
+        t����V: true
+        u: true
+        u����: true
+        v: true
+        v��Ĥ: true
+        v���Xh: true
+        w: true
+        "w��\f�": true
+        w����p: true
+        x: true
+        xC����: true
+        x�: true
+        x���4m: true
+        x����^: true
+        y: true
+        yyyyyy�?�������?||||||�?111111�?: true
+        yyyyy�?�������?||||||�?111111�?: true
         yyyy�?�������?||||||�?111111�?: true
-        "zing logging: ": true
+        y����: true
+        z: true
+        "z\x04��dv": true
+        "z\x05���v": true
+        z*��̄: true
+        z���Ha: true
         "{": true
-        "|||�?111111�?": true
-        �.A/������C: true
+        "|": true
+        "|W": true
+        "|||||�?111111�?": true
+        "||||�?111111�?": true
+        "||�?111111�?": true
+        "|~": true
+        "|�": true
+        "|�?111111�?": true
+        "|����": true
+        "}": true
+        "}��D�": true
+        "}���H�": true
+        "}����": true
+        "~": true
+        "~\x13���|": true
+        "~��\x04�": true
+        ~����e: true
+        ~����j: true
+        "": true
+        "��\x04�": true
+        ġ: true
+        Ĩ: true
+        ȋ: true
+        Ȟ: true
+        ȴ: true
+        ȸ: true
+        ̌: true
+        "̷\x01": true
+        ͖����: true
+        Ύ��|W: true
+        "Ѐ��\x04�": true
+        к: true
+        ؏: true
+        ڨ���a: true
+        ܯ: true
+        ݋��$X: true
+        ާ���`: true
+        �: true
+        "�\x01": true
+        "�\x01��|u": true
+        "�\x04l": true
+        "�\x04y": true
+        "�\x04�": true
+        "�\x04���v": true
+        "�\x06���w": true
+        "�\x07��$x": true
+        "�\b[": true
+        "�\ba": true
+        "�\bb": true
+        "�\bf": true
+        "�\bh": true
+        "�\b{": true
+        "�\b�": true
+        "�\b���x": true
+        "�\t��\x04y": true
+        "�\n": true
+        "�\f�": true
+        "�\x0f��\\z": true
+        "�\x10_": true
+        "�\x10j": true
+        "�\x10�": true
+        "�\x10��\b{": true
+        "�\x11���{": true
+        "�\x14�": true
+        "�\x14��|}": true
+        "�\x18k": true
+        "�\x18t": true
+        "�\x18�": true
+        "�\x1cr": true
+        "�\x1cv": true
+        "�\x1c�": true
+        � �: true
+        � ����: true
+        �"�� �: true
+        �"����: true
+        �$Z: true
+        �$x: true
+        �$y: true
+        �$�: true
+        �$����: true
+        �%����: true
+        �(]: true
+        �(e: true
+        �(�: true
+        "�*��\f�": true
+        �*����: true
+        �,�: true
+        �,����: true
+        �0_: true
+        �0c: true
+        �0z: true
+        "�0": true
+        �0�: true
+        "�7��\x14�": true
+        �8k: true
+        �8t: true
+        �8�: true
+        �;����: true
+        �<}: true
+        �?: true
         �?XXXXXX�?yyyyyy�?�������?||||||�?111111�?: true
+        �?yyyyyy�?�������?||||||�?111111�?: true
+        �?||||||�?111111�?: true
+        �@d: true
+        �@i: true
+        �@�: true
+        "�A��\x14�": true
+        �B����: true
+        �Dr: true
+        �Dv: true
+        �Dw: true
+        �Dy: true
+        �D�: true
+        �D��ȋ: true
+        �H`: true
+        �Hf: true
+        �H�: true
+        �H��0�: true
+        �I��P�: true
+        �J��P�: true
+        �K����: true
+        �M����: true
+        �O��h�: true
+        �Pb: true
+        �Pc: true
+        �P�: true
+        "�R��\x10�": true
+        �R��0�: true
+        �R��p�: true
+        �S��P�: true
+        �S����: true
+        �T|: true
+        �T�: true
+        "�T��\x10�": true
+        �V: true
+        �V����: true
+        �W: true
+        �X: true
+        �Xj: true
+        �Xs: true
+        �X~: true
+        �X�: true
+        �Y: true
+        �Z: true
+        "�Z��\x18�": true
+        �[: true
+        �[����: true
+        �\: true
+        �\W: true
+        �\u: true
+        �\}: true
+        �\����: true
+        �]: true
+        �^��Ț: true
+        �_: true
+        �_��P�: true
+        �`: true
+        �`Y: true
+        �`�: true
+        �`����: true
+        �a: true
+        �b: true
+        �b��@�: true
+        �c: true
+        �c����: true
+        �d: true
+        �d�: true
+        �e: true
+        �e����: true
+        �f��(�: true
+        �f��H�: true
+        �h: true
+        �h]: true
+        �hg: true
+        �h�: true
+        �i: true
+        �j: true
+        �k: true
+        �k��П: true
+        �l: true
+        �lo: true
+        �m: true
+        �n: true
+        �o: true
+        �pb: true
+        �p�: true
+        �p��d�: true
+        �r: true
+        �s��4�: true
+        �s���V: true
+        �t: true
+        �t�: true
+        �u: true
+        �v: true
+        �x_: true
+        �xc: true
+        �xh: true
+        �xq: true
+        �xs: true
+        �xt: true
+        �z: true
+        �{: true
+        �{��D�: true
+        �|: true
+        �|m: true
+        �|u: true
+        �|~: true
+        �|�: true
+        �|����: true
+        �}: true
+        �ġ: true
+        �Ĥ: true
+        �ȳ: true
+        �ȵ: true
+        �̄: true
+        �̌: true
+        �Ѓ: true
+        �Ѝ: true
+        �В: true
+        �Г: true
+        �Ж: true
+        �ؗ: true
+        �ܠ: true
+        ��: true
+        "��\x04Z": true
+        "��\x04l": true
+        "��\x04�": true
+        "��\b`": true
+        "��\bh": true
+        "��\b~": true
+        "��\b�": true
+        "��\fo": true
+        "��\fq": true
+        "��\fz": true
+        "��\x10_": true
+        "��\x10s": true
+        "��\x10�": true
+        "��\x14|": true
+        "��\x18k": true
+        "��\x18�": true
+        �� Y: true
+        �� i: true
+        �� �: true
+        ��$Z: true
+        ��$y: true
+        ��$�: true
+        ��(\: true
+        ��(a: true
+        ��(f: true
+        ��({: true
+        ��(�: true
+        ��,�: true
+        ��0j: true
+        ��0z: true
+        "��0": true
+        ��0�: true
+        ��4|: true
+        ��8�: true
+        ��<W: true
+        ��<u: true
+        ��<�: true
         ��?||||||�?111111�?: true
-        ��C: true
-        ��X���������������������������������������������������������������������������������������������������: true
-        ���C: true
-        ���t���������������X���������������������������������������������������������������������������������������������������: true
-        ����?||||||�?111111�?: true
-        ����t���������������X���������������������������������������������������������������������������������������������������: true
-        �����?||||||�?111111�?: true
-        �����C: true
-        �������t���������������X���������������������������������������������������������������������������������������������������: true
-        ��������: true
-        ���������t���������������X���������������������������������������������������������������������������������������������������: true
-        ����������: true
-        ������������: true
-        ������������t���������������X���������������������������������������������������������������������������������������������������: true
-        �������������t���������������X���������������������������������������������������������������������������������������������������: true
-        ��������������: true
-        �����������������t���������������X���������������������������������������������������������������������������������������������������: true
-        ������������������t���������������X���������������������������������������������������������������������������������������������������: true
-        �����������������������: true
-        �����������������������������: true
-        �������������������������������t���������������X���������������������������������������������������������������������������������������������������: true
-        ����������������������������������t���������������X���������������������������������������������������������������������������������������������������: true
-        �����������������������������������: true
-        �����������������������������������t���������������X���������������������������������������������������������������������������������������������������: true
-        ������������������������������������t���������������X���������������������������������������������������������������������������������������������������: true
-        �����������������������������������������: true
-        �����������������������������������������t���������������X���������������������������������������������������������������������������������������������������: true
-        ������������������������������������������t���������������X���������������������������������������������������������������������������������������������������: true
-        ��������������������������������������������t���������������X���������������������������������������������������������������������������������������������������: true
-        �����������������������������������������������t���������������X���������������������������������������������������������������������������������������������������: true
-        ������������������������������������������������t���������������X���������������������������������������������������������������������������������������������������: true
-        ����������������������������������������������������: true
-        �������������������������������������������������������: true
-        �������������������������������������������������������������: true
-        �������������������������������������������������������������t���������������X���������������������������������������������������������������������������������������������������: true
-        ���������������������������������������������������������������: true
-        �������������������������������������������������������������������: true
-        �������������������������������������������������������������������t���������������X���������������������������������������������������������������������������������������������������: true
-        �����������������������������������������������������������������������t���������������X���������������������������������������������������������������������������������������������������: true
-        ������������������������������������������������������������������������t���������������X���������������������������������������������������������������������������������������������������: true
-        �������������������������������������������������������������������������t���������������X���������������������������������������������������������������������������������������������������: true
-        ��������������������������������������������������������������������������: true
-        ����������������������������������������������������������������������������t���������������X���������������������������������������������������������������������������������������������������: true
-        �������������������������������������������������������������������������������t���������������X���������������������������������������������������������������������������������������������������: true
-        ������������������������������������������������������������������������������������: true
-        ��������������������������������������������������������������������������������������t���������������X���������������������������������������������������������������������������������������������������: true
-        ���������������������������������������������������������������������������������������: true
-        �������������������������������������������������������������������������������������������: true
-        ��������������������������������������������������������������������������������������������: true
-        ���������������������������������������������������������������������������������������������: true
-        �����������������������������������������������������������������������������������������������t���������������X���������������������������������������������������������������������������������������������������: true
-        ������������������������������������������������������������������������������������������������t���������������X���������������������������������������������������������������������������������������������������: true
-        ��������������������������������������������������������������������������������������������������t���������������X���������������������������������������������������������������������������������������������������: true
-        ���������������������������������������������������������������������������������������������������: true
-        ����������������������������������������������������������������������������������������������������t���������������X���������������������������������������������������������������������������������������������������: true
-        �������������������������������������������������������������������������������������������������������t���������������X���������������������������������������������������������������������������������������������������: true
-        ���������������������������������������������������������������������������������������������������������t���������������X���������������������������������������������������������������������������������������������������: true
-        ��������������������������������������������������������������������������������������������������������������t���������������X���������������������������������������������������������������������������������������������������: true
-        ��������������������������������������������������������������������������������������������������������������������������������t���������������X���������������������������������������������������������������������������������������������������: true
-        �����������������������������������������������������������������������������������������������������������������������������������t���������������X���������������������������������������������������������������������������������������������������: true
-        ����������������������������������������������������������������������������������������������������������������������������������������t���������������X���������������������������������������������������������������������������������������������������: true
-        �����������������������������������������������������������������������������������������������������������������������������������������t���������������X���������������������������������������������������������������������������������������������������: true
-        ����������������������������������������������������������������������������������������������������������������������������������������������t���������������X���������������������������������������������������������������������������������������������������: true
-        �������������������������������������������������������������������������������������������������������������������������������������������������t���������������X���������������������������������������������������������������������������������������������������: true
-        ��������������������������������������������������������������������������������������������������������������������������������������������������t���������������X���������������������������������������������������������������������������������������������������: true
-        ���������������������������������������������������������������������������������������������������������������������������������������������������t���������������X���������������������������������������������������������������������������������������������������: true
-        ����������������������������������������������������������������������������������������������������������������������������������������������������t���������������X���������������������������������������������������������������������������������������������������: true
+        ��@�: true
+        ��Dx: true
+        ��D�: true
+        ��H`: true
+        ��He: true
+        ��H�: true
+        ��Ln: true
+        ��L�: true
+        ��Pb: true
+        ��P�: true
+        ��V: true
+        ��X: true
+        ��Xh: true
+        ��Xj: true
+        ��Xk: true
+        ��X~: true
+        ��X�: true
+        ��[: true
+        ��\: true
+        ��\�: true
+        ��]: true
+        ��^: true
+        ��_: true
+        ��`: true
+        ��`d: true
+        ��`�: true
+        ��dX: true
+        ��dx: true
+        ��d�: true
+        ��e: true
+        ��f: true
+        ��g: true
+        ��h: true
+        ��h\: true
+        ��h^: true
+        ��h�: true
+        ��j: true
+        ��k: true
+        ��l: true
+        ��n: true
+        ��o: true
+        ��py: true
+        ��p�: true
+        ��r: true
+        ��s: true
+        ��t: true
+        ��tl: true
+        ��t|: true
+        ��t�: true
+        ��u: true
+        ��v: true
+        ��w: true
+        ��x: true
+        ��xh: true
+        ��xk: true
+        ��xp: true
+        ��xs: true
+        ��x�: true
+        ��z: true
+        ��{: true
+        ��|: true
+        ��|~: true
+        ��|�: true
+        "��|�\x01": true
+        ��}: true
+        ��~: true
+        "��": true
+        ��ġ: true
+        ��ħ: true
+        ��ī: true
+        ��ș: true
+        ��Ț: true
+        ��Ȟ: true
+        ��ȶ: true
+        ��ȸ: true
+        ��Ѝ: true
+        ��П: true
+        ��ԅ: true
+        ���: true
+        "���\bf": true
+        "���\bg": true
+        "���\b�": true
+        "���\fo": true
+        "���\x10j": true
+        "���\x10s": true
+        "���\x18k": true
+        "���\x18p": true
+        "���\x1cW": true
+        "���\x1c�": true
+        ��� Y: true
+        ��� d: true
+        ���$Z: true
+        ���$�: true
+        ���(\: true
+        ���(e: true
+        ���(n: true
+        ���0q: true
+        ���4�: true
+        ���8k: true
+        ���8p: true
+        ���8�: true
+        ���<�: true
+        ���?||||||�?111111�?: true
+        ���@Y: true
+        ���DX: true
+        ���D�: true
+        ���Ha: true
+        ���He: true
+        ���H�: true
+        ���Ln: true
+        ���Lo: true
+        ���Pb: true
+        ���P�: true
+        ���Tl: true
+        ���V: true
+        ���W: true
+        ���X: true
+        ���Xh: true
+        ���Xj: true
+        ���Xp: true
+        ���Xs: true
+        ���Y: true
+        ���Z: true
+        ���\m: true
+        ���^: true
+        ���_: true
+        ���a: true
+        ���c: true
+        ���d: true
+        ���dX: true
+        ���dZ: true
+        ���e: true
+        ���f: true
+        ���h: true
+        ���h\: true
+        ���h]: true
+        ���hf: true
+        ���h�: true
+        ���k: true
+        ���l: true
+        ���m: true
+        ���n: true
+        ���o: true
+        ���p�: true
+        ���r: true
+        ���s: true
+        ���t: true
+        ���tl: true
+        ���u: true
+        ���v: true
+        ���w: true
+        ���x: true
+        ���y: true
+        ���z: true
+        ���{: true
+        ���|: true
+        ���|m: true
+        ���}: true
+        ���~: true
+        "���": true
+        ����: true
+        "����\x04Z": true
+        "����\b�": true
+        "����\x10s": true
+        ���� i: true
+        ����$Z: true
+        ����(]: true
+        ����(`: true
+        ����(�: true
+        ����<W: true
+        ����<�: true
+        ����H�: true
+        ����Ln: true
+        ����Lo: true
+        ����X: true
+        ����X�: true
+        ����Y: true
+        ����Z: true
+        ����[: true
+        ����]: true
+        ����_: true
+        ����a: true
+        ����b: true
+        ����d: true
+        ����e: true
+        ����f: true
+        ����h: true
+        ����ha: true
+        ����hf: true
+        ����h�: true
+        ����i: true
+        ����j: true
+        ����o: true
+        ����p: true
+        ����p�: true
+        ����q: true
+        ����s: true
+        ����xk: true
+        ����xq: true
+        ����ȶ: true
+        ����ԭ: true
+        �����: true
+        �����`: true
+        �����b: true
+        �����d: true
+        �����e: true
+        �����k: true
+        �����l: true
+        �����n: true
+        �����o: true
+        �����s: true
+        ������: true
+        ������?||||||�?111111�?: true
       Topic:
         Depth: 5
         Durability Policy: Volatile
@@ -1198,25 +1726,25 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz_default_plugins/XYOrbit
-      Distance: 164.9080810546875
+      Distance: 13.924347877502441
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: -0.24639219045639038
-        Y: 0.4177771806716919
-        Z: 0
+        X: -18.159013748168945
+        Y: -11.385150909423828
+        Z: -9.076243259187322e-07
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 1.039797306060791
+      Pitch: 0.5647972822189331
       Target Frame: robot1_base_link
       Value: XYOrbit (rviz_default_plugins)
-      Yaw: 4.717236518859863
+      Yaw: 3.6540510654449463
     Saved: ~
 Window Geometry:
   Displays:
