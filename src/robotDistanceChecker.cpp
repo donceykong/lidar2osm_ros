@@ -36,15 +36,15 @@ public:
         // Declare parameters
         this->declare_parameter<std::string>("frame1", "robot1_base_link");
         this->declare_parameter<std::string>("frame2", "robot2_base_link");
-        this->declare_parameter<std::string>("frame3", "robot3_base_link");
-        this->declare_parameter<std::string>("frame4", "robot4_base_link");
+        // this->declare_parameter<std::string>("frame3", "robot3_base_link");
+        // this->declare_parameter<std::string>("frame4", "robot4_base_link");
         this->declare_parameter<double>("distance_threshold", 10.0);
 
         // Get parameters
         this->get_parameter("frame1", frame1_);
         this->get_parameter("frame2", frame2_);
-        this->get_parameter("frame3", frame3_);
-        this->get_parameter("frame4", frame4_);
+        // this->get_parameter("frame3", frame3_);
+        // this->get_parameter("frame4", frame4_);
         this->get_parameter("distance_threshold", distance_threshold_);
 
         // Publisher for visualization markers
