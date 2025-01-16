@@ -2,17 +2,20 @@ import os
 from launch import LaunchDescription
 from launch_ros.actions import Node
 from launch.actions import ExecuteProcess, TimerAction
-from launch.substitutions import LaunchConfiguration
+from launch.substitutions import Command, LaunchConfiguration
 from ament_index_python.packages import get_package_share_directory
 
 def generate_launch_description():
-    rviz_config_path = "/home/donceykong/Desktop/ARPG/projects/fall_2024/Lidar2OSM_FULL/lidar2osm_testing_ws/src/lidar2osm_ros/rviz/rviz2_layout.rviz"
-    bag1_path = "/media/donceykong/doncey_ssd_02/lidar2osm_bags/kittredge_loop_robot1/kittredge_loop_robot1_0.db3"
-    bag2_path = "/media/donceykong/doncey_ssd_02/lidar2osm_bags/kittredge_loop_robot2/kittredge_loop_robot2_0.db3"
+    # rviz_config_path = "/home/donceykong/Desktop/ARPG/projects/fall_2024/Lidar2OSM_FULL/lidar2osm_testing_ws/src/lidar2osm_ros/rviz/rviz2_layout.rviz"
+    # bag1_path = "/media/donceykong/doncey_ssd_02/lidar2osm_bags/kittredge_loop_robot1/kittredge_loop_robot1_0.db3"
+    # bag2_path = "/media/donceykong/doncey_ssd_02/lidar2osm_bags/kittredge_loop_robot2/kittredge_loop_robot2_0.db3"
 
-    # rviz_config_path = "/home/donceykong/Desktop/ros2_ws/src/lidar2osm_ros/rviz/rviz2_layout.rviz"
-    # bag1_path = "/home/donceykong/Desktop/lidar2osm_data/orig_kittredge_loop_robot1/kittredge_loop_robot1_0.db3"
-    # bag2_path = "/home/donceykong/Desktop/lidar2osm_data/orig_kittredge_loop_robot2/kittredge_loop_robot2_0.db3"
+    rviz_config_path = "/home/donceykong/Desktop/ARPG/projects/spring2025/lidar2osm_full/lidar2osm_ws/src/lidar2osm_ros/rviz/rviz2_layout.rviz"
+    bag_dir = "/home/donceykong/Desktop/ARPG/projects/spring2025/lidar2osm_full/cu-multi-dataset/data/ros2_bags"
+
+    bag1_path = os.path.join(bag_dir, "kittredge_loop_robot1/kittredge_loop_robot1_0.db3")
+    bag2_path = os.path.join(bag_dir, "kittredge_loop_robot2/kittredge_loop_robot2_0.db3")
+    bag3_path = os.path.join(bag_dir, "kittredge_loop_robot3/kittredge_loop_robot3_0.db3")
 
     # Paths
     # bag_file_path = LaunchConfiguration(bag_path)
@@ -52,6 +55,13 @@ def generate_launch_description():
             ('/cloud_in', '/robot1/ouster/semantic_points')
         ]
     )
+
+    robot1_urdf = Node(
+        package='robot_state_publisher',
+        executable='robot_state_publisher',
+        name='robot_state_publisher',
+        parameters=[{'robot_description': Command(['xacro ', 'urdf/robot.urdf'])}],
+    )
     
     # ROS 2 bag play node
     play_bag1 = ExecuteProcess(
@@ -60,6 +70,10 @@ def generate_launch_description():
     )
     play_bag2 = ExecuteProcess(
         cmd=['ros2', 'bag', 'play', bag2_path],
+        output='screen'
+    )
+    play_bag3 = ExecuteProcess(
+        cmd=['ros2', 'bag', 'play', bag3_path],
         output='screen'
     )
 
@@ -80,7 +94,9 @@ def generate_launch_description():
     return LaunchDescription([
         # octomap_server_node, 
         robot_distance_checker_node,
+        robot1_urdf,
         play_bag1,
         play_bag2,
+        play_bag3,
         rviz_node
     ])
