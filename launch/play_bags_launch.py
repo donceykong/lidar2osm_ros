@@ -1,35 +1,66 @@
 import os
 from launch import LaunchDescription
 from launch_ros.actions import Node
+from launch_ros.substitutions import FindPackageShare
 from launch.actions import ExecuteProcess, TimerAction
-from launch.substitutions import Command, LaunchConfiguration
+from launch.substitutions import Command, LaunchConfiguration, PathJoinSubstitution
 from ament_index_python.packages import get_package_share_directory
+from launch_ros.parameter_descriptions import ParameterValue
+
+# IS this the same as FindPackageShare?
+# from ament_index_python.packages import get_package_prefix 
+
+
+def add_robot(env, robot_num, root_data_dir):
+    robot_name = f"robot{robot_num}"
+
+    # Play bag for robot
+    robot_bag_path = os.path.join(root_data_dir, f"{env}_{robot_name}", f"{env}_{robot_name}_0.db3")
+    robot_bag_play = ExecuteProcess(
+        cmd=['ros2', 'bag', 'play', robot_bag_path],
+        output='screen'
+    )
+
+    # Publish URDF for robot
+    robot_urdf = Node(
+        package='robot_state_publisher',
+        executable='robot_state_publisher',
+        name='robot_state_publisher',
+        parameters=[{
+            'robot_description': Command([
+                'xacro ',
+                PathJoinSubstitution([
+                    FindPackageShare('lidar2osm_ros'),
+                    'urdf',
+                    'multi_robot.urdf.xacro'
+                ]),
+                ' ', 'name:=', f"{robot_name}"
+            ])
+        }],
+        remappings=[
+            ('/robot_description', f'/{robot_name}/robot_description')  # Remap the topic
+        ]
+    )
+
+    return robot_bag_play, robot_urdf
+
 
 def generate_launch_description():
-    # rviz_config_path = "/home/donceykong/Desktop/ARPG/projects/fall_2024/Lidar2OSM_FULL/lidar2osm_testing_ws/src/lidar2osm_ros/rviz/rviz2_layout.rviz"
-    # bag1_path = "/media/donceykong/doncey_ssd_02/lidar2osm_bags/kittredge_loop_robot1/kittredge_loop_robot1_0.db3"
-    # bag2_path = "/media/donceykong/doncey_ssd_02/lidar2osm_bags/kittredge_loop_robot2/kittredge_loop_robot2_0.db3"
+    environment = "kittredge_loop"
+    number_of_robots = 4
+    root_data_dir = "/home/donceykong/Desktop/ARPG/projects/spring2025/lidar2osm_full/cu-multi-dataset/data/ros2_bags"
+    node_list = []
 
-    rviz_config_path = "/home/donceykong/Desktop/ARPG/projects/spring2025/lidar2osm_full/lidar2osm_ws/src/lidar2osm_ros/rviz/rviz2_layout.rviz"
-    bag_dir = "/home/donceykong/Desktop/ARPG/projects/spring2025/lidar2osm_full/cu-multi-dataset/data/ros2_bags"
-
-    bag1_path = os.path.join(bag_dir, "kittredge_loop_robot1/kittredge_loop_robot1_0.db3")
-    bag2_path = os.path.join(bag_dir, "kittredge_loop_robot2/kittredge_loop_robot2_0.db3")
-    bag3_path = os.path.join(bag_dir, "kittredge_loop_robot3/kittredge_loop_robot3_0.db3")
-
-    # Paths
-    # bag_file_path = LaunchConfiguration(bag_path)
-    
-    # rviz_config_path = LaunchConfiguration(
-    #     os.path.join(get_package_share_directory('lidar2osm_ros'), 'rviz', rviz_config_path)
-    # )
+    for robot_num in range(1, number_of_robots+1):
+        per_robot_node_list = add_robot(environment, robot_num, root_data_dir)
+        node_list.extend(per_robot_node_list)
 
     robot_distance_checker_node = Node(
         package='lidar2osm_ros',
         executable='robot_distance_checker',
         name='robot_distance_checker'
     )
-    
+
     octomap_server_node = Node(
         package='octomap_server',
         executable='octomap_server_node',
@@ -56,47 +87,27 @@ def generate_launch_description():
         ]
     )
 
-    robot1_urdf = Node(
-        package='robot_state_publisher',
-        executable='robot_state_publisher',
-        name='robot_state_publisher',
-        parameters=[{'robot_description': Command(['xacro ', 'urdf/robot.urdf'])}],
-    )
-    
-    # ROS 2 bag play node
-    play_bag1 = ExecuteProcess(
-        cmd=['ros2', 'bag', 'play', bag1_path],
-        output='screen'
-    )
-    play_bag2 = ExecuteProcess(
-        cmd=['ros2', 'bag', 'play', bag2_path],
-        output='screen'
-    )
-    play_bag3 = ExecuteProcess(
-        cmd=['ros2', 'bag', 'play', bag3_path],
-        output='screen'
-    )
-
     # RViz node
-    rviz_node = TimerAction(
-        period=5.0,  # Start RViz after a delay to ensure topics are available
-        actions=[
-            Node(
-                package='rviz2',
-                executable='rviz2',
-                name='rviz2',
-                output='screen',
-                arguments=['-d', rviz_config_path]
-            )
-        ]
+    rviz_config_path = PathJoinSubstitution([FindPackageShare('lidar2osm_ros'), 'rviz', 'rviz2_layout.rviz'])
+    rviz_node = Node(
+        package='rviz2', 
+        executable='rviz2', 
+        name='rviz2', 
+        output='screen', 
+        arguments=['-d', rviz_config_path]
+    )
+    rviz_timed_node = TimerAction(
+        period=5.0,  # start after delay to ensure topics are available
+        actions=[rviz_node]
     )
 
-    return LaunchDescription([
-        # octomap_server_node, 
+    # Choose non-robot nodes here
+    non_robot_nodes = [
         robot_distance_checker_node,
-        robot1_urdf,
-        play_bag1,
-        play_bag2,
-        play_bag3,
-        rviz_node
-    ])
+        rviz_timed_node
+    ]
+
+    # Extend node list with non-robot nodes
+    node_list.extend(non_robot_nodes)
+
+    return LaunchDescription(node_list)
