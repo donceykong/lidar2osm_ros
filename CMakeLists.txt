@@ -5,7 +5,7 @@ if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
   add_compile_options(-Wall -Wextra -Wpedantic)
 endif()
 
-# find dependencies
+# Dependencies
 find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(sensor_msgs REQUIRED)
@@ -13,23 +13,44 @@ find_package(nav_msgs REQUIRED)
 find_package(tf2_ros REQUIRED)
 find_package(visualization_msgs REQUIRED)
 
-# Include directories
+# Headers
 include_directories(include)
 
+# ==========================  Executables ==========================
+
 # Robot distance checker node
-add_executable(robot_distance_checker 
-  src/robot_distance_checker.cpp 
-  src/rviz_marker_utils.cpp
+add_executable(robot_distance_checker src/robot_distance_checker.cpp src/rviz_marker_utils.cpp)
+ament_target_dependencies(robot_distance_checker rclcpp sensor_msgs nav_msgs tf2_ros visualization_msgs)
+
+# ==========================  Install shared files ==========================
+
+# Install the headers
+install(DIRECTORY include/${PROJECT_NAME}/
+  DESTINATION include/${PROJECT_NAME}/
 )
 
-# Link the executable to the required dependencies
-ament_target_dependencies(robot_distance_checker rclcpp sensor_msgs nav_msgs tf2_ros visualization_msgs)
+# Install URDF in share dir
+install(DIRECTORY urdf/
+    DESTINATION share/${PROJECT_NAME}/urdf
+)
+
+# Install rviz dir in share
+install(DIRECTORY rviz/
+    DESTINATION share/${PROJECT_NAME}/rviz
+)
+
+# Install the launch files
+install(DIRECTORY launch 
+    DESTINATION share/${PROJECT_NAME}/launch
+)
 
 # Install the node executable
 install(TARGETS
   robot_distance_checker
   DESTINATION lib/${PROJECT_NAME}
 )
+
+# ========================== Test / build ==========================
 
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
@@ -42,16 +63,5 @@ if(BUILD_TESTING)
   set(ament_cmake_cpplint_FOUND TRUE)
   ament_lint_auto_find_test_dependencies()
 endif()
-
-# Install the header files
-install(DIRECTORY include/${PROJECT_NAME}/
-  DESTINATION include/${PROJECT_NAME}/
-)
-
-# Install the launch files
-install(DIRECTORY 
-  launch
-  DESTINATION share/${PROJECT_NAME}/
-)
 
 ament_package()
