@@ -13,8 +13,14 @@ find_package(nav_msgs REQUIRED)
 find_package(tf2_ros REQUIRED)
 find_package(visualization_msgs REQUIRED)
 
-# Add your C++ executable
-add_executable(robot_distance_checker src/robotDistanceChecker.cpp)
+# Include directories
+include_directories(include)
+
+# Robot distance checker node
+add_executable(robot_distance_checker 
+  src/robot_distance_checker.cpp 
+  src/rviz_marker_utils.cpp
+)
 
 # Link the executable to the required dependencies
 ament_target_dependencies(robot_distance_checker rclcpp sensor_msgs nav_msgs tf2_ros visualization_msgs)
@@ -36,6 +42,11 @@ if(BUILD_TESTING)
   set(ament_cmake_cpplint_FOUND TRUE)
   ament_lint_auto_find_test_dependencies()
 endif()
+
+# Install the header files
+install(DIRECTORY include/${PROJECT_NAME}/
+  DESTINATION include/${PROJECT_NAME}/
+)
 
 # Install the launch files
 install(DIRECTORY 
