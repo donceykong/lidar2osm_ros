@@ -5,8 +5,8 @@ Panels:
     Property Tree Widget:
       Expanded:
         - /Global Options1
-      Splitter Ratio: 0.5
-    Tree Height: 1286
+      Splitter Ratio: 0.5950413346290588
+    Tree Height: 638
   - Class: rviz_common/Selection
     Name: Selection
   - Class: rviz_common/Tool Properties
@@ -24,7 +24,7 @@ Panels:
     Experimental: false
     Name: Time
     SyncMode: 0
-    SyncSource: ouster/semantic_points
+    SyncSource: ouster/points
 Visualization Manager:
   Class: ""
   Displays:
@@ -62,7 +62,7 @@ Visualization Manager:
               Color: 255; 255; 255
               Color Transformer: RGB8
               Decay Time: 0
-              Enabled: true
+              Enabled: false
               Invert Rainbow: false
               Max Color: 255; 255; 255
               Max Intensity: 85.5508041381836
@@ -83,7 +83,7 @@ Visualization Manager:
                 Value: /robot1/ouster/semantic_points
               Use Fixed Frame: true
               Use rainbow: true
-              Value: true
+              Value: false
             - Alpha: 1
               Autocompute Intensity Bounds: true
               Autocompute Value Bounds:
@@ -96,7 +96,7 @@ Visualization Manager:
               Color: 87; 227; 137
               Color Transformer: FlatColor
               Decay Time: 0
-              Enabled: false
+              Enabled: true
               Invert Rainbow: false
               Max Color: 255; 255; 255
               Max Intensity: 795
@@ -117,9 +117,9 @@ Visualization Manager:
                 Value: /robot1/ouster/points
               Use Fixed Frame: true
               Use rainbow: true
-              Value: false
+              Value: true
             - Class: rviz_default_plugins/MarkerArray
-              Enabled: true
+              Enabled: false
               Name: MarkerArray
               Namespaces:
                 {}
@@ -128,8 +128,8 @@ Visualization Manager:
                 Durability Policy: Volatile
                 History Policy: Keep Last
                 Reliability Policy: Reliable
-                Value: /occupied_cells_vis_array
-              Value: true
+                Value: /robot1/occupied_cells_vis_array
+              Value: false
             - Class: rviz_default_plugins/Axes
               Enabled: true
               Length: 1
@@ -155,95 +155,6 @@ Visualization Manager:
                 Expand Link Details: false
                 Expand Tree: false
                 Link Tree Style: Links in Alphabetic Order
-                robot1_base_link:
-                  Alpha: 1
-                  Show Axes: false
-                  Show Trail: false
-                  Value: true
-                robot1_camera_link:
-                  Alpha: 1
-                  Show Axes: false
-                  Show Trail: false
-                  Value: true
-                robot1_chassis:
-                  Alpha: 1
-                  Show Axes: false
-                  Show Trail: false
-                  Value: true
-                robot1_gnss_1_antenna_link:
-                  Alpha: 1
-                  Show Axes: false
-                  Show Trail: false
-                  Value: true
-                robot1_gnss_2_antenna_link:
-                  Alpha: 1
-                  Show Axes: false
-                  Show Trail: false
-                  Value: true
-                robot1_imu_link:
-                  Alpha: 1
-                  Show Axes: false
-                  Show Trail: false
-                  Value: true
-                robot1_left_front_axle_carrier:
-                  Alpha: 1
-                  Show Axes: false
-                  Show Trail: false
-                robot1_left_front_wheel:
-                  Alpha: 1
-                  Show Axes: false
-                  Show Trail: false
-                  Value: true
-                robot1_left_rear_axle_carrier:
-                  Alpha: 1
-                  Show Axes: false
-                  Show Trail: false
-                robot1_left_rear_wheel:
-                  Alpha: 1
-                  Show Axes: false
-                  Show Trail: false
-                  Value: true
-                robot1_left_steering_link:
-                  Alpha: 1
-                  Show Axes: false
-                  Show Trail: false
-                robot1_mounting_plate:
-                  Alpha: 1
-                  Show Axes: false
-                  Show Trail: false
-                  Value: true
-                robot1_os_sensor:
-                  Alpha: 1
-                  Show Axes: false
-                  Show Trail: false
-                  Value: true
-                robot1_ouster_riser_plate:
-                  Alpha: 1
-                  Show Axes: false
-                  Show Trail: false
-                  Value: true
-                robot1_right_front_axle_carrier:
-                  Alpha: 1
-                  Show Axes: false
-                  Show Trail: false
-                robot1_right_front_wheel:
-                  Alpha: 1
-                  Show Axes: false
-                  Show Trail: false
-                  Value: true
-                robot1_right_rear_axle_carrier:
-                  Alpha: 1
-                  Show Axes: false
-                  Show Trail: false
-                robot1_right_rear_wheel:
-                  Alpha: 1
-                  Show Axes: false
-                  Show Trail: false
-                  Value: true
-                robot1_right_steering_link:
-                  Alpha: 1
-                  Show Axes: false
-                  Show Trail: false
               Mass Properties:
                 Inertia: false
                 Mass: false
@@ -252,6 +163,19 @@ Visualization Manager:
               Update Interval: 0
               Value: true
               Visual Enabled: true
+            - Class: rviz_default_plugins/Marker
+              Enabled: true
+              Name: comms_boundary
+              Namespaces:
+                {}
+              Topic:
+                Depth: 5
+                Durability Policy: Volatile
+                Filter size: 10
+                History Policy: Keep Last
+                Reliability Policy: Reliable
+                Value: /robot_boundary_markers
+              Value: true
           Enabled: true
           Name: robot1
         - Class: rviz_common/Group
@@ -268,7 +192,7 @@ Visualization Manager:
               Color: 255; 255; 255
               Color Transformer: RGB8
               Decay Time: 0
-              Enabled: true
+              Enabled: false
               Invert Rainbow: false
               Max Color: 255; 255; 255
               Max Intensity: 85.5508041381836
@@ -289,7 +213,7 @@ Visualization Manager:
                 Value: /robot2/ouster/semantic_points
               Use Fixed Frame: true
               Use rainbow: true
-              Value: true
+              Value: false
             - Alpha: 1
               Autocompute Intensity Bounds: true
               Autocompute Value Bounds:
@@ -302,7 +226,7 @@ Visualization Manager:
               Color: 192; 97; 203
               Color Transformer: FlatColor
               Decay Time: 0
-              Enabled: false
+              Enabled: true
               Invert Rainbow: false
               Max Color: 255; 255; 255
               Max Intensity: 848
@@ -323,7 +247,7 @@ Visualization Manager:
                 Value: /robot2/ouster/points
               Use Fixed Frame: true
               Use rainbow: true
-              Value: false
+              Value: true
             - Class: rviz_default_plugins/Axes
               Enabled: true
               Length: 1
@@ -349,95 +273,6 @@ Visualization Manager:
                 Expand Link Details: false
                 Expand Tree: false
                 Link Tree Style: Links in Alphabetic Order
-                robot2_base_link:
-                  Alpha: 1
-                  Show Axes: false
-                  Show Trail: false
-                  Value: true
-                robot2_camera_link:
-                  Alpha: 1
-                  Show Axes: false
-                  Show Trail: false
-                  Value: true
-                robot2_chassis:
-                  Alpha: 1
-                  Show Axes: false
-                  Show Trail: false
-                  Value: true
-                robot2_gnss_1_antenna_link:
-                  Alpha: 1
-                  Show Axes: false
-                  Show Trail: false
-                  Value: true
-                robot2_gnss_2_antenna_link:
-                  Alpha: 1
-                  Show Axes: false
-                  Show Trail: false
-                  Value: true
-                robot2_imu_link:
-                  Alpha: 1
-                  Show Axes: false
-                  Show Trail: false
-                  Value: true
-                robot2_left_front_axle_carrier:
-                  Alpha: 1
-                  Show Axes: false
-                  Show Trail: false
-                robot2_left_front_wheel:
-                  Alpha: 1
-                  Show Axes: false
-                  Show Trail: false
-                  Value: true
-                robot2_left_rear_axle_carrier:
-                  Alpha: 1
-                  Show Axes: false
-                  Show Trail: false
-                robot2_left_rear_wheel:
-                  Alpha: 1
-                  Show Axes: false
-                  Show Trail: false
-                  Value: true
-                robot2_left_steering_link:
-                  Alpha: 1
-                  Show Axes: false
-                  Show Trail: false
-                robot2_mounting_plate:
-                  Alpha: 1
-                  Show Axes: false
-                  Show Trail: false
-                  Value: true
-                robot2_os_sensor:
-                  Alpha: 1
-                  Show Axes: false
-                  Show Trail: false
-                  Value: true
-                robot2_ouster_riser_plate:
-                  Alpha: 1
-                  Show Axes: false
-                  Show Trail: false
-                  Value: true
-                robot2_right_front_axle_carrier:
-                  Alpha: 1
-                  Show Axes: false
-                  Show Trail: false
-                robot2_right_front_wheel:
-                  Alpha: 1
-                  Show Axes: false
-                  Show Trail: false
-                  Value: true
-                robot2_right_rear_axle_carrier:
-                  Alpha: 1
-                  Show Axes: false
-                  Show Trail: false
-                robot2_right_rear_wheel:
-                  Alpha: 1
-                  Show Axes: false
-                  Show Trail: false
-                  Value: true
-                robot2_right_steering_link:
-                  Alpha: 1
-                  Show Axes: false
-                  Show Trail: false
               Mass Properties:
                 Inertia: false
                 Mass: false
@@ -446,6 +281,31 @@ Visualization Manager:
               Update Interval: 0
               Value: true
               Visual Enabled: true
+            - Class: rviz_default_plugins/Marker
+              Enabled: true
+              Name: comms_boundary
+              Namespaces:
+                {}
+              Topic:
+                Depth: 5
+                Durability Policy: Volatile
+                Filter size: 10
+                History Policy: Keep Last
+                Reliability Policy: Reliable
+                Value: /robot_boundary_markers
+              Value: true
+            - Class: rviz_default_plugins/MarkerArray
+              Enabled: false
+              Name: MarkerArray
+              Namespaces:
+                {}
+              Topic:
+                Depth: 5
+                Durability Policy: Volatile
+                History Policy: Keep Last
+                Reliability Policy: Reliable
+                Value: /robot2/occupied_cells_vis_array
+              Value: false
           Enabled: true
           Name: robot2
         - Class: rviz_common/Group
@@ -462,7 +322,7 @@ Visualization Manager:
               Color: 255; 255; 255
               Color Transformer: RGB8
               Decay Time: 0
-              Enabled: true
+              Enabled: false
               Invert Rainbow: false
               Max Color: 255; 255; 255
               Max Intensity: 85.5508041381836
@@ -483,7 +343,7 @@ Visualization Manager:
                 Value: /robot3/ouster/semantic_points
               Use Fixed Frame: true
               Use rainbow: true
-              Value: true
+              Value: false
             - Alpha: 1
               Autocompute Intensity Bounds: true
               Autocompute Value Bounds:
@@ -493,10 +353,10 @@ Visualization Manager:
               Axis: Z
               Channel Name: intensity
               Class: rviz_default_plugins/PointCloud2
-              Color: 98; 160; 234
+              Color: 255; 163; 72
               Color Transformer: FlatColor
               Decay Time: 0
-              Enabled: false
+              Enabled: true
               Invert Rainbow: false
               Max Color: 255; 255; 255
               Max Intensity: 848
@@ -517,7 +377,7 @@ Visualization Manager:
                 Value: /robot3/ouster/points
               Use Fixed Frame: true
               Use rainbow: true
-              Value: false
+              Value: true
             - Class: rviz_default_plugins/Axes
               Enabled: true
               Length: 1
@@ -543,95 +403,6 @@ Visualization Manager:
                 Expand Link Details: false
                 Expand Tree: false
                 Link Tree Style: Links in Alphabetic Order
-                robot3_base_link:
-                  Alpha: 1
-                  Show Axes: false
-                  Show Trail: false
-                  Value: true
-                robot3_camera_link:
-                  Alpha: 1
-                  Show Axes: false
-                  Show Trail: false
-                  Value: true
-                robot3_chassis:
-                  Alpha: 1
-                  Show Axes: false
-                  Show Trail: false
-                  Value: true
-                robot3_gnss_1_antenna_link:
-                  Alpha: 1
-                  Show Axes: false
-                  Show Trail: false
-                  Value: true
-                robot3_gnss_2_antenna_link:
-                  Alpha: 1
-                  Show Axes: false
-                  Show Trail: false
-                  Value: true
-                robot3_imu_link:
-                  Alpha: 1
-                  Show Axes: false
-                  Show Trail: false
-                  Value: true
-                robot3_left_front_axle_carrier:
-                  Alpha: 1
-                  Show Axes: false
-                  Show Trail: false
-                robot3_left_front_wheel:
-                  Alpha: 1
-                  Show Axes: false
-                  Show Trail: false
-                  Value: true
-                robot3_left_rear_axle_carrier:
-                  Alpha: 1
-                  Show Axes: false
-                  Show Trail: false
-                robot3_left_rear_wheel:
-                  Alpha: 1
-                  Show Axes: false
-                  Show Trail: false
-                  Value: true
-                robot3_left_steering_link:
-                  Alpha: 1
-                  Show Axes: false
-                  Show Trail: false
-                robot3_mounting_plate:
-                  Alpha: 1
-                  Show Axes: false
-                  Show Trail: false
-                  Value: true
-                robot3_os_sensor:
-                  Alpha: 1
-                  Show Axes: false
-                  Show Trail: false
-                  Value: true
-                robot3_ouster_riser_plate:
-                  Alpha: 1
-                  Show Axes: false
-                  Show Trail: false
-                  Value: true
-                robot3_right_front_axle_carrier:
-                  Alpha: 1
-                  Show Axes: false
-                  Show Trail: false
-                robot3_right_front_wheel:
-                  Alpha: 1
-                  Show Axes: false
-                  Show Trail: false
-                  Value: true
-                robot3_right_rear_axle_carrier:
-                  Alpha: 1
-                  Show Axes: false
-                  Show Trail: false
-                robot3_right_rear_wheel:
-                  Alpha: 1
-                  Show Axes: false
-                  Show Trail: false
-                  Value: true
-                robot3_right_steering_link:
-                  Alpha: 1
-                  Show Axes: false
-                  Show Trail: false
               Mass Properties:
                 Inertia: false
                 Mass: false
@@ -640,6 +411,31 @@ Visualization Manager:
               Update Interval: 0
               Value: true
               Visual Enabled: true
+            - Class: rviz_default_plugins/Marker
+              Enabled: true
+              Name: comms_boundary
+              Namespaces:
+                {}
+              Topic:
+                Depth: 5
+                Durability Policy: Volatile
+                Filter size: 10
+                History Policy: Keep Last
+                Reliability Policy: Reliable
+                Value: /robot_boundary_markers
+              Value: true
+            - Class: rviz_default_plugins/MarkerArray
+              Enabled: false
+              Name: MarkerArray
+              Namespaces:
+                {}
+              Topic:
+                Depth: 5
+                Durability Policy: Volatile
+                History Policy: Keep Last
+                Reliability Policy: Reliable
+                Value: /robot3/occupied_cells_vis_array
+              Value: false
           Enabled: true
           Name: robot3
         - Class: rviz_common/Group
@@ -656,7 +452,7 @@ Visualization Manager:
               Color: 255; 255; 255
               Color Transformer: RGB8
               Decay Time: 0
-              Enabled: true
+              Enabled: false
               Invert Rainbow: false
               Max Color: 255; 255; 255
               Max Intensity: 85.5508041381836
@@ -677,7 +473,7 @@ Visualization Manager:
                 Value: /robot4/ouster/semantic_points
               Use Fixed Frame: true
               Use rainbow: true
-              Value: true
+              Value: false
             - Alpha: 1
               Autocompute Intensity Bounds: true
               Autocompute Value Bounds:
@@ -690,7 +486,7 @@ Visualization Manager:
               Color: 98; 160; 234
               Color Transformer: FlatColor
               Decay Time: 0
-              Enabled: false
+              Enabled: true
               Invert Rainbow: false
               Max Color: 255; 255; 255
               Max Intensity: 848
@@ -711,7 +507,7 @@ Visualization Manager:
                 Value: /robot4/ouster/points
               Use Fixed Frame: true
               Use rainbow: true
-              Value: false
+              Value: true
             - Class: rviz_default_plugins/Axes
               Enabled: true
               Length: 1
@@ -737,95 +533,6 @@ Visualization Manager:
                 Expand Link Details: false
                 Expand Tree: false
                 Link Tree Style: Links in Alphabetic Order
-                robot4_base_link:
-                  Alpha: 1
-                  Show Axes: false
-                  Show Trail: false
-                  Value: true
-                robot4_camera_link:
-                  Alpha: 1
-                  Show Axes: false
-                  Show Trail: false
-                  Value: true
-                robot4_chassis:
-                  Alpha: 1
-                  Show Axes: false
-                  Show Trail: false
-                  Value: true
-                robot4_gnss_1_antenna_link:
-                  Alpha: 1
-                  Show Axes: false
-                  Show Trail: false
-                  Value: true
-                robot4_gnss_2_antenna_link:
-                  Alpha: 1
-                  Show Axes: false
-                  Show Trail: false
-                  Value: true
-                robot4_imu_link:
-                  Alpha: 1
-                  Show Axes: false
-                  Show Trail: false
-                  Value: true
-                robot4_left_front_axle_carrier:
-                  Alpha: 1
-                  Show Axes: false
-                  Show Trail: false
-                robot4_left_front_wheel:
-                  Alpha: 1
-                  Show Axes: false
-                  Show Trail: false
-                  Value: true
-                robot4_left_rear_axle_carrier:
-                  Alpha: 1
-                  Show Axes: false
-                  Show Trail: false
-                robot4_left_rear_wheel:
-                  Alpha: 1
-                  Show Axes: false
-                  Show Trail: false
-                  Value: true
-                robot4_left_steering_link:
-                  Alpha: 1
-                  Show Axes: false
-                  Show Trail: false
-                robot4_mounting_plate:
-                  Alpha: 1
-                  Show Axes: false
-                  Show Trail: false
-                  Value: true
-                robot4_os_sensor:
-                  Alpha: 1
-                  Show Axes: false
-                  Show Trail: false
-                  Value: true
-                robot4_ouster_riser_plate:
-                  Alpha: 1
-                  Show Axes: false
-                  Show Trail: false
-                  Value: true
-                robot4_right_front_axle_carrier:
-                  Alpha: 1
-                  Show Axes: false
-                  Show Trail: false
-                robot4_right_front_wheel:
-                  Alpha: 1
-                  Show Axes: false
-                  Show Trail: false
-                  Value: true
-                robot4_right_rear_axle_carrier:
-                  Alpha: 1
-                  Show Axes: false
-                  Show Trail: false
-                robot4_right_rear_wheel:
-                  Alpha: 1
-                  Show Axes: false
-                  Show Trail: false
-                  Value: true
-                robot4_right_steering_link:
-                  Alpha: 1
-                  Show Axes: false
-                  Show Trail: false
               Mass Properties:
                 Inertia: false
                 Mass: false
@@ -834,832 +541,40 @@ Visualization Manager:
               Update Interval: 0
               Value: true
               Visual Enabled: true
+            - Class: rviz_default_plugins/Marker
+              Enabled: true
+              Name: comms_boundary
+              Namespaces:
+                {}
+              Topic:
+                Depth: 5
+                Durability Policy: Volatile
+                Filter size: 10
+                History Policy: Keep Last
+                Reliability Policy: Reliable
+                Value: /robot_boundary_markers
+              Value: true
+            - Class: rviz_default_plugins/MarkerArray
+              Enabled: false
+              Name: MarkerArray
+              Namespaces:
+                {}
+              Topic:
+                Depth: 5
+                Durability Policy: Volatile
+                History Policy: Keep Last
+                Reliability Policy: Reliable
+                Value: /robot4/occupied_cells_vis_array
+              Value: false
           Enabled: true
           Name: robot4
-      Enabled: true
+      Enabled: false
       Name: robots
     - Class: rviz_default_plugins/Marker
-      Enabled: true
+      Enabled: false
       Name: Marker
       Namespaces:
-        "": true
-        "\x01��|u": true
-        "\x01���t": true
-        "\x02���\x04l": true
-        "\x02���DZ": true
-        "\x02���u": true
-        "\x04\x02���u": true
-        "\x04y": true
-        "\x04�": true
-        "\x05��\x04w": true
-        "\x05���v": true
-        "\x05���|�\x01": true
-        "\bJ��p�": true
-        "\b^": true
-        "\b`": true
-        "\ba": true
-        "\be": true
-        "\bf": true
-        "\bg": true
-        "\bu����": true
-        "\b�": true
-        "\b��Dx": true
-        "\b��dx": true
-        "\b���H[": true
-        "\b���x": true
-        "\t���x": true
-        "\n": true
-        "\nF��\x14�": true
-        "\n���\x10c": true
-        "\fY��\x10�": true
-        "\fz": true
-        "\f�": true
-        "\x0e\x1b���": true
-        "\x0e��\fz": true
-        "\x0e���8�": true
-        "\x0f��\\z": true
-        "\x10L����": true
-        "\x10_": true
-        "\x10j": true
-        "\x10s": true
-        "\x10�": true
-        "\x10��\b{": true
-        "\x10��({": true
-        "\x10���z": true
-        "\x11��L{": true
-        "\x12\n��$y": true
-        "\x12��4|": true
-        "\x12����n": true
-        "\x13P����": true
-        "\x13q����": true
-        "\x14�": true
-        "\x14��\\}": true
-        "\x14��|}": true
-        "\x14���<�": true
-        "\x14���H`": true
-        "\x15���h�": true
-        "\x15���}": true
-        "\x16S����": true
-        "\x16~��\x04�": true
-        "\x16��,~": true
-        "\x18\x18\x18\x18\x18\x18�?XXXXXX�?yyyyyy�?�������?||||||�?111111�?": true
-        "\x18\x18\x18\x18�?XXXXXX�?yyyyyy�?�������?||||||�?111111�?": true
-        "\x18\x18\x18�?XXXXXX�?yyyyyy�?�������?||||||�?111111�?": true
-        "\x18k": true
-        "\x18�": true
-        "\x18����W": true
-        "\x19���~": true
-        "\x1bZ����": true
-        "\x1b��8�": true
-        "\x1cr": true
-        "\x1cv": true
-        "\x1c�": true
-        "\x1d���4�": true
-        "\x1eR����": true
-        "\x1e����h": true
-        "\x1f��@�": true
-        " i": true
-        " �": true
-        " ����": true
-        "!��": true
-        "!��`�": true
-        "\"�� �": true
-        "\"����": true
-        "\"����r": true
-        $x: true
-        $�: true
-        $����: true
-        "%v��$�": true
-        "&\"����": true
-        "&q��ġ": true
-        "'*����": true
-        (g: true
-        ({: true
-        (�: true
-        (����a: true
-        "*����": true
-        +��L�: true
-        ",\x11��L{": true
-        ",l": true
-        ",o": true
-        ",�": true
-        ",��ԅ": true
-        ",���0c": true
-        -���Ī: true
-        ".\x02���u": true
-        .R��В: true
-        .n��|�: true
-        .��<�: true
-        .��\�: true
-        0���y: true
-        0c: true
-        0o��<�: true
-        0�: true
-        0���(n: true
-        0���,l: true
-        1111�?: true
-        11�?: true
-        1����: true
-        2T��p�: true
-        2����n: true
-        4����l: true
-        7��4�: true
-        "7���\b�": true
-        8A��ԉ: true
-        8p: true
-        8t: true
-        8�: true
-        :��\�: true
-        ":���\x18�": true
-        ;����: true
-        <U��P�: true
-        <W: true
-        =����[: true
-        ">���\bf": true
-        ">���Dr": true
-        ">���ȴ": true
-        ">����": true
-        "?": true
-        ?XXXXXX�?yyyyyy�?�������?||||||�?111111�?: true
-        ?yyyyyy�?�������?||||||�?111111�?: true
-        "@Y": true
-        "@�": true
-        "@����": true
-        "@����m": true
-        "A��\x14�": true
-        "B\x04��Dv": true
-        B��`�: true
-        B����: true
-        B����Y: true
-        "C��\b�": true
-        DX: true
-        D�: true
-        D��(�: true
-        D��H�: true
-        D��ȋ: true
-        "F��\x14�": true
-        F��8�: true
-        H[: true
-        H\: true
-        H^: true
-        Hf: true
-        "Hf��\b�": true
-        Hg: true
-        H�: true
-        H���Pb: true
-        IZ��ؗ: true
-        "I��\x10�": true
-        I��0�: true
-        I��p�: true
-        I����: true
-        JK��x�: true
-        "J��\x10�": true
-        J��P�: true
-        J��p�: true
-        J��Ў: true
-        K����: true
-        L_��(�: true
-        Lo: true
-        L|����: true
-        L�: true
-        L��8�: true
-        L���Pc: true
-        L�����: true
-        M����: true
-        "N\x1b���": true
-        NJ��Ў: true
-        N����: true
-        O��H�: true
-        O��h�: true
-        O����: true
-        "P\\��\b�": true
-        Pm��8�: true
-        P�: true
-        P��ȑ: true
-        P���(�: true
-        P���Xj: true
-        P����: true
-        P����j: true
-        Q��0�: true
-        R���,�: true
-        R����: true
-        S����: true
-        Tb����: true
-        T�: true
-        T��p�: true
-        T���\�: true
-        U��� Y: true
-        U����: true
-        W: true
-        "W��\b�": true
-        W��(�: true
-        W���Xp: true
-        X: true
-        XXXXXX�?yyyyyy�?�������?||||||�?111111�?: true
-        XXXX�?yyyyyy�?�������?||||||�?111111�?: true
-        XX�?yyyyyy�?�������?||||||�?111111�?: true
-        Xs: true
-        X~: true
-        X�: true
-        X�?yyyyyy�?�������?||||||�?111111�?: true
-        "X���\b]": true
-        X���d�: true
-        Y: true
-        Z: true
-        Z����i: true
-        "[": true
-        "[��@�": true
-        "[���̷\x01": true
-        "[����": true
-        \: true
-        \�: true
-        \����Z: true
-        "]": true
-        ^: true
-        "^\x13���|": true
-        "^\x14��\x1c}": true
-        ^I����: true
-        ^^����: true
-        ^q����: true
-        ^��Ț: true
-        _: true
-        _M_realloc_insert: true
-        _��(�: true
-        "`": true
-        "`\x12��\x14|": true
-        "`x��P�": true
-        "`�": true
-        "`����": true
-        a: true
-        alloc_insert: true
-        ance_line: true
-        "a��\x18�": true
-        a��8�: true
-        b: true
-        b��: true
-        b����: true
-        c: true
-        c_insert: true
-        c����Y: true
-        d: true
-        "d\x06��dw": true
-        d>��Ĉ: true
-        dr: true
-        dv: true
-        dw: true
-        d�: true
-        d����: true
-        e: true
-        ector::_M_realloc_insert: true
-        e����: true
-        f: true
-        "f��\b�": true
-        f��H�: true
-        f���@Y: true
-        g: true
-        g��h�: true
-        h: true
-        h[: true
-        h]: true
-        h`: true
-        hg: true
-        h�: true
-        i: true
-        ine: true
-        j: true
-        "j\x1f����": true
-        j���xp: true
-        k: true
-        k����: true
-        l: true
-        l�: true
-        m: true
-        n: true
-        nsert: true
-        n����Z: true
-        o: true
-        oc_insert: true
-        ot_distance_line: true
-        p: true
-        "p\x15���}": true
-        p�: true
-        p���ܯ: true
-        p�����: true
-        q: true
-        q��ġ: true
-        q����: true
-        r: true
-        r::_M_realloc_insert: true
-        "r��\f�": true
-        r���,o: true
-        r����Y: true
-        s: true
-        sb��: true
-        "s���\b�": true
-        s����: true
-        t: true
-        tance_line: true
-        t��T�: true
-        t����V: true
-        u: true
-        u����: true
-        v: true
-        v��Ĥ: true
-        v���Xh: true
-        w: true
-        "w��\f�": true
-        w����p: true
-        x: true
-        xC����: true
-        x�: true
-        x���4m: true
-        x����^: true
-        y: true
-        yyyyyy�?�������?||||||�?111111�?: true
-        yyyyy�?�������?||||||�?111111�?: true
-        yyyy�?�������?||||||�?111111�?: true
-        y����: true
-        z: true
-        "z\x04��dv": true
-        "z\x05���v": true
-        z*��̄: true
-        z���Ha: true
-        "{": true
-        "|": true
-        "|W": true
-        "|||||�?111111�?": true
-        "||||�?111111�?": true
-        "||�?111111�?": true
-        "|~": true
-        "|�": true
-        "|�?111111�?": true
-        "|����": true
-        "}": true
-        "}��D�": true
-        "}���H�": true
-        "}����": true
-        "~": true
-        "~\x13���|": true
-        "~��\x04�": true
-        ~����e: true
-        ~����j: true
-        "": true
-        "��\x04�": true
-        ġ: true
-        Ĩ: true
-        ȋ: true
-        Ȟ: true
-        ȴ: true
-        ȸ: true
-        ̌: true
-        "̷\x01": true
-        ͖����: true
-        Ύ��|W: true
-        "Ѐ��\x04�": true
-        к: true
-        ؏: true
-        ڨ���a: true
-        ܯ: true
-        ݋��$X: true
-        ާ���`: true
-        �: true
-        "�\x01": true
-        "�\x01��|u": true
-        "�\x04l": true
-        "�\x04y": true
-        "�\x04�": true
-        "�\x04���v": true
-        "�\x06���w": true
-        "�\x07��$x": true
-        "�\b[": true
-        "�\ba": true
-        "�\bb": true
-        "�\bf": true
-        "�\bh": true
-        "�\b{": true
-        "�\b�": true
-        "�\b���x": true
-        "�\t��\x04y": true
-        "�\n": true
-        "�\f�": true
-        "�\x0f��\\z": true
-        "�\x10_": true
-        "�\x10j": true
-        "�\x10�": true
-        "�\x10��\b{": true
-        "�\x11���{": true
-        "�\x14�": true
-        "�\x14��|}": true
-        "�\x18k": true
-        "�\x18t": true
-        "�\x18�": true
-        "�\x1cr": true
-        "�\x1cv": true
-        "�\x1c�": true
-        � �: true
-        � ����: true
-        �"�� �: true
-        �"����: true
-        �$Z: true
-        �$x: true
-        �$y: true
-        �$�: true
-        �$����: true
-        �%����: true
-        �(]: true
-        �(e: true
-        �(�: true
-        "�*��\f�": true
-        �*����: true
-        �,�: true
-        �,����: true
-        �0_: true
-        �0c: true
-        �0z: true
-        "�0": true
-        �0�: true
-        "�7��\x14�": true
-        �8k: true
-        �8t: true
-        �8�: true
-        �;����: true
-        �<}: true
-        �?: true
-        �?XXXXXX�?yyyyyy�?�������?||||||�?111111�?: true
-        �?yyyyyy�?�������?||||||�?111111�?: true
-        �?||||||�?111111�?: true
-        �@d: true
-        �@i: true
-        �@�: true
-        "�A��\x14�": true
-        �B����: true
-        �Dr: true
-        �Dv: true
-        �Dw: true
-        �Dy: true
-        �D�: true
-        �D��ȋ: true
-        �H`: true
-        �Hf: true
-        �H�: true
-        �H��0�: true
-        �I��P�: true
-        �J��P�: true
-        �K����: true
-        �M����: true
-        �O��h�: true
-        �Pb: true
-        �Pc: true
-        �P�: true
-        "�R��\x10�": true
-        �R��0�: true
-        �R��p�: true
-        �S��P�: true
-        �S����: true
-        �T|: true
-        �T�: true
-        "�T��\x10�": true
-        �V: true
-        �V����: true
-        �W: true
-        �X: true
-        �Xj: true
-        �Xs: true
-        �X~: true
-        �X�: true
-        �Y: true
-        �Z: true
-        "�Z��\x18�": true
-        �[: true
-        �[����: true
-        �\: true
-        �\W: true
-        �\u: true
-        �\}: true
-        �\����: true
-        �]: true
-        �^��Ț: true
-        �_: true
-        �_��P�: true
-        �`: true
-        �`Y: true
-        �`�: true
-        �`����: true
-        �a: true
-        �b: true
-        �b��@�: true
-        �c: true
-        �c����: true
-        �d: true
-        �d�: true
-        �e: true
-        �e����: true
-        �f��(�: true
-        �f��H�: true
-        �h: true
-        �h]: true
-        �hg: true
-        �h�: true
-        �i: true
-        �j: true
-        �k: true
-        �k��П: true
-        �l: true
-        �lo: true
-        �m: true
-        �n: true
-        �o: true
-        �pb: true
-        �p�: true
-        �p��d�: true
-        �r: true
-        �s��4�: true
-        �s���V: true
-        �t: true
-        �t�: true
-        �u: true
-        �v: true
-        �x_: true
-        �xc: true
-        �xh: true
-        �xq: true
-        �xs: true
-        �xt: true
-        �z: true
-        �{: true
-        �{��D�: true
-        �|: true
-        �|m: true
-        �|u: true
-        �|~: true
-        �|�: true
-        �|����: true
-        �}: true
-        �ġ: true
-        �Ĥ: true
-        �ȳ: true
-        �ȵ: true
-        �̄: true
-        �̌: true
-        �Ѓ: true
-        �Ѝ: true
-        �В: true
-        �Г: true
-        �Ж: true
-        �ؗ: true
-        �ܠ: true
-        ��: true
-        "��\x04Z": true
-        "��\x04l": true
-        "��\x04�": true
-        "��\b`": true
-        "��\bh": true
-        "��\b~": true
-        "��\b�": true
-        "��\fo": true
-        "��\fq": true
-        "��\fz": true
-        "��\x10_": true
-        "��\x10s": true
-        "��\x10�": true
-        "��\x14|": true
-        "��\x18k": true
-        "��\x18�": true
-        �� Y: true
-        �� i: true
-        �� �: true
-        ��$Z: true
-        ��$y: true
-        ��$�: true
-        ��(\: true
-        ��(a: true
-        ��(f: true
-        ��({: true
-        ��(�: true
-        ��,�: true
-        ��0j: true
-        ��0z: true
-        "��0": true
-        ��0�: true
-        ��4|: true
-        ��8�: true
-        ��<W: true
-        ��<u: true
-        ��<�: true
-        ��?||||||�?111111�?: true
-        ��@�: true
-        ��Dx: true
-        ��D�: true
-        ��H`: true
-        ��He: true
-        ��H�: true
-        ��Ln: true
-        ��L�: true
-        ��Pb: true
-        ��P�: true
-        ��V: true
-        ��X: true
-        ��Xh: true
-        ��Xj: true
-        ��Xk: true
-        ��X~: true
-        ��X�: true
-        ��[: true
-        ��\: true
-        ��\�: true
-        ��]: true
-        ��^: true
-        ��_: true
-        ��`: true
-        ��`d: true
-        ��`�: true
-        ��dX: true
-        ��dx: true
-        ��d�: true
-        ��e: true
-        ��f: true
-        ��g: true
-        ��h: true
-        ��h\: true
-        ��h^: true
-        ��h�: true
-        ��j: true
-        ��k: true
-        ��l: true
-        ��n: true
-        ��o: true
-        ��py: true
-        ��p�: true
-        ��r: true
-        ��s: true
-        ��t: true
-        ��tl: true
-        ��t|: true
-        ��t�: true
-        ��u: true
-        ��v: true
-        ��w: true
-        ��x: true
-        ��xh: true
-        ��xk: true
-        ��xp: true
-        ��xs: true
-        ��x�: true
-        ��z: true
-        ��{: true
-        ��|: true
-        ��|~: true
-        ��|�: true
-        "��|�\x01": true
-        ��}: true
-        ��~: true
-        "��": true
-        ��ġ: true
-        ��ħ: true
-        ��ī: true
-        ��ș: true
-        ��Ț: true
-        ��Ȟ: true
-        ��ȶ: true
-        ��ȸ: true
-        ��Ѝ: true
-        ��П: true
-        ��ԅ: true
-        ���: true
-        "���\bf": true
-        "���\bg": true
-        "���\b�": true
-        "���\fo": true
-        "���\x10j": true
-        "���\x10s": true
-        "���\x18k": true
-        "���\x18p": true
-        "���\x1cW": true
-        "���\x1c�": true
-        ��� Y: true
-        ��� d: true
-        ���$Z: true
-        ���$�: true
-        ���(\: true
-        ���(e: true
-        ���(n: true
-        ���0q: true
-        ���4�: true
-        ���8k: true
-        ���8p: true
-        ���8�: true
-        ���<�: true
-        ���?||||||�?111111�?: true
-        ���@Y: true
-        ���DX: true
-        ���D�: true
-        ���Ha: true
-        ���He: true
-        ���H�: true
-        ���Ln: true
-        ���Lo: true
-        ���Pb: true
-        ���P�: true
-        ���Tl: true
-        ���V: true
-        ���W: true
-        ���X: true
-        ���Xh: true
-        ���Xj: true
-        ���Xp: true
-        ���Xs: true
-        ���Y: true
-        ���Z: true
-        ���\m: true
-        ���^: true
-        ���_: true
-        ���a: true
-        ���c: true
-        ���d: true
-        ���dX: true
-        ���dZ: true
-        ���e: true
-        ���f: true
-        ���h: true
-        ���h\: true
-        ���h]: true
-        ���hf: true
-        ���h�: true
-        ���k: true
-        ���l: true
-        ���m: true
-        ���n: true
-        ���o: true
-        ���p�: true
-        ���r: true
-        ���s: true
-        ���t: true
-        ���tl: true
-        ���u: true
-        ���v: true
-        ���w: true
-        ���x: true
-        ���y: true
-        ���z: true
-        ���{: true
-        ���|: true
-        ���|m: true
-        ���}: true
-        ���~: true
-        "���": true
-        ����: true
-        "����\x04Z": true
-        "����\b�": true
-        "����\x10s": true
-        ���� i: true
-        ����$Z: true
-        ����(]: true
-        ����(`: true
-        ����(�: true
-        ����<W: true
-        ����<�: true
-        ����H�: true
-        ����Ln: true
-        ����Lo: true
-        ����X: true
-        ����X�: true
-        ����Y: true
-        ����Z: true
-        ����[: true
-        ����]: true
-        ����_: true
-        ����a: true
-        ����b: true
-        ����d: true
-        ����e: true
-        ����f: true
-        ����h: true
-        ����ha: true
-        ����hf: true
-        ����h�: true
-        ����i: true
-        ����j: true
-        ����o: true
-        ����p: true
-        ����p�: true
-        ����q: true
-        ����s: true
-        ����xk: true
-        ����xq: true
-        ����ȶ: true
-        ����ԭ: true
-        �����: true
-        �����`: true
-        �����b: true
-        �����d: true
-        �����e: true
-        �����k: true
-        �����l: true
-        �����n: true
-        �����o: true
-        �����s: true
-        ������: true
-        ������?||||||�?111111�?: true
+        {}
       Topic:
         Depth: 5
         Durability Policy: Volatile
@@ -1667,19 +582,72 @@ Visualization Manager:
         History Policy: Keep Last
         Reliability Policy: Reliable
         Value: /sphere_marker
-      Value: true
-    - Class: rviz_default_plugins/MarkerArray
-      Enabled: true
-      Name: MarkerArray
+      Value: false
+    - Class: rviz_default_plugins/Marker
+      Enabled: false
+      Name: collision_spheres
       Namespaces:
         {}
       Topic:
         Depth: 5
         Durability Policy: Volatile
+        Filter size: 10
         History Policy: Keep Last
         Reliability Policy: Reliable
-        Value: /sphere_marker_array
-      Value: true
+        Value: /robot_collision_markers
+      Value: false
+    - Class: rviz_common/Group
+      Displays:
+        - Class: rviz_default_plugins/MarkerArray
+          Enabled: true
+          Name: MarkerArray
+          Namespaces:
+            {}
+          Topic:
+            Depth: 5
+            Durability Policy: Volatile
+            History Policy: Keep Last
+            Reliability Policy: Reliable
+            Value: /robot1/occupied_cells_vis_array
+          Value: true
+        - Class: rviz_default_plugins/MarkerArray
+          Enabled: true
+          Name: MarkerArray
+          Namespaces:
+            {}
+          Topic:
+            Depth: 5
+            Durability Policy: Volatile
+            History Policy: Keep Last
+            Reliability Policy: Reliable
+            Value: /robot2/occupied_cells_vis_array
+          Value: true
+        - Class: rviz_default_plugins/MarkerArray
+          Enabled: true
+          Name: MarkerArray
+          Namespaces:
+            {}
+          Topic:
+            Depth: 5
+            Durability Policy: Volatile
+            History Policy: Keep Last
+            Reliability Policy: Reliable
+            Value: /robot3/occupied_cells_vis_array
+          Value: true
+        - Class: rviz_default_plugins/MarkerArray
+          Enabled: true
+          Name: MarkerArray
+          Namespaces:
+            {}
+          Topic:
+            Depth: 5
+            Durability Policy: Volatile
+            History Policy: Keep Last
+            Reliability Policy: Reliable
+            Value: /robot4/occupied_cells_vis_array
+          Value: true
+      Enabled: false
+      Name: occupancy
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
@@ -1726,33 +694,33 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz_default_plugins/XYOrbit
-      Distance: 13.924347877502441
+      Distance: 192.15768432617188
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: -18.159013748168945
-        Y: -11.385150909423828
-        Z: -9.076243259187322e-07
+        X: 5.342217445373535
+        Y: -1.219454050064087
+        Z: 1.2129778951930348e-05
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.5647972822189331
+      Pitch: 1.0247972011566162
       Target Frame: robot1_base_link
       Value: XYOrbit (rviz_default_plugins)
-      Yaw: 3.6540510654449463
+      Yaw: 4.182705879211426
     Saved: ~
 Window Geometry:
   Displays:
     collapsed: false
-  Height: 1792
+  Height: 1023
   Hide Left Dock: false
-  Hide Right Dock: false
-  QMainWindow State: 000000ff00000000fd0000000400000000000002ac000005fefc0200000008fb0000001200530065006c0065006300740069006f006e00000001e10000009b000000b000fffffffb0000001e0054006f006f006c002000500072006f007000650072007400690065007302000001ed000001df00000185000000a3fb000000120056006900650077007300200054006f006f02000001df000002110000018500000122fb000000200054006f006f006c002000500072006f0070006500720074006900650073003203000002880000011d000002210000017afb000000100044006900730070006c006100790073010000006e000005fe0000018200fffffffb0000002000730065006c0065006300740069006f006e00200062007500660066006500720200000138000000aa0000023a00000294fb00000014005700690064006500530074006500720065006f02000000e6000000d2000003ee0000030bfb0000000c004b0069006e0065006300740200000186000001060000030c00000261000000010000015f000005fefc0200000003fb0000001e0054006f006f006c002000500072006f00700065007200740069006500730100000041000000780000000000000000fb0000000a00560069006500770073010000006e000005fe0000013200fffffffb0000001200530065006c0065006300740069006f006e010000025a000000b200000000000000000000000200000490000000a9fc0100000001fb0000000a00560069006500770073030000004e00000080000002e1000001970000000300000c000000005afc0100000002fb0000000800540069006d0065010000000000000c000000058100fffffffb0000000800540069006d00650100000000000004500000000000000000000007dd000005fe00000004000000040000000800000008fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
+  Hide Right Dock: true
+  QMainWindow State: 000000ff00000000fd0000000400000000000001e600000345fc0200000008fb0000001200530065006c0065006300740069006f006e00000001e10000009b0000005c00fffffffb0000001e0054006f006f006c002000500072006f007000650072007400690065007302000001ed000001df00000185000000a3fb000000120056006900650077007300200054006f006f02000001df000002110000018500000122fb000000200054006f006f006c002000500072006f0070006500720074006900650073003203000002880000011d000002210000017afb000000100044006900730070006c006100790073010000003d00000345000000c900fffffffb0000002000730065006c0065006300740069006f006e00200062007500660066006500720200000138000000aa0000023a00000294fb00000014005700690064006500530074006500720065006f02000000e6000000d2000003ee0000030bfb0000000c004b0069006e0065006300740200000186000001060000030c00000261000000010000011300000345fc0200000003fb0000001e0054006f006f006c002000500072006f00700065007200740069006500730100000041000000780000000000000000fb0000000a00560069006500770073000000003d00000345000000a400fffffffb0000001200530065006c0065006300740069006f006e010000025a000000b200000000000000000000000200000490000000a9fc0100000001fb0000000a00560069006500770073030000004e00000080000002e10000019700000003000006540000005afc0100000002fb0000000800540069006d00650100000000000006540000026600fffffffb0000000800540069006d00650100000000000004500000000000000000000004680000034500000004000000040000000800000008fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
   Selection:
     collapsed: false
   Time:
@@ -1760,7 +728,7 @@ Window Geometry:
   Tool Properties:
     collapsed: false
   Views:
-    collapsed: false
-  Width: 3072
-  X: 0
-  Y: 54
+    collapsed: true
+  Width: 1620
+  X: 407
+  Y: 264
