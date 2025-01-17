@@ -10,7 +10,6 @@ from launch_ros.parameter_descriptions import ParameterValue
 # IS this the same as FindPackageShare?
 # from ament_index_python.packages import get_package_prefix 
 
-
 def add_robot(env, robot_num, root_data_dir):
     robot_name = f"robot{robot_num}"
 
@@ -42,33 +41,15 @@ def add_robot(env, robot_num, root_data_dir):
         ]
     )
 
-    return robot_bag_play, robot_urdf
-
-
-def generate_launch_description():
-    environment = "kittredge_loop"
-    number_of_robots = 4
-    root_data_dir = "/home/donceykong/Desktop/ARPG/projects/spring2025/lidar2osm_full/cu-multi-dataset/data/ros2_bags"
-    node_list = []
-
-    for robot_num in range(1, number_of_robots+1):
-        per_robot_node_list = add_robot(environment, robot_num, root_data_dir)
-        node_list.extend(per_robot_node_list)
-
-    robot_distance_checker_node = Node(
-        package='lidar2osm_ros',
-        executable='robot_distance_checker',
-        name='robot_distance_checker'
-    )
-
+    # Octomap for specific robot
     octomap_server_node = Node(
         package='octomap_server',
         executable='octomap_server_node',
         name='octomap_server',
         parameters=[{
             'resolution': 0.5,
-            'frame_id': 'robot1_map',
-            'base_frame_id': 'robot1_base_link',
+            'frame_id': 'world',
+            'base_frame_id': f'{robot_name}_base_link',
             'filter_speckles': True
             # 'colored_map': True
             # 'sensor_model.max_range': 200.0,
@@ -83,8 +64,40 @@ def generate_launch_description():
             # 'pointcloud_max_z': 1.5
         }],
         remappings=[
-            ('/cloud_in', '/robot1/ouster/semantic_points')
+            ('/cloud_in', f'/{robot_name}/ouster/points'),
+            ('/occupied_cells_vis_array', f'/{robot_name}/occupied_cells_vis_array')
         ]
+    )
+
+    return robot_bag_play, robot_urdf, octomap_server_node
+
+def add_bag_recording(output_dir, topics_to_record=None):
+    record_cmd = ['ros2', 'bag', 'record']
+    if topics_to_record:
+        record_cmd.extend(topics_to_record)  # Add specific topics
+    else:
+        record_cmd.append('-a')  # Record all topics
+
+    return ExecuteProcess(
+        cmd=record_cmd + ['-o', output_dir],  # Add output directory
+        output='screen'
+    )
+
+def generate_launch_description():
+    environment = "kittredge_loop"
+    number_of_robots = 4
+    root_data_dir = "/media/donceykong/doncey_ssd_02/lidar2osm_bags"
+    # root_data_dir = "/home/donceykong/Desktop/ARPG/projects/spring2025/lidar2osm_full/cu-multi-dataset/data/ros2_bags"
+    node_list = []
+
+    for robot_num in range(1, number_of_robots+1):
+        per_robot_node_list = add_robot(environment, robot_num, root_data_dir)
+        node_list.extend(per_robot_node_list)
+
+    robot_distance_checker_node = Node(
+        package='lidar2osm_ros',
+        executable='robot_distance_checker',
+        name='robot_distance_checker'
     )
 
     # RViz node
@@ -97,14 +110,17 @@ def generate_launch_description():
         arguments=['-d', rviz_config_path]
     )
     rviz_timed_node = TimerAction(
-        period=5.0,  # start after delay to ensure topics are available
+        period= 5.0,  # start after delay to ensure topics are available
         actions=[rviz_node]
     )
+
+    bag_rec = add_bag_recording("/media/donceykong/doncey_ssd_02/lidar2osm_bags/full_bag")
 
     # Choose non-robot nodes here
     non_robot_nodes = [
         robot_distance_checker_node,
-        rviz_timed_node
+        rviz_timed_node,
+        bag_rec,
     ]
 
     # Extend node list with non-robot nodes
