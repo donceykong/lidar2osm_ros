@@ -41,35 +41,35 @@ def add_robot(env, robot_num, root_data_dir):
         ]
     )
 
-    # Octomap for specific robot
-    octomap_server_node = Node(
-        package='octomap_server',
-        executable='octomap_server_node',
-        name='octomap_server',
-        parameters=[{
-            'resolution': 0.5,
-            'frame_id': 'world',
-            'base_frame_id': f'{robot_name}_base_link',
-            'filter_speckles': True
-            # 'colored_map': True
-            # 'sensor_model.max_range': 200.0,
-            # 'incremental_2D_projection': False,
-            # 'occupancy_min_z': 0.1,
-            # 'occupancy_max_z': 20.0,
-            # 'filter_ground_plane': False,
-            # 'ground_filter.distance': 0.04,
-            # 'ground_filter.angle': 0.15,
-            # 'ground_filter.plane_distance': 1.0,
-            # 'pointcloud_min_z': -3.0,
-            # 'pointcloud_max_z': 1.5
-        }],
-        remappings=[
-            ('/cloud_in', f'/{robot_name}/ouster/points'),
-            ('/occupied_cells_vis_array', f'/{robot_name}/occupied_cells_vis_array')
-        ]
-    )
+    # # Octomap for specific robot
+    # octomap_server_node = Node(
+    #     package='octomap_server',
+    #     executable='octomap_server_node',
+    #     name='octomap_server',
+    #     parameters=[{
+    #         'resolution': 0.5,
+    #         'frame_id': 'world',
+    #         'base_frame_id': f'{robot_name}_base_link',
+    #         'filter_speckles': True
+    #         # 'colored_map': True
+    #         # 'sensor_model.max_range': 200.0,
+    #         # 'incremental_2D_projection': False,
+    #         # 'occupancy_min_z': 0.1,
+    #         # 'occupancy_max_z': 20.0,
+    #         # 'filter_ground_plane': False,
+    #         # 'ground_filter.distance': 0.04,
+    #         # 'ground_filter.angle': 0.15,
+    #         # 'ground_filter.plane_distance': 1.0,
+    #         # 'pointcloud_min_z': -3.0,
+    #         # 'pointcloud_max_z': 1.5
+    #     }],
+    #     remappings=[
+    #         ('/cloud_in', f'/{robot_name}/ouster/points'),
+    #         ('/occupied_cells_vis_array', f'/{robot_name}/occupied_cells_vis_array')
+    #     ]
+    # )
 
-    return robot_bag_play, robot_urdf, octomap_server_node
+    return robot_bag_play, robot_urdf
 
 def add_bag_recording(output_dir, topics_to_record=None):
     record_cmd = ['ros2', 'bag', 'record']
@@ -85,9 +85,9 @@ def add_bag_recording(output_dir, topics_to_record=None):
 
 def generate_launch_description():
     environment = "kittredge_loop"
-    number_of_robots = 4
-    root_data_dir = "/media/donceykong/doncey_ssd_02/lidar2osm_bags"
-    # root_data_dir = "/home/donceykong/Desktop/ARPG/projects/spring2025/lidar2osm_full/cu-multi-dataset/data/ros2_bags"
+    number_of_robots = 1
+    # root_data_dir = "/media/donceykong/doncey_ssd_02/lidar2osm_bags"
+    root_data_dir = "/home/donceykong/Desktop/ARPG/projects/spring2025/lidar2osm_full/cu-multi-dataset/data/ros2_bags"
     node_list = []
 
     for robot_num in range(1, number_of_robots+1):
@@ -98,6 +98,32 @@ def generate_launch_description():
         package='lidar2osm_ros',
         executable='robot_distance_checker',
         name='robot_distance_checker'
+    )
+
+    tsdf_server_node = Node(
+        package='voxblox_ros',
+        executable='tsdf_server',
+        name='voxblox_node',
+        output='screen',
+        arguments=['-alsologtostderr'],
+        # arguments=['-alsologtostderr', '--ros-args', '--log-level', 'debug'],
+        remappings=[('pointcloud', '/robot1/ouster/points')],
+        parameters=[
+            {'min_time_between_msgs_sec': 0.0},
+            {'tsdf_voxel_size': 0.5},       # Was 0.2
+            {'truncation_distance': 0.5},   # Was 0.5
+            {'color_mode': 'normals'},
+            {'enable_icp': False},
+            {'icp_refine_roll_pitch': False},
+            {'update_mesh_every_n_sec': 1.0},
+            {'mesh_min_weight': 0.1},       # Was 2.0
+            {'method': 'fast'},
+            {'max_ray_length_m': 50.0},
+            {'use_const_weight': True},
+            {'world_frame': 'world'},
+            {'verbose': False},
+            # {'mesh_filename': LaunchConfiguration('bag_file')}
+        ],
     )
 
     # RViz node
@@ -118,9 +144,10 @@ def generate_launch_description():
 
     # Choose non-robot nodes here
     non_robot_nodes = [
-        robot_distance_checker_node,
+        tsdf_server_node,
+        # robot_distance_checker_node,
         rviz_timed_node,
-        bag_rec,
+        # bag_rec,
     ]
 
     # Extend node list with non-robot nodes
