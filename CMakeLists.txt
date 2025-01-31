@@ -11,7 +11,10 @@ find_package(rclcpp REQUIRED)
 find_package(sensor_msgs REQUIRED)
 find_package(nav_msgs REQUIRED)
 find_package(tf2_ros REQUIRED)
+find_package(tf2_geometry_msgs REQUIRED)
 find_package(visualization_msgs REQUIRED)
+find_package(pcl_conversions REQUIRED)
+find_package(tf2_eigen REQUIRED)
 
 # Headers
 include_directories(include)
@@ -21,6 +24,16 @@ include_directories(include)
 # Robot distance checker node
 add_executable(robot_distance_checker src/robot_distance_checker.cpp src/rviz_marker_utils.cpp)
 ament_target_dependencies(robot_distance_checker rclcpp sensor_msgs nav_msgs tf2_ros visualization_msgs)
+
+# Robot map accumulator node
+add_executable(robot_map_accumulator src/robot_map_accumulator.cpp)
+ament_target_dependencies(robot_map_accumulator rclcpp sensor_msgs nav_msgs tf2_ros tf2_geometry_msgs tf2_eigen pcl_conversions)
+
+# target_link_libraries(robot_map_accumulator
+#   tf2
+#   tf2_ros
+#   tf2_eigen
+# )
 
 # ==========================  Install shared files ==========================
 
@@ -47,6 +60,7 @@ install(DIRECTORY launch
 # Install the node executable
 install(TARGETS
   robot_distance_checker
+  robot_map_accumulator
   DESTINATION lib/${PROJECT_NAME}
 )
 
