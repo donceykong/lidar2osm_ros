@@ -90,8 +90,8 @@ def add_bag_recording(output_dir, topics_to_record=None):
 def generate_launch_description():
     environment = "kittredge_loop"
     number_of_robots = 2
-    # root_data_dir = "/media/donceykong/doncey_ssd_02/lidar2osm_bags"
-    root_data_dir = "/home/donceykong/Desktop/ARPG/projects/spring2025/lidar2osm_full/cu-multi-dataset/data/ros2_bags"
+    root_data_dir = "/media/donceykong/doncey_ssd_02/datasets/CU_MULTI/ros2_bags"
+    # root_data_dir = "/home/donceykong/Desktop/ARPG/projects/spring2025/lidar2osm_full/cu-multi-dataset/data/ros2_bags"
     node_list = []
 
     for robot_num in range(1, number_of_robots+1):
