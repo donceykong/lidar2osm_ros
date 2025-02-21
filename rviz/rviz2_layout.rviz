@@ -6,8 +6,10 @@ Panels:
       Expanded:
         - /Global Options1
         - /robots1
+        - /robots1/robot11
+        - /robots1/robot21
       Splitter Ratio: 0.5950413346290588
-    Tree Height: 1286
+    Tree Height: 1005
   - Class: rviz_common/Selection
     Name: Selection
   - Class: rviz_common/Tool Properties
@@ -63,7 +65,7 @@ Visualization Manager:
               Color: 255; 255; 255
               Color Transformer: RGB8
               Decay Time: 0
-              Enabled: false
+              Enabled: true
               Invert Rainbow: false
               Max Color: 255; 255; 255
               Max Intensity: 85.5508041381836
@@ -84,7 +86,7 @@ Visualization Manager:
                 Value: /robot1/ouster/semantic_points
               Use Fixed Frame: true
               Use rainbow: true
-              Value: false
+              Value: true
             - Alpha: 1
               Autocompute Intensity Bounds: true
               Autocompute Value Bounds:
@@ -97,7 +99,7 @@ Visualization Manager:
               Color: 87; 227; 137
               Color Transformer: FlatColor
               Decay Time: 0
-              Enabled: false
+              Enabled: true
               Invert Rainbow: false
               Max Color: 255; 255; 255
               Max Intensity: 795
@@ -118,7 +120,7 @@ Visualization Manager:
                 Value: /robot1/ouster/points
               Use Fixed Frame: true
               Use rainbow: true
-              Value: false
+              Value: true
             - Class: rviz_default_plugins/MarkerArray
               Enabled: false
               Name: MarkerArray
@@ -266,6 +268,17 @@ Visualization Manager:
                 Reliability Policy: Reliable
                 Value: /robot_boundary_markers
               Value: true
+            - Class: voxblox_rviz_plugin/VoxbloxMesh
+              Enabled: false
+              Name: VoxbloxMesh
+              Topic:
+                Depth: 5
+                Durability Policy: Volatile
+                Filter size: 10
+                History Policy: Keep Last
+                Reliability Policy: Reliable
+                Value: /mesh
+              Value: false
           Enabled: true
           Name: robot1
         - Class: rviz_common/Group
@@ -282,7 +295,7 @@ Visualization Manager:
               Color: 255; 255; 255
               Color Transformer: RGB8
               Decay Time: 0
-              Enabled: false
+              Enabled: true
               Invert Rainbow: false
               Max Color: 255; 255; 255
               Max Intensity: 85.5508041381836
@@ -303,7 +316,7 @@ Visualization Manager:
                 Value: /robot2/ouster/semantic_points
               Use Fixed Frame: true
               Use rainbow: true
-              Value: false
+              Value: true
             - Alpha: 1
               Autocompute Intensity Bounds: true
               Autocompute Value Bounds:
@@ -582,95 +595,6 @@ Visualization Manager:
                 Expand Link Details: false
                 Expand Tree: false
                 Link Tree Style: Links in Alphabetic Order
-                robot3_base_link:
-                  Alpha: 1
-                  Show Axes: false
-                  Show Trail: false
-                  Value: true
-                robot3_camera_link:
-                  Alpha: 1
-                  Show Axes: false
-                  Show Trail: false
-                  Value: true
-                robot3_chassis:
-                  Alpha: 1
-                  Show Axes: false
-                  Show Trail: false
-                  Value: true
-                robot3_gnss_1_antenna_link:
-                  Alpha: 1
-                  Show Axes: false
-                  Show Trail: false
-                  Value: true
-                robot3_gnss_2_antenna_link:
-                  Alpha: 1
-                  Show Axes: false
-                  Show Trail: false
-                  Value: true
-                robot3_imu_link:
-                  Alpha: 1
-                  Show Axes: false
-                  Show Trail: false
-                  Value: true
-                robot3_left_front_axle_carrier:
-                  Alpha: 1
-                  Show Axes: false
-                  Show Trail: false
-                robot3_left_front_wheel:
-                  Alpha: 1
-                  Show Axes: false
-                  Show Trail: false
-                  Value: true
-                robot3_left_rear_axle_carrier:
-                  Alpha: 1
-                  Show Axes: false
-                  Show Trail: false
-                robot3_left_rear_wheel:
-                  Alpha: 1
-                  Show Axes: false
-                  Show Trail: false
-                  Value: true
-                robot3_left_steering_link:
-                  Alpha: 1
-                  Show Axes: false
-                  Show Trail: false
-                robot3_mounting_plate:
-                  Alpha: 1
-                  Show Axes: false
-                  Show Trail: false
-                  Value: true
-                robot3_os_sensor:
-                  Alpha: 1
-                  Show Axes: false
-                  Show Trail: false
-                  Value: true
-                robot3_ouster_riser_plate:
-                  Alpha: 1
-                  Show Axes: false
-                  Show Trail: false
-                  Value: true
-                robot3_right_front_axle_carrier:
-                  Alpha: 1
-                  Show Axes: false
-                  Show Trail: false
-                robot3_right_front_wheel:
-                  Alpha: 1
-                  Show Axes: false
-                  Show Trail: false
-                  Value: true
-                robot3_right_rear_axle_carrier:
-                  Alpha: 1
-                  Show Axes: false
-                  Show Trail: false
-                robot3_right_rear_wheel:
-                  Alpha: 1
-                  Show Axes: false
-                  Show Trail: false
-                  Value: true
-                robot3_right_steering_link:
-                  Alpha: 1
-                  Show Axes: false
-                  Show Trail: false
               Mass Properties:
                 Inertia: false
                 Mass: false
@@ -704,7 +628,7 @@ Visualization Manager:
                 Reliability Policy: Reliable
                 Value: /robot3/occupied_cells_vis_array
               Value: false
-          Enabled: true
+          Enabled: false
           Name: robot3
         - Class: rviz_common/Group
           Displays:
@@ -801,95 +725,6 @@ Visualization Manager:
                 Expand Link Details: false
                 Expand Tree: false
                 Link Tree Style: Links in Alphabetic Order
-                robot4_base_link:
-                  Alpha: 1
-                  Show Axes: false
-                  Show Trail: false
-                  Value: true
-                robot4_camera_link:
-                  Alpha: 1
-                  Show Axes: false
-                  Show Trail: false
-                  Value: true
-                robot4_chassis:
-                  Alpha: 1
-                  Show Axes: false
-                  Show Trail: false
-                  Value: true
-                robot4_gnss_1_antenna_link:
-                  Alpha: 1
-                  Show Axes: false
-                  Show Trail: false
-                  Value: true
-                robot4_gnss_2_antenna_link:
-                  Alpha: 1
-                  Show Axes: false
-                  Show Trail: false
-                  Value: true
-                robot4_imu_link:
-                  Alpha: 1
-                  Show Axes: false
-                  Show Trail: false
-                  Value: true
-                robot4_left_front_axle_carrier:
-                  Alpha: 1
-                  Show Axes: false
-                  Show Trail: false
-                robot4_left_front_wheel:
-                  Alpha: 1
-                  Show Axes: false
-                  Show Trail: false
-                  Value: true
-                robot4_left_rear_axle_carrier:
-                  Alpha: 1
-                  Show Axes: false
-                  Show Trail: false
-                robot4_left_rear_wheel:
-                  Alpha: 1
-                  Show Axes: false
-                  Show Trail: false
-                  Value: true
-                robot4_left_steering_link:
-                  Alpha: 1
-                  Show Axes: false
-                  Show Trail: false
-                robot4_mounting_plate:
-                  Alpha: 1
-                  Show Axes: false
-                  Show Trail: false
-                  Value: true
-                robot4_os_sensor:
-                  Alpha: 1
-                  Show Axes: false
-                  Show Trail: false
-                  Value: true
-                robot4_ouster_riser_plate:
-                  Alpha: 1
-                  Show Axes: false
-                  Show Trail: false
-                  Value: true
-                robot4_right_front_axle_carrier:
-                  Alpha: 1
-                  Show Axes: false
-                  Show Trail: false
-                robot4_right_front_wheel:
-                  Alpha: 1
-                  Show Axes: false
-                  Show Trail: false
-                  Value: true
-                robot4_right_rear_axle_carrier:
-                  Alpha: 1
-                  Show Axes: false
-                  Show Trail: false
-                robot4_right_rear_wheel:
-                  Alpha: 1
-                  Show Axes: false
-                  Show Trail: false
-                  Value: true
-                robot4_right_steering_link:
-                  Alpha: 1
-                  Show Axes: false
-                  Show Trail: false
               Mass Properties:
                 Inertia: false
                 Mass: false
@@ -923,7 +758,7 @@ Visualization Manager:
                 Reliability Policy: Reliable
                 Value: /robot4/occupied_cells_vis_array
               Value: false
-          Enabled: true
+          Enabled: false
           Name: robot4
       Enabled: true
       Name: robots
@@ -1005,187 +840,6 @@ Visualization Manager:
           Value: true
       Enabled: false
       Name: occupancy
-    - Class: voxblox_rviz_plugin/VoxbloxMesh
-      Enabled: false
-      Name: VoxbloxMesh
-      Topic:
-        Depth: 5
-        Durability Policy: Volatile
-        Filter size: 10
-        History Policy: Keep Last
-        Reliability Policy: Reliable
-        Value: /mesh
-      Value: false
-    - Alpha: 1
-      Autocompute Intensity Bounds: true
-      Autocompute Value Bounds:
-        Max Value: 34.61812973022461
-        Min Value: -35.52513885498047
-        Value: true
-      Axis: Z
-      Channel Name: rgba
-      Class: rviz_default_plugins/PointCloud2
-      Color: 255; 255; 255
-      Color Transformer: RGB8
-      Decay Time: 0
-      Enabled: true
-      Invert Rainbow: true
-      Max Color: 255; 255; 255
-      Max Intensity: 999999
-      Min Color: 0; 0; 0
-      Min Intensity: 255
-      Name: PointCloud2
-      Position Transformer: XYZ
-      Selectable: true
-      Size (Pixels): 3
-      Size (m): 0.009999999776482582
-      Style: Points
-      Topic:
-        Depth: 5
-        Durability Policy: Volatile
-        Filter size: 10
-        History Policy: Keep Last
-        Reliability Policy: Reliable
-        Value: /robot1/global_pointcloud
-      Use Fixed Frame: true
-      Use rainbow: true
-      Value: true
-    - Alpha: 1
-      Autocompute Intensity Bounds: true
-      Autocompute Value Bounds:
-        Max Value: 10.166093826293945
-        Min Value: -5.770259380340576
-        Value: true
-      Axis: Z
-      Channel Name: intensity
-      Class: rviz_default_plugins/PointCloud2
-      Color: 87; 227; 137
-      Color Transformer: Intensity
-      Decay Time: 0
-      Enabled: true
-      Invert Rainbow: false
-      Max Color: 255; 255; 255
-      Max Intensity: 463
-      Min Color: 0; 0; 0
-      Min Intensity: 1
-      Name: ouster/points
-      Position Transformer: XYZ
-      Selectable: true
-      Size (Pixels): 3
-      Size (m): 0.009999999776482582
-      Style: Points
-      Topic:
-        Depth: 5
-        Durability Policy: Volatile
-        Filter size: 10
-        History Policy: Keep Last
-        Reliability Policy: Reliable
-        Value: /robot1/ouster/points
-      Use Fixed Frame: true
-      Use rainbow: true
-      Value: true
-    - Alpha: 1
-      Autocompute Intensity Bounds: true
-      Autocompute Value Bounds:
-        Max Value: 34.61812973022461
-        Min Value: -35.52513885498047
-        Value: true
-      Axis: Z
-      Channel Name: rgba
-      Class: rviz_default_plugins/PointCloud2
-      Color: 255; 255; 255
-      Color Transformer: RGB8
-      Decay Time: 0
-      Enabled: true
-      Invert Rainbow: true
-      Max Color: 255; 255; 255
-      Max Intensity: 999999
-      Min Color: 0; 0; 0
-      Min Intensity: 255
-      Name: PointCloud2
-      Position Transformer: XYZ
-      Selectable: true
-      Size (Pixels): 3
-      Size (m): 0.009999999776482582
-      Style: Points
-      Topic:
-        Depth: 5
-        Durability Policy: Volatile
-        Filter size: 10
-        History Policy: Keep Last
-        Reliability Policy: Reliable
-        Value: /robot2/global_pointcloud
-      Use Fixed Frame: true
-      Use rainbow: true
-      Value: true
-    - Alpha: 1
-      Autocompute Intensity Bounds: true
-      Autocompute Value Bounds:
-        Max Value: 34.61812973022461
-        Min Value: -35.52513885498047
-        Value: true
-      Axis: Z
-      Channel Name: rgba
-      Class: rviz_default_plugins/PointCloud2
-      Color: 255; 255; 255
-      Color Transformer: RGB8
-      Decay Time: 0
-      Enabled: true
-      Invert Rainbow: true
-      Max Color: 255; 255; 255
-      Max Intensity: 999999
-      Min Color: 0; 0; 0
-      Min Intensity: 255
-      Name: PointCloud2
-      Position Transformer: XYZ
-      Selectable: true
-      Size (Pixels): 3
-      Size (m): 0.009999999776482582
-      Style: Points
-      Topic:
-        Depth: 5
-        Durability Policy: Volatile
-        Filter size: 10
-        History Policy: Keep Last
-        Reliability Policy: Reliable
-        Value: /robot3/global_pointcloud
-      Use Fixed Frame: true
-      Use rainbow: true
-      Value: true
-    - Alpha: 1
-      Autocompute Intensity Bounds: true
-      Autocompute Value Bounds:
-        Max Value: 34.61812973022461
-        Min Value: -35.52513885498047
-        Value: true
-      Axis: Z
-      Channel Name: rgba
-      Class: rviz_default_plugins/PointCloud2
-      Color: 255; 255; 255
-      Color Transformer: RGB8
-      Decay Time: 0
-      Enabled: true
-      Invert Rainbow: true
-      Max Color: 255; 255; 255
-      Max Intensity: 999999
-      Min Color: 0; 0; 0
-      Min Intensity: 255
-      Name: PointCloud2
-      Position Transformer: XYZ
-      Selectable: true
-      Size (Pixels): 3
-      Size (m): 0.009999999776482582
-      Style: Points
-      Topic:
-        Depth: 5
-        Durability Policy: Volatile
-        Filter size: 10
-        History Policy: Keep Last
-        Reliability Policy: Reliable
-        Value: /robot4/global_pointcloud
-      Use Fixed Frame: true
-      Use rainbow: true
-      Value: true
   Enabled: true
   Global Options:
     Background Color: 255; 255; 255
@@ -1232,33 +886,33 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz_default_plugins/XYOrbit
-      Distance: 274.35137939453125
+      Distance: 148.8106689453125
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: -21.797245025634766
-        Y: 21.017553329467773
-        Z: -1.254194974899292
+        X: 8.475057601928711
+        Y: 6.746191024780273
+        Z: -1.2541996240615845
       Focal Shape Fixed Size: false
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 1.5697963237762451
+      Pitch: 0.5347964763641357
       Target Frame: <Fixed Frame>
       Value: XYOrbit (rviz_default_plugins)
-      Yaw: 3.1672091484069824
+      Yaw: 3.415393590927124
     Saved: ~
 Window Geometry:
   Displays:
     collapsed: false
-  Height: 1792
+  Height: 1390
   Hide Left Dock: false
   Hide Right Dock: false
-  QMainWindow State: 000000ff00000000fd0000000400000000000001f7000005fefc0200000008fb0000001200530065006c0065006300740069006f006e00000001e10000009b000000b000fffffffb0000001e0054006f006f006c002000500072006f007000650072007400690065007302000001ed000001df00000185000000a3fb000000120056006900650077007300200054006f006f02000001df000002110000018500000122fb000000200054006f006f006c002000500072006f0070006500720074006900650073003203000002880000011d000002210000017afb000000100044006900730070006c006100790073010000006e000005fe0000018200fffffffb0000002000730065006c0065006300740069006f006e00200062007500660066006500720200000138000000aa0000023a00000294fb00000014005700690064006500530074006500720065006f02000000e6000000d2000003ee0000030bfb0000000c004b0069006e0065006300740200000186000001060000030c00000261000000010000015f000005fefc0200000003fb0000001e0054006f006f006c002000500072006f00700065007200740069006500730100000041000000780000000000000000fb0000000a00560069006500770073010000006e000005fe0000013200fffffffb0000001200530065006c0065006300740069006f006e010000025a000000b200000000000000000000000200000490000000a9fc0100000001fb0000000a00560069006500770073030000004e00000080000002e1000001970000000300000c000000005afc0100000002fb0000000800540069006d0065010000000000000c000000058100fffffffb0000000800540069006d0065010000000000000450000000000000000000000892000005fe00000004000000040000000800000008fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
+  QMainWindow State: 000000ff00000000fd000000040000000000000156000004b4fc0200000008fb0000001200530065006c0065006300740069006f006e00000001e10000009b0000005c00fffffffb0000001e0054006f006f006c002000500072006f007000650072007400690065007302000001ed000001df00000185000000a3fb000000120056006900650077007300200054006f006f02000001df000002110000018500000122fb000000200054006f006f006c002000500072006f0070006500720074006900650073003203000002880000011d000002210000017afb000000100044006900730070006c006100790073010000003d000004b4000000c900fffffffb0000002000730065006c0065006300740069006f006e00200062007500660066006500720200000138000000aa0000023a00000294fb00000014005700690064006500530074006500720065006f02000000e6000000d2000003ee0000030bfb0000000c004b0069006e0065006300740200000186000001060000030c000002610000000100000100000004b4fc0200000003fb0000001e0054006f006f006c002000500072006f00700065007200740069006500730100000041000000780000000000000000fb0000000a00560069006500770073010000003d000004b4000000a400fffffffb0000001200530065006c0065006300740069006f006e010000025a000000b200000000000000000000000200000490000000a9fc0100000001fb0000000a00560069006500770073030000004e00000080000002e10000019700000003000006440000005afc0100000002fb0000000800540069006d00650100000000000006440000026600fffffffb0000000800540069006d00650100000000000004500000000000000000000003e2000004b400000004000000040000000800000008fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
   Selection:
     collapsed: false
   Time:
@@ -1267,6 +921,6 @@ Window Geometry:
     collapsed: false
   Views:
     collapsed: false
-  Width: 3072
+  Width: 1604
   X: 0
-  Y: 54
+  Y: 25
