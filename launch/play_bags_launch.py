@@ -15,7 +15,10 @@ def add_robot(env, robot_num, root_data_dir):
 
     # Play bag for robot
     robot_bag_path = os.path.join(root_data_dir, f"{env}_{robot_name}", f"{env}_{robot_name}_0.db3")
-    robot_bag_play = ExecuteProcess(cmd = ['ros2', 'bag', 'play', robot_bag_path], output = 'screen')
+    robot_bag_play = ExecuteProcess(
+        cmd = ['ros2', 'bag', 'play', robot_bag_path],
+        output = 'screen'
+    )
 
     # Publish URDF for robot
     xacro_file = PathJoinSubstitution([FindPackageShare('lidar2osm_ros'), 'urdf', 'multi_robot.urdf.xacro'])
@@ -23,7 +26,7 @@ def add_robot(env, robot_num, root_data_dir):
     robot_urdf = Node(
         package='robot_state_publisher',
         executable='robot_state_publisher',
-        name='robot_state_publisher',
+        name=f'{robot_name}_robot_state_publisher',
         parameters=[{'robot_description': xacro_command}],
         remappings=[('/robot_description', f'/{robot_name}/robot_description')]
     )
@@ -31,9 +34,17 @@ def add_robot(env, robot_num, root_data_dir):
     robot_map_accumulator_node = Node(
         package='lidar2osm_ros',
         executable='robot_map_accumulator',
-        name='robot_map_accumulator',
+        # name=f'{robot_name}_robot_map_accumulator',
         arguments=[robot_name],  # Pass the robot name as an argument
     )
+
+    robot_map_reciever_node = Node(
+        package='lidar2osm_ros',
+        executable='robot_map_reciever',
+        # name=f'{robot_name}_robot_map_accumulator',
+        arguments=[robot_name],  # Pass the robot name as an argument
+    )
+
     # # Octomap for specific robot
     # octomap_server_node = Node(
     #     package='octomap_server',
@@ -62,7 +73,7 @@ def add_robot(env, robot_num, root_data_dir):
     #     ]
     # )
 
-    return robot_bag_play, robot_urdf, robot_map_accumulator_node
+    return robot_bag_play, robot_urdf, robot_map_accumulator_node, robot_map_reciever_node
 
 def add_bag_recording(output_dir, topics_to_record=None):
     record_cmd = ['ros2', 'bag', 'record']
@@ -78,7 +89,7 @@ def add_bag_recording(output_dir, topics_to_record=None):
 
 def generate_launch_description():
     environment = "kittredge_loop"
-    number_of_robots = 4
+    number_of_robots = 2
     # root_data_dir = "/media/donceykong/doncey_ssd_02/lidar2osm_bags"
     root_data_dir = "/home/donceykong/Desktop/ARPG/projects/spring2025/lidar2osm_full/cu-multi-dataset/data/ros2_bags"
     node_list = []
@@ -137,7 +148,7 @@ def generate_launch_description():
 
     # Choose non-robot nodes here
     non_robot_nodes = [
-        # tsdf_server_node,
+        tsdf_server_node,
         # robot_distance_checker_node,
         rviz_timed_node,
         # bag_rec,

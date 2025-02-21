@@ -14,7 +14,7 @@
 class LidarMapNode : public rclcpp::Node {
 public:
   LidarMapNode(const std::string& robot_name) 
-    : Node("lidar_map_node"), tf_buffer_(this->get_clock()), tf_listener_(tf_buffer_) {
+    : Node(robot_name + "_global_map_node"), tf_buffer_(this->get_clock()), tf_listener_(tf_buffer_) {
       // Parameters
       this->declare_parameter<std::string>("map_frame", "world");
       this->declare_parameter<double>("resolution", 5.0);
@@ -100,10 +100,10 @@ private:
 int main(int argc, char *argv[]) {
   rclcpp::init(argc, argv);
 
-  if (argc < 2) {
-    RCLCPP_ERROR(rclcpp::get_logger("lidar_map_node"), "Usage: lidar_map_node <robot_name>");
-    return 1;
-  }
+  // if (argc < 2) {
+  //   RCLCPP_ERROR(rclcpp::get_logger("global_map_node"), "Usage: lidar_map_node <robot_name>");
+  //   return 1;
+  // }
 
   std::string robot_name = argv[1];
   rclcpp::spin(std::make_shared<LidarMapNode>(robot_name));
