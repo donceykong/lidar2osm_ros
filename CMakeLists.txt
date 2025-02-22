@@ -69,6 +69,12 @@ install(TARGETS
   DESTINATION lib/${PROJECT_NAME}
 )
 
+# Install config dir
+install(
+  DIRECTORY config
+  DESTINATION share/${PROJECT_NAME}/
+)
+
 # ========================== Test / build ==========================
 
 if(BUILD_TESTING)
