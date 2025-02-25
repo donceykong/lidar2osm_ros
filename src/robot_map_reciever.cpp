@@ -19,17 +19,23 @@ public:
 
       // node params
       this->declare_parameter<std::string>("ego_frame", robot_name + "_base_link");
+      this->declare_parameter<std::string>("teammate_b_name", robotTeamNames[0]);
       this->declare_parameter<std::string>("teammate_b_frame", robotTeamNames[0] + "_base_link");
       this->declare_parameter<double>("min_dist_threshold", 2.0);
       this->declare_parameter<double>("eff_comms_dist_threshold", 10.0);
       
       this->get_parameter("ego_frame", ego_frame_);
+      this->get_parameter("teammate_b_name", teammate_b_name_);
       this->get_parameter("teammate_b_frame", teammate_b_frame_);
       this->get_parameter("min_dist_threshold", min_dist_threshold_);
       this->get_parameter("eff_comms_dist_threshold", eff_comms_dist_threshold_);
 
       // Timer to run at 10 Hz
       timer_ = this->create_wall_timer(std::chrono::milliseconds(100), std::bind(&MapRecieverNode::check_distance, this));
+  }
+
+  void globalMapToEigen(const std::string& robot_name) {
+    
   }
 
 private:
@@ -46,15 +52,15 @@ void check_distance() {
       double dy = tf_a.transform.translation.y - tf_b.transform.translation.y;
       double dz = tf_a.transform.translation.z - tf_b.transform.translation.z;
       double distance = std::sqrt(dx * dx + dy * dy + dz * dz);
+      RCLCPP_INFO(this->get_logger(), "%s", teammate_b_name_.c_str());
 
       // Check if within threshold
       if (distance <= eff_comms_dist_threshold_ && distance >= min_dist_threshold_) {
-          RCLCPP_INFO(this->get_logger(), "Frames '%s' and '%s' are within threshold: %f meters", 
-          ego_frame_.c_str(), teammate_b_frame_.c_str(), distance);
+          // RCLCPP_INFO(this->get_logger(), "%s Frames '%s' and '%s' are within threshold: %f meters", teammate_b_name_.c_str(), teammate_b_frame_.c_str(), distance);
+          globalMapToEigen()
+          // Call service here
       }
-  } catch (const tf2::TransformException &ex) {
-      RCLCPP_WARN(this->get_logger(), "Could not get transform: %s", ex.what());
-  }
+  } catch (const tf2::TransformException &ex) {}
 }
 
 // ROS 2 timer
@@ -66,6 +72,7 @@ tf2_ros::TransformListener tf_listener_;
 
 // Parameters
 std::string ego_frame_;
+std::string teammate_b_name_;
 std::string teammate_b_frame_;
 double min_dist_threshold_;
 double eff_comms_dist_threshold_;
