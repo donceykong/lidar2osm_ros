@@ -9,7 +9,7 @@
 
     # Frames
     lidarFrame: "base_link"
-    baselinkFrame: "base_link"
+    baselinkFrame: "os_sensor"
     odometryFrame: "odom"
     mapFrame: "map"
 

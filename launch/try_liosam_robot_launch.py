@@ -11,21 +11,21 @@ from launch_ros.parameter_descriptions import ParameterValue
 # from ament_index_python.packages import get_package_prefix 
 
 def add_liosam_nodes(robot_name):
-    share_dir = get_package_share_directory('lidar2osm_ros')
-    parameter_file = LaunchConfiguration('params_file')
-    params_declare = DeclareLaunchArgument(
-        'params_file',
-        default_value=os.path.join(share_dir, 'config', 'liosam_params.yaml'),
-        description='FPath to the ROS2 parameters file to use.'
-    )
+    # share_dir = get_package_share_directory('lidar2osm_ros')
+    # parameter_file = LaunchConfiguration('params_file')
+    # params_declare = DeclareLaunchArgument(
+    #     'params_file',
+    #     default_value=os.path.join(share_dir, 'config', f'liosam_{robot_name}.yaml'),
+    #     description='FPath to the ROS2 parameters file to use.'
+    # )
 
-    static_tf_node = Node(
-        package='tf2_ros',
-        executable='static_transform_publisher',
-        arguments=f'0.0 0.0 0.0 0.0 0.0 0.0 map odom'.split(' '),
-        parameters=[parameter_file],
-        output='screen'
-    )
+    # static_tf_node = Node(
+    #     package='tf2_ros',
+    #     executable='static_transform_publisher',
+    #     arguments=f'0.0 0.0 0.0 0.0 0.0 0.0 {robot_name}/map {robot_name}/odom'.split(' '),
+    #     parameters=[parameter_file],
+    #     output='screen'
+    # )
 
     # static_tf_node_2 = Node(
     #     package='tf2_ros',
@@ -35,38 +35,118 @@ def add_liosam_nodes(robot_name):
     #     output='screen'
     # )
 
+    # preintegration_node = Node(
+    #     package='lio_sam',
+    #     executable='lio_sam_imuPreintegration',
+    #     name=f'lio_sam_imuPreintegration',
+    #     parameters=[parameter_file],
+    #     output='screen'
+    # )
+
+    # image_proj_node = Node(
+    #     package='lio_sam',
+    #     executable='lio_sam_imageProjection',
+    #     name=f'lio_sam_imageProjection',
+    #     parameters=[parameter_file],
+    #     output='screen'
+    # )
+
+    # feature_extraction_node = Node(
+    #     package='lio_sam',
+    #     executable='lio_sam_featureExtraction',
+    #     name=f'lio_sam_featureExtraction',
+    #     parameters=[parameter_file],
+    #     output='screen'
+    # )
+
+    # map_optimization_node = Node(
+    #     package='lio_sam',
+    #     executable='lio_sam_mapOptimization',
+    #     name=f'lio_sam_mapOptimization',
+    #     parameters=[parameter_file],
+    #     output='screen'
+    # )
+
+    share_dir = get_package_share_directory('lidar2osm_ros')
+    parameter_file = LaunchConfiguration('params_file')
+    params_declare = DeclareLaunchArgument(
+        'params_file',
+        default_value=os.path.join(share_dir, 'config', f'liosam_params.yaml'),
+        description='FPath to the ROS2 parameters file to use.'
+    )
+
+    static_tf_node = Node(
+        package='tf2_ros',
+        executable='static_transform_publisher',
+        arguments=f'0.0 0.0 0.0 0.0 0.0 0.0 map {robot_name}_odom'.split(' '),
+        parameters=[parameter_file],
+        output='screen'
+    )
+
+    lio_sam_remaps = [
+        # ('/imu/data', f'/{robot_name}/imu/data'),  # Remap IMU data topic
+        # ('/odom', f'/{robot_name}/odom'),  # Example: remapping odometry topic
+        # ('/ouster/points', f'/{robot_name}/ouster/points'),
+        
+        ('/odometry/imu_incremental', f'/{robot_name}/odometry/imu_incremental'),
+        ('/odometry/imu', f'/{robot_name}/odometry/imu'),
+        ('/odometry/gpsz', f'/{robot_name}/odometry/gpsz'),
+
+        ('/lio_loop/loop_closure_detection', f'/{robot_name}/lio_loop/loop_closure_detection'),
+        ('/lio_sam/deskew/cloud_deskewed', f'/{robot_name}/lio_sam/deskew/cloud_deskewed'),
+        ('/lio_sam/deskew/cloud_info', f'/{robot_name}/lio_sam/deskew/cloud_info'),
+        ('/lio_sam/feature/cloud_corner', f'/{robot_name}/lio_sam/feature/cloud_corner'),
+        ('/lio_sam/feature/cloud_info', f'/{robot_name}/lio_sam/feature/cloud_info'),
+        ('/lio_sam/feature/cloud_surface', f'/{robot_name}/lio_sam/feature/cloud_surface'),
+        ('/lio_sam/imu/path', f'/{robot_name}/lio_sam/imu/path'),
+        ('/lio_sam/mapping/cloud_registered', f'/{robot_name}/lio_sam/mapping/cloud_registered'),
+        ('/lio_sam/mapping/cloud_registered_raw', f'/{robot_name}/lio_sam/mapping/cloud_registered_raw'),
+        ('/lio_sam/mapping/icp_loop_closure_history_cloud', f'/{robot_name}/lio_sam/mapping/icp_loop_closure_history_cloud'),
+        ('/lio_sam/mapping/loop_closure_constraints', f'/{robot_name}/lio_sam/mapping/loop_closure_constraints'),
+        ('/lio_sam/mapping/map_global', f'/{robot_name}/lio_sam/mapping/map_global'),
+        ('/lio_sam/mapping/map_local', f'/{robot_name}/lio_sam/mapping/map_local'),
+        ('/lio_sam/mapping/odometry', f'/{robot_name}/lio_sam/mapping/odometry'),
+        ('/lio_sam/mapping/odometry_incremental', f'/{robot_name}/lio_sam/mapping/odometry_incremental'),
+        ('/lio_sam/mapping/path', f'/{robot_name}/lio_sam/mapping/path'),
+        ('/lio_sam/mapping/trajectory', f'/{robot_name}/lio_sam/mapping/trajectory')
+    ]
+
     preintegration_node = Node(
         package='lio_sam',
         executable='lio_sam_imuPreintegration',
-        name=f'lio_sam_imuPreintegration',
+        name=f'{robot_name}_lio_sam_imuPreintegration',
         parameters=[parameter_file],
-        output='screen'
+        output='screen',
+        remappings=lio_sam_remaps,
     )
 
     image_proj_node = Node(
         package='lio_sam',
         executable='lio_sam_imageProjection',
-        name=f'lio_sam_imageProjection',
+        name=f'{robot_name}_lio_sam_imageProjection',
         parameters=[parameter_file],
-        output='screen'
+        output='screen',
+        remappings=lio_sam_remaps,
     )
 
     feature_extraction_node = Node(
         package='lio_sam',
         executable='lio_sam_featureExtraction',
-        name=f'lio_sam_featureExtraction',
+        name=f'{robot_name}_lio_sam_featureExtraction',
         parameters=[parameter_file],
-        output='screen'
+        output='screen',
+        remappings=lio_sam_remaps,
     )
 
     map_optimization_node = Node(
         package='lio_sam',
         executable='lio_sam_mapOptimization',
-        name=f'lio_sam_mapOptimization',
+        name=f'{robot_name}_lio_sam_mapOptimization',
         parameters=[parameter_file],
-        output='screen'
+        output='screen',
+        remappings=lio_sam_remaps,
     )
-    
+
     lio_sam_timed_nodes = []
     lio_sam_nodes = [params_declare, static_tf_node, preintegration_node, image_proj_node, feature_extraction_node, map_optimization_node]
     for node in lio_sam_nodes:
@@ -78,21 +158,28 @@ def add_liosam_nodes(robot_name):
         )
 
     return lio_sam_timed_nodes
-
     
 def add_robot(env, robot_num, root_data_dir):
     robot_name = f"robot{robot_num}"
 
     # Play bag for robot
-    robot_bag_path = os.path.join(root_data_dir, f"{env}_{robot_name}", f"{env}_{robot_name}_0.db3")
+    robot_bag_path = os.path.join(root_data_dir, f"{env}_{robot_name}", f"{env}_{robot_name}.db3")
     robot_bag_play = ExecuteProcess(
         cmd = ['ros2', 'bag', 'play', robot_bag_path],
         output = 'screen'
     )
+    robot_bag_play = ExecuteProcess(
+        cmd=[
+            'ros2', 'bag', 'play', robot_bag_path,
+            # '--remap', 
+            # f'/ouster/points:=/{robot_name}/ouster/points', 
+            # f'/imu/data:=/{robot_name}/imu/data'
+        ],
+        output='screen'
+    )
 
     # Publish URDF for robot
     xacro_file = PathJoinSubstitution([FindPackageShare('lidar2osm_ros'), 'urdf', 'single_robot.urdf.xacro'])
-    # xacro_command = Command(['xacro ', xacro_file])
     xacro_command = Command(['xacro ', xacro_file, ' ', 'name:=', f""])
     robot_urdf = Node(
         package='robot_state_publisher',
@@ -119,7 +206,7 @@ def add_robot(env, robot_num, root_data_dir):
     node_list = [robot_bag_play, robot_urdf] #, robot_map_accumulator_node, robot_map_reciever_node]
 
     liosam_nodes = add_liosam_nodes(robot_name)
-    node_list.extend(liosam_nodes)
+    # node_list.extend(liosam_nodes)
 
     return node_list
 
@@ -137,13 +224,12 @@ def add_bag_recording(output_dir, topics_to_record=None):
 
 def generate_launch_description():
     environment = "kittredge_loop"
-    number_of_robots = 1
-    root_data_dir = "/media/donceykong/doncey_ssd_02/datasets/CU_MULTI/ros2_raw_bags"
-    # root_data_dir = "/media/donceykong/doncey_ssd_03/ros2bags"
-    # root_data_dir = "/home/donceykong/Desktop/ARPG/projects/spring2025/lidar2osm_full/cu-multi-dataset/data/ros2_bags"
+    robot_list = [1]
+    # root_data_dir = f"/media/donceykong/doncey_ssd_011/ros2bags/{environment}"
+    root_data_dir = f"/media/donceykong/doncey_ssd_02/ON_SSD/ros2_raw_bags/{environment}"
     node_list = []
 
-    for robot_num in range(1, number_of_robots+1):
+    for robot_num in robot_list:
         node_list.extend(add_robot(environment, robot_num, root_data_dir))
 
     use_sim_time = DeclareLaunchArgument(

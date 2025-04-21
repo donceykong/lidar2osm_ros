@@ -1,0 +1,5 @@
+# msg/recievedDataMsg.msg
+builtin_interfaces/Time stamp
+string robot_name
+sensor_msgs/PointCloud2 semantic_cloud
+geometry_msgs/Transform current_pose

@@ -1,10 +1,15 @@
 #include <rclcpp/rclcpp.hpp>
+
 #include <sensor_msgs/msg/point_cloud2.hpp>
+
 #include <nav_msgs/msg/occupancy_grid.hpp>
+
 #include <tf2_ros/transform_listener.h>
 #include <tf2_ros/buffer.h>
 #include <tf2_eigen/tf2_eigen.hpp>
+
 #include <geometry_msgs/msg/transform_stamped.hpp>
+
 #include <pcl_conversions/pcl_conversions.h>
 #include <pcl/point_cloud.h>
 #include <pcl/point_types.h>
@@ -15,15 +20,17 @@ class LidarMapNode : public rclcpp::Node {
 public:
   LidarMapNode(const std::string& robot_name) 
     : Node(robot_name + "_global_map_node"), tf_buffer_(this->get_clock()), tf_listener_(tf_buffer_) {
-      // Parameters
+
+      // Params
       this->declare_parameter<std::string>("map_frame", "world");
-      this->declare_parameter<double>("resolution", 5.0);
+      this->declare_parameter<double>("resolution", 1.0);
 
       // Construct dynamic topics using robot_name
+      // pointcloud_topic_ = "/" + robot_name + "/ouster/points";
       pointcloud_topic_ = "/" + robot_name + "/ouster/semantic_points";
       robot_frame_ = robot_name + "_base_link";
 
-      // Retrieve parameters
+      // Retrieve params
       map_frame_ = this->get_parameter("map_frame").as_string();
       resolution_ = this->get_parameter("resolution").as_double();
 
@@ -31,12 +38,12 @@ public:
       pointcloud_sub_ = this->create_subscription<sensor_msgs::msg::PointCloud2>(
           pointcloud_topic_, rclcpp::SensorDataQoS(),
           std::bind(&LidarMapNode::pointCloudCallback, this, std::placeholders::_1));
-      pointcloud_pub_ = this->create_publisher<sensor_msgs::msg::PointCloud2>("/" + robot_name + "/global_pointcloud", 10);
+      pointcloud_pub_ = this->create_publisher<sensor_msgs::msg::PointCloud2>("/" + robot_name + "/global_pointcloud", 1);
 
-      // Timer for publishing the map and pointcloud
-      timer_ = this->create_wall_timer(
-          std::chrono::seconds(1),
-          std::bind(&LidarMapNode::publishMapAndPointCloud, this));
+      // // Timer for publishing the map and pointcloud
+      // timer_ = this->create_wall_timer(
+      //   std::chrono::seconds(1), 
+      //   std::bind(&LidarMapNode::publishMapAndPointCloud, this));
   }
 
 private:
@@ -64,6 +71,30 @@ private:
 
       // Aggregate the point cloud
       *aggregated_cloud_ += *cloud_downsampled;
+      
+      voxel_filter.setInputCloud(aggregated_cloud_);
+      voxel_filter.setLeafSize(resolution_, resolution_, resolution_); // Leaf size in meters
+      voxel_filter.filter(*aggregated_cloud_);
+
+      // LOCAL CLOUD
+      double max_range_ = 100.0; // example radius in meters
+      Eigen::Vector3f center = transform.translation().cast<float>();
+      pcl::PointCloud<pcl::PointXYZRGB>::Ptr cloud_sphere_filtered(new pcl::PointCloud<pcl::PointXYZRGB>());
+      for (const auto& point : aggregated_cloud_->points) {
+        Eigen::Vector3f pt(point.x, point.y, point.z);
+        if ((pt - center).norm() <= max_range_) {
+          cloud_sphere_filtered->points.push_back(point);
+        }
+      }
+      cloud_sphere_filtered->width = cloud_sphere_filtered->points.size();
+      cloud_sphere_filtered->height = 1;
+      cloud_sphere_filtered->is_dense = true;
+      pcl::VoxelGrid<pcl::PointXYZRGB> voxel_filter2;
+      voxel_filter2.setInputCloud(cloud_sphere_filtered);
+      *aggregated_cloud_ = *cloud_sphere_filtered;
+
+      publishMapAndPointCloud();
+
     } catch (const tf2::TransformException &ex) {
       RCLCPP_WARN(this->get_logger(), "Transform error: %s", ex.what());
     }

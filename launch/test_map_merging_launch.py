@@ -14,9 +14,14 @@ def add_robot(env, robot_num, root_data_dir):
     robot_name = f"robot{robot_num}"
 
     # Play bag for robot
+    start_offset_sec = 1030  # Try 900 s
     robot_bag_path = os.path.join(root_data_dir, f"{env}_{robot_name}", f"{env}_{robot_name}_0.db3")
     robot_bag_play = ExecuteProcess(
-        cmd = ['ros2', 'bag', 'play', robot_bag_path],
+        cmd=[
+            'ros2', 'bag', 'play', robot_bag_path,
+            '--clock',  # publishes /clock for sim time
+            '--start-offset', str(start_offset_sec)
+        ],
         output = 'screen'
     )
 
@@ -44,13 +49,15 @@ def add_robot(env, robot_num, root_data_dir):
         arguments=[robot_name],  # Pass the robot name as an argument
     )
 
-    # Recieves map from peer robot when they are in comms range
-    robot_map_reciever_node = Node(
-        package='lidar2osm_ros',
-        executable='robot_map_reciever',
-        # name=f'{robot_name}_robot_map_reciever',
-        arguments=[robot_name],  # Pass the robot name as an argument
-    )
+    if robot_name == "robot1":
+        # Recieves map from peer robot when they are in comms range
+        robot_map_reciever_node = Node(
+            package='lidar2osm_ros',
+            executable='robot_map_reciever',
+            # name=f'{robot_name}_robot_map_reciever',
+            arguments=[robot_name],  # Pass the robot name as an argument
+        )
+        return use_sim_time, robot_bag_play, robot_urdf, robot_map_accumulator_node, robot_map_reciever_node
 
     # # Octomap for specific robot
     # octomap_server_node = Node(
@@ -80,7 +87,7 @@ def add_robot(env, robot_num, root_data_dir):
     #     ]
     # )
 
-    return use_sim_time, robot_bag_play, robot_urdf, robot_map_accumulator_node, robot_map_reciever_node
+    return use_sim_time, robot_bag_play, robot_urdf, robot_map_accumulator_node
 
 def add_bag_recording(output_dir, topics_to_record=None):
     record_cmd = ['ros2', 'bag', 'record']
@@ -97,11 +104,12 @@ def add_bag_recording(output_dir, topics_to_record=None):
 def generate_launch_description():
     environment = "kittredge_loop"
     number_of_robots = 4
-    root_data_dir = "/media/donceykong/doncey_ssd_02/datasets/CU_MULTI/ros2_bags"
+    root_data_dir = "/media/donceykong/doncey_ssd_02/datasets/CU_MULTI/ros2_bags/with_gt"
     # root_data_dir = "/home/donceykong/Desktop/ARPG/projects/spring2025/lidar2osm_full/cu-multi-dataset/data/ros2_bags"
     node_list = []
 
-    for robot_num in range(1, number_of_robots+1):
+    robot_nums_to_use = [1, 2]
+    for robot_num in robot_nums_to_use: #range(1, number_of_robots+1):
         per_robot_node_list = add_robot(environment, robot_num, root_data_dir)
         node_list.extend(per_robot_node_list)
 
@@ -111,34 +119,8 @@ def generate_launch_description():
         name='robot_distance_checker'
     )
 
-    tsdf_server_node = Node(
-        package='voxblox_ros',
-        executable='tsdf_server',
-        name='voxblox_node',
-        output='screen',
-        arguments=['-alsologtostderr'],
-        # arguments=['-alsologtostderr', '--ros-args', '--log-level', 'debug'],
-        remappings=[('pointcloud', '/robot1/ouster/points')],
-        parameters=[
-            {'min_time_between_msgs_sec': 0.0},
-            {'tsdf_voxel_size': 0.5},       # Was 0.2
-            {'truncation_distance': 0.5},   # Was 0.5
-            {'color_mode': 'normals'},
-            {'enable_icp': False},
-            {'icp_refine_roll_pitch': False},
-            {'update_mesh_every_n_sec': 1.0},
-            {'mesh_min_weight': 0.1},       # Was 2.0
-            {'method': 'fast'},
-            {'max_ray_length_m': 50.0},
-            {'use_const_weight': True},
-            {'world_frame': 'world'},
-            {'verbose': False},
-            # {'mesh_filename': LaunchConfiguration('bag_file')}
-        ],
-    )
-
     # RViz node
-    rviz_config_path = PathJoinSubstitution([FindPackageShare('lidar2osm_ros'), 'rviz', 'rviz2_layout.rviz'])
+    rviz_config_path = PathJoinSubstitution([FindPackageShare('lidar2osm_ros'), 'rviz', 'map_merge.rviz'])
     rviz_node = Node(
         package='rviz2', 
         executable='rviz2', 
@@ -151,8 +133,6 @@ def generate_launch_description():
         actions=[rviz_node]
     )
 
-    bag_rec = add_bag_recording("/media/donceykong/doncey_ssd_02/lidar2osm_bags/full_bag")
-
     use_sim_time = DeclareLaunchArgument(
         'use_sim_time',
         default_value='true',
@@ -161,11 +141,9 @@ def generate_launch_description():
 
     # Choose non-robot nodes here
     non_robot_nodes = [
-        tsdf_server_node,
         # use_sim_time,
         # robot_distance_checker_node,
         rviz_timed_node,
-        # bag_rec,
     ]
 
     # Extend node list with non-robot nodes

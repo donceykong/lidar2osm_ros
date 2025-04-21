@@ -2,16 +2,16 @@
   ros__parameters:
 
     # Topics
-    pointCloudTopic: "/ouster/points"                   # Point cloud data
-    imuTopic: "/imu/data"                        # IMU data
-    odomTopic: "odometry/imu"                    # IMU pre-preintegration odometry, same frequency as IMU
-    gpsTopic: "odometry/gpsz"                    # GPS odometry topic from navsat, see module_navsat.launch file
+    pointCloudTopic: "/robot2/ouster/points"                   # Point cloud data
+    imuTopic: "/robot2/imu/data"                        # IMU data
+    odomTopic: "/robot2/odometry/imu"                    # IMU pre-preintegration odometry, same frequency as IMU
+    gpsTopic: "/robot2/odometry/gpsz"                    # GPS odometry topic from navsat, see module_navsat.launch file
 
     # Frames
-    lidarFrame: "base_link"
-    baselinkFrame: "base_link"
-    odometryFrame: "odom"
-    mapFrame: "map"
+    lidarFrame: "robot2_base_link"
+    baselinkFrame: "robot2_os_sensor"
+    odometryFrame: "robot2_odom"
+    mapFrame: "robot2_map"
 
     # GPS Settings
     useImuHeadingInitialization: false           # if using GPS data, set to "true"
