@@ -83,8 +83,6 @@ static std::map<int, std::tuple<std::string, std::vector<int>>> label_map = {
     {45, {"osm_road", {255, 0, 0}}},
     {46, {"osm_building", {0, 0, 255}}},
     {10, {"road", {245, 150, 100}}},
-    {20, {"building", {255, 0, 0}}},
-    {30, {"vehicle", {30, 30, 255}}},
 };
 
 int getLabelFromRGB(int r, int g, int b) {
@@ -95,4 +93,13 @@ int getLabelFromRGB(int r, int g, int b) {
         }
     }
     return -1;
+}
+
+std::vector<int> getRGBFromLabel(int label) {
+    auto it = label_map.find(label);
+    if (it != label_map.end()) {
+        return std::get<1>(it->second);  // Return RGB vector
+    } else {
+        return {-1, -1, -1};  // Indicate invalid label
+    }
 }

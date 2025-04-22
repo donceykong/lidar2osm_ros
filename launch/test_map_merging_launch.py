@@ -14,7 +14,7 @@ def add_robot(env, robot_num, root_data_dir):
     robot_name = f"robot{robot_num}"
 
     # Play bag for robot
-    start_offset_sec = 1030  # Try 900 s
+    start_offset_sec = 900 #1030  # Try 900 s
     robot_bag_path = os.path.join(root_data_dir, f"{env}_{robot_name}", f"{env}_{robot_name}_0.db3")
     robot_bag_play = ExecuteProcess(
         cmd=[
@@ -108,7 +108,7 @@ def generate_launch_description():
     # root_data_dir = "/home/donceykong/Desktop/ARPG/projects/spring2025/lidar2osm_full/cu-multi-dataset/data/ros2_bags"
     node_list = []
 
-    robot_nums_to_use = [1, 2]
+    robot_nums_to_use = [1, 4]
     for robot_num in robot_nums_to_use: #range(1, number_of_robots+1):
         per_robot_node_list = add_robot(environment, robot_num, root_data_dir)
         node_list.extend(per_robot_node_list)

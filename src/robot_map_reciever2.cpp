@@ -140,10 +140,11 @@ public:
       Eigen::Affine3d ego_to_peer = tf2::transformToEigen(tfs_ego_to_peer.transform);   //
       Eigen::Affine3d peer_to_map2 = tf2::transformToEigen(tfs_peer_to_map2.transform); //
 
-      // // Convert PointCloud2 rosmsg to PCL PointCloud
+      // Convert PointCloud2 rosmsg to PCL PointCloud
+      pcl::PointCloud<pcl::PointXYZRGB>::Ptr peer_orig_cloud(new pcl::PointCloud<pcl::PointXYZRGB>);  
+      pcl::fromROSMsg(*peer_global_map, *peer_orig_cloud);
       pcl::PointCloud<pcl::PointXYZRGB>::Ptr tf_peer_cloud(new pcl::PointCloud<pcl::PointXYZRGB>);  
       pcl::fromROSMsg(*peer_global_map, *tf_peer_cloud);
-
       for (auto &point : tf_peer_cloud->points) {
           Eigen::Vector3d points_map2(point.x, point.y, point.z);
           Eigen::Vector3d transformed_p = peer_to_map2 * points_map2;
@@ -152,12 +153,13 @@ public:
           point.y = transformed_p.y();
           point.z = transformed_p.z();
       }
-      // publishPeerPointCloud(tf_peer_cloud);
+      publishPeerPointCloud(peer_orig_cloud);
 
-      // // Convert PointCloud2 rosmsg to PCL PointCloud
+      // Convert PointCloud2 rosmsg to PCL PointCloud
+      pcl::PointCloud<pcl::PointXYZRGB>::Ptr ego_orig_cloud(new pcl::PointCloud<pcl::PointXYZRGB>);
+      pcl::fromROSMsg(*ego_global_map, *ego_orig_cloud);
       pcl::PointCloud<pcl::PointXYZRGB>::Ptr tf_ego_cloud(new pcl::PointCloud<pcl::PointXYZRGB>);
       pcl::fromROSMsg(*ego_global_map, *tf_ego_cloud);
-      
       for (auto &point : tf_ego_cloud->points) {
           Eigen::Vector3d points_map1(point.x, point.y, point.z);
           Eigen::Vector3d transformed_p = map1_to_ego.inverse() * points_map1;
@@ -166,21 +168,20 @@ public:
           point.y = transformed_p.y();
           point.z = transformed_p.z();
       }
-      publishEgoPointCloud(tf_ego_cloud);
+      publishEgoPointCloud(ego_orig_cloud);
 
       if (within_dist) {
         // Now merge the maps
-        Eigen::Affine3d ego_to_peer_est = mergeMaps(tf_peer_cloud, tf_ego_cloud);
+        Eigen::Affine3d ego_to_peer_est = mergeMaps(peer_orig_cloud, tf_peer_cloud, ego_orig_cloud, tf_ego_cloud);
 
         RCLCPP_INFO_STREAM(this->get_logger(), "\n\nego_to_peer_true:\n" << ego_to_peer.matrix());
         RCLCPP_INFO_STREAM(this->get_logger(), "\n\nego_to_peer_est:\n" << ego_to_peer_est.matrix());
-
 
         pcl::PointCloud<pcl::PointXYZRGB>::Ptr tf_peer_cloud2(new pcl::PointCloud<pcl::PointXYZRGB>);
         pcl::fromROSMsg(*peer_global_map, *tf_peer_cloud2);
         for (auto &point : tf_peer_cloud2->points) {
           Eigen::Vector3d points_map2(point.x, point.y, point.z);
-          Eigen::Vector3d transformed_p = map1_to_ego * ego_to_peer * peer_to_map2 * points_map2;
+          Eigen::Vector3d transformed_p = map1_to_ego * ego_to_peer_est * peer_to_map2 * points_map2;
 
           point.x = transformed_p.x();
           point.y = transformed_p.y();
@@ -192,8 +193,12 @@ public:
       }
   }
 
-  Eigen::Affine3d mergeMaps(pcl::PointCloud<pcl::PointXYZRGB>::Ptr tf_ego_cloud, 
-    pcl::PointCloud<pcl::PointXYZRGB>::Ptr tf_peer_cloud) {
+  Eigen::Affine3d mergeMaps(
+    pcl::PointCloud<pcl::PointXYZRGB>::Ptr peer_global_map,
+    pcl::PointCloud<pcl::PointXYZRGB>::Ptr tf_peer_cloud,
+    pcl::PointCloud<pcl::PointXYZRGB>::Ptr ego_global_map, 
+    pcl::PointCloud<pcl::PointXYZRGB>::Ptr tf_ego_cloud) 
+  {
     
     // Dont forget to change this if the voxel size changes
     int max_size_A = 10000;
@@ -201,6 +206,9 @@ public:
     double eps = map_voxel_size * 5;
 
     // Convert ego and peer cloud to EigenXf mats
+    Eigen::MatrixXd target_cloud_orig_eigenXf = globalMapToEigen(ego_global_map);
+    Eigen::MatrixXd source_cloud_orig_eigenXf = globalMapToEigen(peer_global_map);
+
     Eigen::MatrixXd target_cloud_eigenXf = globalMapToEigen(tf_ego_cloud);
     Eigen::MatrixXd source_cloud_eigenXf = globalMapToEigen(tf_peer_cloud);
 
@@ -219,41 +227,37 @@ public:
     clipper::CLIPPER clipper(invariant, params);
 
     // create A2A associations
-    int target_points_len = target_cloud_eigenXf.rows();
-    int source_points_len = source_cloud_eigenXf.rows();
-    Eigen::Matrix<int, Eigen::Dynamic, 2> A_all_to_all = get_a2a_assoc_matrix(target_points_len, source_points_len);
+    RCLCPP_INFO(this->get_logger(), "Filtering A: special filtering");
+    clipper::Association A_all_to_all = get_spec_a2a_assoc_matrix(target_cloud_orig_eigenXf, source_cloud_orig_eigenXf, 2.0);
     
-    // Filter associations based on ego dist of points
-    RCLCPP_INFO(this->get_logger(), "Filtering A: comms distance");
     Eigen::MatrixXd target_cloud_points_eigenXf = target_cloud_eigenXf.leftCols(3);
     Eigen::MatrixXd source_cloud_points_eigenXf = source_cloud_eigenXf.leftCols(3);
-    Eigen::Matrix<int, Eigen::Dynamic, 2> A_ego_filtered = filter_by_ego_distance(
-      target_cloud_points_eigenXf, source_cloud_points_eigenXf, A_all_to_all, eff_comms_dist_threshold_);
     
     // Filter associations based on semantic of points
     RCLCPP_INFO(this->get_logger(), "Filtering A: semantics");
-    Eigen::Matrix<int, Eigen::Dynamic, 2>  A_sem_filtered;
-    std::vector<int32_t> corr_filtered_labels;
-    std::vector<int32_t> target_labels(target_cloud_eigenXf.rows());
+    clipper::Association  A_sem_filtered;
+    std::vector<int> corr_filtered_labels;
+    std::vector<int>target_labels(target_cloud_eigenXf.rows());
     for (int i = 0; i < target_cloud_eigenXf.rows(); ++i) {
         target_labels[i] = static_cast<int32_t>(target_cloud_eigenXf(i, 3));
+        // RCLCPP_INFO(this->get_logger(), "target_labels[%d]: %d", i, target_labels[i]);
     }
-    std::vector<int32_t> source_labels(source_cloud_eigenXf.rows());
+    std::vector<int>  source_labels(source_cloud_eigenXf.rows());
     for (int i = 0; i < source_cloud_eigenXf.rows(); ++i) {
         source_labels[i] = static_cast<int32_t>(source_cloud_eigenXf(i, 3));
     }
     std::tie(A_sem_filtered, corr_filtered_labels) = filterSemanticAssociations(
-      target_labels, source_labels, A_ego_filtered);
+      target_labels, source_labels, A_all_to_all);
     
     // Filter associations based on a maximum # of associations
     RCLCPP_INFO(this->get_logger(), "Filtering A: max # specified associations");
-    Eigen::Matrix<int, Eigen::Dynamic, 2>  A_filtered;
+    clipper::Association  A_filtered;
     std::tie(A_filtered, corr_filtered_labels) = downsampleAssociationMatrix(
       A_sem_filtered, max_size_A, corr_filtered_labels);
 
     // Score using invariant above and solve for maximal clique
     RCLCPP_INFO(this->get_logger(), "SCORING NOW");
-    clipper.scorePairwiseConsistency(target_cloud_points_eigenXf.transpose(), target_cloud_points_eigenXf.transpose(), A_filtered);
+    clipper.scorePairwiseConsistency(target_cloud_points_eigenXf.transpose(), source_cloud_points_eigenXf.transpose(), A_filtered);
     // clipper::Affinity M = clipper.getAffinityMatrix();
 
     RCLCPP_INFO(this->get_logger(), "SOLVING NOW");
@@ -261,7 +265,7 @@ public:
     clipper.solveAsMaximumClique();
 
     // Retrieve selected inliers
-    Eigen::Matrix<int, Eigen::Dynamic, 2> Ainliers = clipper.getSelectedAssociations();
+    clipper::Association Ainliers = clipper.getSelectedAssociations();
 
     int Ainliers_len = Ainliers.rows();
     RCLCPP_INFO(
@@ -270,15 +274,45 @@ public:
       Ainliers_len);
 
     // Compute peer2peer TF estimate
+    RCLCPP_INFO(this->get_logger(), "COMPUTING TF");
     Eigen::Matrix4d tf_est = computeTransformationFromInliers(target_cloud_points_eigenXf, source_cloud_points_eigenXf, Ainliers);
     Eigen::Affine3d tf_est_affine(tf_est);
 
     return tf_est_affine;
   }
 
+  // Return pairs of indices where point pairs from pc1 and pc2 are within max_dist
+  clipper::Association get_spec_a2a_assoc_matrix(
+    const Eigen::MatrixXd& pc1,  // Nx3
+    const Eigen::MatrixXd& pc2,  // Mx3
+    double max_dist)
+  {
+    std::vector<Eigen::Vector2i> associations;
+
+    int N1 = pc1.rows();
+    int N2 = pc2.rows();
+
+    for (int i = 0; i < N1; ++i) {
+      for (int j = 0; j < N2; ++j) {
+        double dist = (pc1.row(i) - pc2.row(j)).norm();
+        if (dist <= max_dist) {
+          associations.emplace_back(i, j);
+        }
+      }
+    }
+
+    clipper::Association assoc_matrix(associations.size(), 2);
+    for (int k = 0; k < associations.size(); ++k) {
+      assoc_matrix.row(k) = associations[k];
+    }
+
+    return assoc_matrix;
+  }
+
+
   // All-to-All Association matrix
-  Eigen::Matrix<int, Eigen::Dynamic, 2> get_a2a_assoc_matrix(int N1, int N2) {
-    Eigen::Matrix<int, Eigen::Dynamic, 2> assoc_matrix(N1 * N2, 2);
+  clipper::Association get_a2a_assoc_matrix(int N1, int N2) {
+    clipper::Association assoc_matrix(N1 * N2, 2);
     
     int i = 0;
     for (int n1 = 0; n1 < N1; ++n1) {
@@ -293,10 +327,10 @@ public:
   }
 
   // Ego dist filterer
-  Eigen::Matrix<int, Eigen::Dynamic, 2> filter_by_ego_distance(
-    const Eigen::MatrixXd& pc1, 
-    const Eigen::MatrixXd& pc2, 
-    const Eigen::Matrix<int, Eigen::Dynamic, 2>& A, 
+  clipper::Association filter_by_ego_distance(
+    const Eigen::MatrixXd& pc1,
+    const Eigen::MatrixXd& pc2,
+    const clipper::Association& A, 
     double max_ego_dist) 
   {
     std::vector<Eigen::Vector2i> valid_rows;
@@ -320,7 +354,7 @@ public:
     }
 
     // Convert to Eigen matrix
-    Eigen::Matrix<int, Eigen::Dynamic, 2> Anew(valid_rows.size(), 2);
+    clipper::Association Anew(valid_rows.size(), 2);
     for (size_t i = 0; i < valid_rows.size(); ++i) {
         Anew(i, 0) = valid_rows[i][0];
         Anew(i, 1) = valid_rows[i][1];
@@ -330,13 +364,13 @@ public:
   }
 
   // Semantic Filter
-  std::tuple<Eigen::Matrix<int, Eigen::Dynamic, 2>, std::vector<int32_t>> filterSemanticAssociations(
-    const std::vector<int32_t>& labels1,
-    const std::vector<int32_t>& labels2,
-    const Eigen::Matrix<int, Eigen::Dynamic, 2>& A)
+  std::tuple<clipper::Association, std::vector<int> > filterSemanticAssociations(
+    const std::vector<int> & labels1,
+    const std::vector<int> & labels2,
+    const clipper::Association& A)
   {
     std::vector<Eigen::RowVector2i> filtered_rows;
-    std::vector<int32_t> filteredLabels;
+    std::vector<int>  filteredLabels;
 
     for (int i = 0; i < A.rows(); ++i) {
         // Fetch indices from the association matrix
@@ -356,7 +390,7 @@ public:
     }
 
     // Convert the filtered rows to an Eigen matrix
-    Eigen::Matrix<int, Eigen::Dynamic, 2> filteredA(filtered_rows.size(), 2);
+    clipper::Association filteredA(filtered_rows.size(), 2);
     for (size_t i = 0; i < filtered_rows.size(); ++i) {
         filteredA.row(i) = filtered_rows[i];
     }
@@ -365,10 +399,10 @@ public:
   }
 
   // Filter based on set max # of associations
-  std::tuple<Eigen::Matrix<int, Eigen::Dynamic, 2>, std::vector<int32_t>> downsampleAssociationMatrix(
-    const Eigen::Matrix<int, Eigen::Dynamic, 2>& A, 
+  std::tuple<clipper::Association, std::vector<int> > downsampleAssociationMatrix(
+    const clipper::Association& A, 
     int max_size_A, 
-    const std::vector<int32_t>& corr_labels)
+    const std::vector<int> & corr_labels)
   {
     int N = A.rows();
     max_size_A = std::min(max_size_A, N);  // avoid overflow
@@ -384,13 +418,13 @@ public:
     std::vector<int> rand_ds_A_idxs(indices.begin(), indices.begin() + max_size_A);
 
     // Downsample A
-    Eigen::Matrix<int, Eigen::Dynamic, 2> A_ds(max_size_A, 2);
+    clipper::Association A_ds(max_size_A, 2);
     for (int i = 0; i < max_size_A; ++i) {
         A_ds.row(i) = A.row(rand_ds_A_idxs[i]);
     }
 
     // Downsample labels if provided
-    std::vector<int32_t> corr_labels_ds;
+    std::vector<int>  corr_labels_ds;
     if (!corr_labels.empty()) {
         corr_labels_ds.resize(max_size_A);
         for (int i = 0; i < max_size_A; ++i) {
@@ -446,7 +480,7 @@ public:
   Eigen::Matrix4d computeTransformationFromInliers(
     const Eigen::MatrixXd& target_cloud,
     const Eigen::MatrixXd& source_cloud,
-    const Eigen::Matrix<int, Eigen::Dynamic, 2>& corres) {
+    const clipper::Association& corres) {
 
     int N = corres.rows();
     Eigen::MatrixXd target_corr(N, 3);
@@ -461,7 +495,7 @@ public:
     }
 
     // align dem bad boys
-    return umeyamaAlignment(target_corr, source_corr);
+    return umeyamaAlignment(source_corr, target_corr);
   }
 
   Eigen::MatrixXd globalMapToEigen(pcl::PointCloud<pcl::PointXYZRGB>::Ptr pcl_cloud) {
@@ -488,9 +522,11 @@ public:
           uint32_t rgb_val = *reinterpret_cast<int*>(&pcl_cloud->points[idx].rgb);
           int r = (rgb_val >> 16) & 0x0000ff;
           int g = (rgb_val >> 8) & 0x0000ff;
-          int b = (rgb_val)&0x0000ff;
+          int b = (rgb_val) & 0x0000ff;
 
           eigen_cloud(i, 3) = getLabelFromRGB(r, g, b);  // Assign label
+
+          // RCLCPP_INFO(this->get_logger(), "eigen_cloud(i, 3): %d", eigen_cloud(i, 3));
       }
 
       // RCLCPP_INFO(

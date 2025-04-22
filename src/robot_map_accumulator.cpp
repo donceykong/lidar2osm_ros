@@ -38,12 +38,8 @@ public:
       pointcloud_sub_ = this->create_subscription<sensor_msgs::msg::PointCloud2>(
           pointcloud_topic_, rclcpp::SensorDataQoS(),
           std::bind(&LidarMapNode::pointCloudCallback, this, std::placeholders::_1));
-      pointcloud_pub_ = this->create_publisher<sensor_msgs::msg::PointCloud2>("/" + robot_name + "/global_pointcloud", 1);
-
-      // // Timer for publishing the map and pointcloud
-      // timer_ = this->create_wall_timer(
-      //   std::chrono::seconds(1), 
-      //   std::bind(&LidarMapNode::publishMapAndPointCloud, this));
+      global_map_pub_ = this->create_publisher<sensor_msgs::msg::PointCloud2>("/" + robot_name + "/global_map", 1);
+      local_map_pub_ = this->create_publisher<sensor_msgs::msg::PointCloud2>("/" + robot_name + "/local_map", 1);
   }
 
 private:
@@ -76,8 +72,11 @@ private:
       voxel_filter.setLeafSize(resolution_, resolution_, resolution_); // Leaf size in meters
       voxel_filter.filter(*aggregated_cloud_);
 
+      publishMapAndPointCloud();
+
+
       // LOCAL CLOUD
-      double max_range_ = 100.0; // example radius in meters
+      double max_range_ = 50.0; // radius of local map
       Eigen::Vector3f center = transform.translation().cast<float>();
       pcl::PointCloud<pcl::PointXYZRGB>::Ptr cloud_sphere_filtered(new pcl::PointCloud<pcl::PointXYZRGB>());
       for (const auto& point : aggregated_cloud_->points) {
@@ -91,9 +90,7 @@ private:
       cloud_sphere_filtered->is_dense = true;
       pcl::VoxelGrid<pcl::PointXYZRGB> voxel_filter2;
       voxel_filter2.setInputCloud(cloud_sphere_filtered);
-      *aggregated_cloud_ = *cloud_sphere_filtered;
-
-      publishMapAndPointCloud();
+      publishLocalMap(cloud_sphere_filtered);
 
     } catch (const tf2::TransformException &ex) {
       RCLCPP_WARN(this->get_logger(), "Transform error: %s", ex.what());
@@ -106,8 +103,17 @@ private:
     pcl::toROSMsg(*aggregated_cloud_, cloud_msg);
     cloud_msg.header.stamp = this->get_clock()->now();
     cloud_msg.header.frame_id = map_frame_;
-    pointcloud_pub_->publish(cloud_msg);
+    global_map_pub_->publish(cloud_msg);
   }
+
+  void publishLocalMap(pcl::PointCloud<pcl::PointXYZRGB>::Ptr localMap) {
+    sensor_msgs::msg::PointCloud2 localMap_pc2;
+    pcl::toROSMsg(*localMap, localMap_pc2);
+    localMap_pc2.header.stamp = this->get_clock()->now();
+    localMap_pc2.header.frame_id = "world";
+    local_map_pub_->publish(localMap_pc2);
+  }
+
 
   // Parameters
   std::string pointcloud_topic_;
@@ -117,7 +123,8 @@ private:
 
   // ROS 2 components
   rclcpp::Subscription<sensor_msgs::msg::PointCloud2>::SharedPtr pointcloud_sub_;
-  rclcpp::Publisher<sensor_msgs::msg::PointCloud2>::SharedPtr pointcloud_pub_;
+  rclcpp::Publisher<sensor_msgs::msg::PointCloud2>::SharedPtr global_map_pub_;
+  rclcpp::Publisher<sensor_msgs::msg::PointCloud2>::SharedPtr local_map_pub_;
   rclcpp::TimerBase::SharedPtr timer_;
 
   // Transform listener

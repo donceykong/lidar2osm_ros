@@ -48,7 +48,7 @@ add_executable(robot_map_accumulator src/robot_map_accumulator.cpp)
 ament_target_dependencies(robot_map_accumulator rclcpp sensor_msgs nav_msgs tf2_ros tf2_geometry_msgs tf2_eigen pcl_conversions)
 
 # Robot map reciever node
-add_executable(robot_map_reciever src/robot_map_reciever.cpp)
+add_executable(robot_map_reciever src/robot_map_reciever4.cpp)
 ament_target_dependencies(robot_map_reciever rclcpp sensor_msgs nav_msgs tf2_ros tf2_eigen pcl_conversions clipper)
 
 # Example server/client nodes
