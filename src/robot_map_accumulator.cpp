@@ -76,7 +76,7 @@ private:
 
 
       // LOCAL CLOUD
-      double max_range_ = 50.0; // radius of local map
+      double max_range_ = 100.0; // radius of local map
       Eigen::Vector3f center = transform.translation().cast<float>();
       pcl::PointCloud<pcl::PointXYZRGB>::Ptr cloud_sphere_filtered(new pcl::PointCloud<pcl::PointXYZRGB>());
       for (const auto& point : aggregated_cloud_->points) {
