@@ -53,7 +53,7 @@ public:
       this->declare_parameter<std::string>("teammate_b_name", robotTeamNames[2]);
       this->declare_parameter<std::string>("teammate_b_frame", robotTeamNames[2] + "_base_link");
       this->declare_parameter<double>("min_dist_threshold", 1.0);
-      this->declare_parameter<double>("eff_comms_dist_threshold", 10.0);
+      this->declare_parameter<double>("eff_comms_dist_threshold", 15.0);
       this->declare_parameter<int>("max_points_local_cloud", 10000);
       this->declare_parameter<int>("max_points_global_cloud", 100000);
       this->declare_parameter<int>("max_associations", 5000);
