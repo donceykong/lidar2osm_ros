@@ -74,7 +74,6 @@ private:
 
       publishMapAndPointCloud();
 
-
       // LOCAL CLOUD
       double max_range_ = 100.0; // radius of local map
       Eigen::Vector3f center = transform.translation().cast<float>();
